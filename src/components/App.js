@@ -2,6 +2,7 @@ import React,{ useState,useEffect } from "react";
 import { Bar } from 'react-chartjs-2'; 
 import { Slider } from "@material-ui/core";
 import io from 'socket.io-client';
+import {Line,LineChart,XAxis,YAxis,Tooltip,CartesianGrid} from 'recharts';
 
 const App = () => {
     const [val,setVal] = useState(12)
@@ -9,23 +10,26 @@ const App = () => {
         setVal(data)
     }
     const [arr,setArr] = useState([])
-    const [arr2,setArr2] = useState([0,0,0,0,0,0])
+    const [arr2,setArr2] = useState([])
     var tmparr2 = arr2;
     const socket = io.connect('https://hidden-dusk-28735.herokuapp.com/test',
             {reconnection: true, 
             //transports: ['websocket']
     });
 
-    socket.on('newnumber',(msg)=>{
-        console.log(msg.number);
-        //tmparr2 = arr2;
-        //if (tmparr2.length>=6){
-        //    tmparr2.shift()
-        //}
-        //tmparr2.push(msg.number);
-        //setArr2(tmparr2)
-        //console.log(tmparr2);
-    })
+    useEffect(() => {
+      socket.on('newnumber',(msg)=>{
+          console.log(msg.number);
+          setArr2((currentData) => {
+            if (currentData.length >= 30){
+                currentData = currentData.slice(10);
+            }
+            
+            return [...currentData,{'uv':msg.number}]});
+      })
+      console.log(arr2);
+    },[])
+
 
     useEffect(() => {
       fetch('https://hidden-dusk-28735.herokuapp.com/')
@@ -62,7 +66,7 @@ const App = () => {
         </div>
         </div>
         <br></br>
-        <p>Data import from <a href="https://hidden-dusk-28735.herokuapp.com/">https://hidden-dusk-28735.herokuapp.com/</a></p>
+        <p>Data import from <a href="https://hidden-dusk-28735.herokuapp.com/" target="_blank">https://hidden-dusk-28735.herokuapp.com/</a></p>
         <div style={{height:"20vh"}}>
         <Bar
             data={{
@@ -78,6 +82,17 @@ const App = () => {
             width={600}
             options={{maintainAspectRatio: false,}}
         />
+        </div>
+
+        <p>Data import from <a href="https://hidden-dusk-28735.herokuapp.com/getrealtimedata" target="_blank">https://hidden-dusk-28735.herokuapp.com/getrealtimedata</a></p>
+        <div style={{height:"20vh",width:"80vw"}}>
+          <LineChart width={600} height={200} data={arr2.slice(Math.max(arr2.length-10,0))}>
+            <Line type="monotone" dataKey="uv" stroke="#8884d8" />
+            <CartesianGrid stroke="#ccc" />
+            <XAxis />
+            <YAxis />
+            <Tooltip />
+          </LineChart>
         </div>
 
         </div>)
