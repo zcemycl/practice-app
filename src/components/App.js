@@ -38,7 +38,7 @@ const App = () => {
               })
     },[])
 
-    console.log(arr)
+    //console.log(arr)
     return (<div>
         <ul>
         <li>Hello Leo.</li>
