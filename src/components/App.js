@@ -20,8 +20,8 @@ const App = () => {
       socket.on('newnumber',(msg)=>{
           //console.log(msg.number);
           setArr2((currentData) => {
-            if (currentData.length >= 30){
-                currentData = currentData.slice(10);
+            if (currentData.length >= 15){
+                currentData.shift();
             }
             
             return [...currentData,{'uv':msg.number}]});
