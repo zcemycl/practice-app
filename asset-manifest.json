@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/practice-app/static/js/main.a8cb13a1.chunk.js",
-    "main.js.map": "/practice-app/static/js/main.a8cb13a1.chunk.js.map",
+    "main.js": "/practice-app/static/js/main.d3117e8b.chunk.js",
+    "main.js.map": "/practice-app/static/js/main.d3117e8b.chunk.js.map",
     "runtime-main.js": "/practice-app/static/js/runtime-main.23cc5f4e.js",
     "runtime-main.js.map": "/practice-app/static/js/runtime-main.23cc5f4e.js.map",
-    "static/js/2.77295474.chunk.js": "/practice-app/static/js/2.77295474.chunk.js",
-    "static/js/2.77295474.chunk.js.map": "/practice-app/static/js/2.77295474.chunk.js.map",
+    "static/js/2.967d1027.chunk.js": "/practice-app/static/js/2.967d1027.chunk.js",
+    "static/js/2.967d1027.chunk.js.map": "/practice-app/static/js/2.967d1027.chunk.js.map",
     "index.html": "/practice-app/index.html",
-    "static/js/2.77295474.chunk.js.LICENSE.txt": "/practice-app/static/js/2.77295474.chunk.js.LICENSE.txt"
+    "static/js/2.967d1027.chunk.js.LICENSE.txt": "/practice-app/static/js/2.967d1027.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.23cc5f4e.js",
-    "static/js/2.77295474.chunk.js",
-    "static/js/main.a8cb13a1.chunk.js"
+    "static/js/2.967d1027.chunk.js",
+    "static/js/main.d3117e8b.chunk.js"
   ]
 }
