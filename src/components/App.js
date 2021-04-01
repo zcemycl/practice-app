@@ -11,7 +11,6 @@ const App = () => {
     }
     const [arr,setArr] = useState([])
     const [arr2,setArr2] = useState([])
-    var tmparr2 = arr2;
     const socket = io.connect('https://hidden-dusk-28735.herokuapp.com/test',
             {reconnection: true, 
             //transports: ['websocket']
@@ -19,7 +18,7 @@ const App = () => {
 
     useEffect(() => {
       socket.on('newnumber',(msg)=>{
-          console.log(msg.number);
+          //console.log(msg.number);
           setArr2((currentData) => {
             if (currentData.length >= 30){
                 currentData = currentData.slice(10);
@@ -27,7 +26,7 @@ const App = () => {
             
             return [...currentData,{'uv':msg.number}]});
       })
-      console.log(arr2);
+      //console.log(arr2);
     },[])
 
 
