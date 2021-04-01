@@ -1,6 +1,7 @@
 import React,{ useState,useEffect } from "react";
 import { Bar } from 'react-chartjs-2'; 
 import { Slider } from "@material-ui/core";
+import io from 'socket.io-client';
 
 const App = () => {
     const [val,setVal] = useState(12)
@@ -8,33 +9,40 @@ const App = () => {
         setVal(data)
     }
     const [arr,setArr] = useState([])
-    useEffect(() => {
+    const [arr2,setArr2] = useState([0,0,0,0,0,0])
+    var tmparr2 = arr2;
+    const socket = io.connect('https://hidden-dusk-28735.herokuapp.com/test',
+            {reconnection: true, 
+            //transports: ['websocket']
+    });
 
+    socket.on('newnumber',(msg)=>{
+        console.log(msg.number);
+        //tmparr2 = arr2;
+        //if (tmparr2.length>=6){
+        //    tmparr2.shift()
+        //}
+        //tmparr2.push(msg.number);
+        //setArr2(tmparr2)
+        //console.log(tmparr2);
+    })
+
+    useEffect(() => {
       fetch('https://hidden-dusk-28735.herokuapp.com/')
               .then(res=>res.json())
               .then(json=>{
-                console.log(json)
-                const data = json.data
-                console.log(data)
-                setArr(data)
+                setArr(json.data)
               })
-              //.then((valarr) => {
-              //  const newarr = valarr.map((product) => {
-              //      return product.data
-              //  })
-              //  setArr(newarr)
-              //})
     },[])
+
     console.log(arr)
     return (<div>
         <ul>
-        <li>Hi</li>
-        <li>Bye</li>
-        <li>Friend</li>
+        <li>Hello Leo.</li>
         </ul>
 
         <p>Slider + Chart testing</p>
-        <div style={{height:"30vh"}}>
+        <div style={{height:"20vh"}}>
         <Bar 
             data={{
                 labels: ['Red','Blue','Yellow','Green','Purple','Orange'],
@@ -55,7 +63,7 @@ const App = () => {
         </div>
         <br></br>
         <p>Data import from <a href="https://hidden-dusk-28735.herokuapp.com/">https://hidden-dusk-28735.herokuapp.com/</a></p>
-        <div style={{height:"30vh"}}>
+        <div style={{height:"20vh"}}>
         <Bar
             data={{
                 labels: ['Red','Blue','Yellow','Green','Purple','Orange'],
