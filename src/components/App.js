@@ -15,6 +15,7 @@ const App = () => {
             {reconnection: true, 
             //transports: ['websocket']
     });
+    
 
     useEffect(() => {
       socket.on('newnumber',(msg)=>{
@@ -41,7 +42,7 @@ const App = () => {
     //console.log(arr)
     return (<div>
         <ul>
-        <li>Hello Leo.</li>
+        <li>Hello Leo Leung.</li>
         </ul>
 
         <p>Slider + Chart testing</p>
