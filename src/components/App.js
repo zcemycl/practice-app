@@ -11,25 +11,23 @@ const App = () => {
     }
     const [arr,setArr] = useState([])
     const [arr2,setArr2] = useState([])
-    const socket = io.connect('https://hidden-dusk-28735.herokuapp.com/test',
-            {reconnection: true, 
-            //transports: ['websocket']
-    });
+    const socket = io.connect('https://hidden-dusk-28735.herokuapp.com/test',{reconnection: true});
     
+    //const socket = io.connect('http://127.0.0.1:5000/test',{reconnection: true});
 
-    useEffect(() => {
-      socket.on('newnumber',(msg)=>{
-          //console.log(msg.number);
-          setArr2((currentData) => {
-            if (currentData.length >= 15){
-                currentData.shift();
-            }
-            
-            return [...currentData,{'uv':msg.number}]});
-      })
-      //console.log(arr2);
-    },[])
-
+    //const socket = io.connect('http://127.0.0.1:5000/test');
+     useEffect(() => {
+       socket.on('newnumber',(msg)=>{
+            console.log(msg.number);
+           setArr2((currentData) => {
+             if (currentData.length >= 15){
+                 currentData.shift();
+             }
+             
+             return [...currentData,{'uv':msg.number}]});
+       })
+        console.log(arr2);
+     },[])
 
     useEffect(() => {
       fetch('https://hidden-dusk-28735.herokuapp.com/')
