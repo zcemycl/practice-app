@@ -41,7 +41,7 @@ const ProGraph = () => {
                 justify="center" 
                 direction="row"
                 spacing={0}
-                style={{padding: '12% 0 0 0'}}>
+                style={{padding: '20vh 0 0 0'}}>
                 {switchPlot(activeStep)}
                 <Grid  container
                     justify="center" 

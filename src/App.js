@@ -8,13 +8,20 @@ import useStyles from './styles';
 const App = () => {
     const classes = useStyles();
     return (
+        <Router>
         <div>     
             <div className={classes.particleBg}>
                 <Particles height="100vh" width="100vw" config={particlesConfig}/>               
             </div>
             <Navbar/>
-            <ProGraph/>
+            <Switch>
+                <Route exact path="/">
+                    <ProGraph/>
+                </Route>
+            </Switch>
+            
         </div>
+        </Router>
     )
 }
 
