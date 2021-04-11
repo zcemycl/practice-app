@@ -1,28 +1,32 @@
 import React from "react";
-import { Grid } from '@material-ui/core';
-import { UIPlot, FetchPlot, SocketPlot } from './components';
+import { ProGraph } from './components';
+import Particles from 'react-particles-js';
+import particlesConfig from './config/particlesConfig';
+
+const styles = {
+    root: {
+        fontFamily: "sans-serif",
+        textAlign: "center",
+        top: 0, left: 0, right: 0, bottom: 0,
+        height: "100%",
+        background: "#222",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        position:'absolute',
+        overflow:'hidden',
+    }
+};
 
 const App = () => {
-
-
-    return (<div>
-
-        <Grid container justify="center" >
-            
-            <Grid xs={12} sm={6} md={4} lg={3}>
-                <UIPlot/>
-            </Grid>
-            <Grid xs={12} sm={6} md={4} lg={3}>
-                <FetchPlot/>
-            </Grid>
-            <Grid xs={12} sm={6} md={4} lg={3}>
-                <SocketPlot/>
-            </Grid>
-            
-        </Grid>
-        
-
-        </div>)
+    return (
+        <div>     
+            <div style={styles.root}>
+                <Particles height="100vh" width="100vw"/>               
+            </div>
+            {<ProGraph/>}
+        </div>
+    )
 }
 
 export default App

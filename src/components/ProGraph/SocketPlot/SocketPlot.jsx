@@ -1,8 +1,6 @@
 import React,{ useState,useEffect } from "react";
 import io from 'socket.io-client';
-// import { Line } from 'react-chartjs-2'; 
-
-import {Line,LineChart,XAxis,YAxis,Tooltip,CartesianGrid,ResponsiveContainer} from 'recharts';
+import {Area,AreaChart,XAxis,YAxis,Tooltip,CartesianGrid,ResponsiveContainer} from 'recharts';
 import { Card, CardMedia, CardContent, CardActions, Typography, IconButton } from '@material-ui/core';
 
 const SocketPlot = () => {
@@ -21,29 +19,31 @@ const SocketPlot = () => {
         })
      },[]);
     return (
-        <Card style={{maxWidth:'95%', maxHeight: '100%'}}>
-            <ResponsiveContainer width='95%'  aspect={2}>
-                <LineChart 
+        <Card style={{maxWidth:'100%', height: '100%'}}>
+            <ResponsiveContainer width='95%'  aspect={0.95}>
+                
+                <AreaChart 
                     data={arr}>
-                    <Line type="monotone" 
-                    dataKey="uv" 
-                    stroke="#8884d8" />
+                    <Area type="monotone" 
+                        dataKey="uv" 
+                        stroke="#8884d8" 
+                        fill="#8884d8" />
                     <CartesianGrid stroke="#ccc" />
-                    <XAxis />
-                    <YAxis />
+                    <XAxis fontSize="0.8em"/>
+                    <YAxis fontSize="0.8em" width={30}/>
                     <Tooltip />
-                </LineChart>
+                </AreaChart>
             </ResponsiveContainer>
 
             
-            <CardContent style={{display:'flex'}}>
+            {/* <CardContent style={{display:'flex'}}>
             <Typography>
                 Data import from 
                 <a href="https://hidden-dusk-28735.herokuapp.com/getrealtimedata" target="_blank">
                     https://hidden-dusk-28735.herokuapp.com/getrealtimedata
                     </a>
             </Typography>
-            </CardContent>
+            </CardContent> */}
         </Card>
 
     )
