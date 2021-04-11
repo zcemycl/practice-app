@@ -15,7 +15,7 @@ const App = () => {
             </div>
             <Navbar/>
             <Switch>
-                <Route exact path="/">
+                <Route exact path="/practice-app">
                     <ProGraph/>
                 </Route>
             </Switch>
