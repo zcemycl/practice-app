@@ -6,9 +6,11 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 import { MobileStepper, Paper, Typography, Button} from '@material-ui/core';
 import { KeyboardArrowRight, KeyboardArrowLeft } from '@material-ui/icons';
+import useStyles from './styles';
 
 const ProGraph = () => {
     const [activeStep, setActiveStep] = React.useState(0);
+    const classes = useStyles();
     const theme = useTheme();
     const maxSteps = 3;
     const handleNext = () => {
@@ -34,7 +36,7 @@ const ProGraph = () => {
     };
 
     return (
-        <div style={{position:'relative'}}>          
+        <div className={classes.content} style={{position:'relative'}}>          
             <Grid container 
                 justify="center" 
                 direction="row"

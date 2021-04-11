@@ -1,0 +1,16 @@
+import { makeStyles } from '@material-ui/core/styles';
+
+export default makeStyles((theme) => ({
+    particleBg: {
+            fontFamily: "sans-serif",
+            textAlign: "center",
+            top: 0, left: 0, right: 0, bottom: 0,
+            height: "100%",
+            background: "#B0E0E6",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            position:'absolute',
+            overflow:'hidden',
+    }
+}));
