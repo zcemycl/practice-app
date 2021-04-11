@@ -14,11 +14,11 @@ const App = () => {
                 <Particles height="100vh" width="100vw" config={particlesConfig}/>               
             </div>
             <Navbar/>
-            <Switch>
-                <Route exact path="/prograph">
+            {/* <Switch> */}
+                {/* <Route exact path="/prograph"> */}
                     <ProGraph/>
-                </Route>
-            </Switch>
+                {/* </Route> */}
+            {/* </Switch> */}
             
         </div>
         </Router>

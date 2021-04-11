@@ -15,8 +15,9 @@ const Navbar = () => {
                 <Toolbar>
                     <Typography variant="h6" 
                         className={classes.title}
-                        component={Link} 
-                        to="/">
+                        // component={Link} 
+                        // to="/"
+                        >
                         Yui's Responsive
                     </Typography>
                     <div className={classes.menuButton}>
