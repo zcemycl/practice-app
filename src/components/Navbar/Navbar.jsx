@@ -37,6 +37,9 @@ const Navbar = () => {
                         className={classes.title}
                         component={Link} 
                         to={process.env.PUBLIC_URL+"/"}
+                        onClick={()=>(
+                            setSelected('Progressive Graph')
+                            )}
                         >
                         Yui's Responsive
                     </Typography>
