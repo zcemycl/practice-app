@@ -2,9 +2,9 @@ import React from 'react';
 import FetchPlot from './FetchPlot/FetchPlot';
 import UIPlot from './UIPlot/UIPlot';
 import SocketPlot from './SocketPlot/SocketPlot';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
-import { MobileStepper, Paper, Typography, Button} from '@material-ui/core';
+import { MobileStepper, Button} from '@material-ui/core';
 import { KeyboardArrowRight, KeyboardArrowLeft } from '@material-ui/icons';
 import useStyles from './styles';
 
@@ -41,7 +41,7 @@ const ProGraph = () => {
                 justify="center" 
                 direction="row"
                 spacing={0}
-                style={{padding: '20vh 0 0 0'}}>
+                style={{padding: '15vh 0 0 0'}}>
                 {switchPlot(activeStep)}
                 <Grid  container
                     justify="center" 

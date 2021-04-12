@@ -1,5 +1,5 @@
 import React from "react";
-import { ProGraph, Navbar } from './components';
+import { ProGraph, Navbar, Random } from './components';
 import Particles from 'react-particles-js';
 import particlesConfig from './config/particlesConfig';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -17,6 +17,9 @@ const App = () => {
             <Switch>
                 <Route exact path={process.env.PUBLIC_URL+"/"}>
                     <ProGraph/>
+                </Route>
+                <Route exact path={process.env.PUBLIC_URL+"/random"}>
+                    <Random/>
                 </Route>
             </Switch>
             

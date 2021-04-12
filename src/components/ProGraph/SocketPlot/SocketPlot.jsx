@@ -1,7 +1,7 @@
 import React,{ useState,useEffect } from "react";
 import io from 'socket.io-client';
 import {Area,AreaChart,XAxis,YAxis,Tooltip,CartesianGrid,ResponsiveContainer} from 'recharts';
-import { Card, CardMedia, CardContent, CardActions, Typography, IconButton } from '@material-ui/core';
+import { Card } from '@material-ui/core';
 
 const SocketPlot = () => {
     const [arr,setArr] = useState([]);
@@ -36,14 +36,7 @@ const SocketPlot = () => {
             </ResponsiveContainer>
 
             
-            {/* <CardContent style={{display:'flex'}}>
-            <Typography>
-                Data import from 
-                <a href="https://hidden-dusk-28735.herokuapp.com/getrealtimedata" target="_blank">
-                    https://hidden-dusk-28735.herokuapp.com/getrealtimedata
-                    </a>
-            </Typography>
-            </CardContent> */}
+
         </Card>
 
     )

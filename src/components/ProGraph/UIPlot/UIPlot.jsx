@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import useStyles from './styles';
 import { Bar } from 'react-chartjs-2'; 
 import { Slider } from "@material-ui/core";
-import { Card, CardMedia, CardContent, CardActions, Typography, IconButton } from '@material-ui/core';
+import { Card, CardContent } from '@material-ui/core';
 
 const UIPlot = () => {
     const classes = useStyles();

@@ -1,11 +1,31 @@
-import React from 'react';
-import { AppBar, Toolbar, IconButton, Badge, MenuItem, Menu, Typography } from '@material-ui/core';
-import { ClassSharp, ShoppingCart, GitHub, LinkedIn, Bookmark } from '@material-ui/icons';
+import React, {useState} from 'react';
+import { AppBar, Toolbar, IconButton, MenuItem, Menu, Typography } from '@material-ui/core';
+import { ShoppingCart, GitHub, LinkedIn, Bookmark } from '@material-ui/icons';
 import useStyles from './styles';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+const options = [
+    {id: 0, name: 'Progressive Graph', root: '/'},
+    {id: 1, name: 'Random', root: '/random'},
+]
+
+const ITEM_HEIGHT = 48;
 
 const Navbar = () => {
     const classes = useStyles();
+    const [selected, setSelected] = useState('Progressive Graph');
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    
+    const handleClose = (event) => {
+        setSelected(event.target.text);
+        setAnchorEl(null);
+    };
+
     // const location = useLocation();
     return (
         <div>
@@ -21,9 +41,34 @@ const Navbar = () => {
                         Yui's Responsive
                     </Typography>
                     <div className={classes.menuButton}>
-                        <IconButton disabled>
+                        <IconButton aria-label="bookmark"
+                            aria-controls="long-menu"
+                            aria-haspopup="true"
+                            onClick={handleClick}>
                             <Bookmark/>
                         </IconButton>
+                        <Menu
+                            id="long-menu"
+                            anchorEl={anchorEl}
+                            keepMounted
+                            open={open}
+                            onClose={handleClose}
+                            PaperProps={{
+                            style: {
+                                maxHeight: ITEM_HEIGHT * 4.5,
+                                width: '20ch',
+                            },}}>
+                            {options.map((option) => (
+                            <MenuItem key={option.name} 
+                                selected={option.name === selected} 
+                                onClick={handleClose} 
+                                component={Link} 
+                                eventKey={option.id}
+                                to={process.env.PUBLIC_URL+option.root}>
+                                {option.name}
+                            </MenuItem>
+                            ))}
+                        </Menu>
                         <IconButton href="https://github.com/zcemycl" 
                             target="_blank"
                             aria-label="GitHub Repository">

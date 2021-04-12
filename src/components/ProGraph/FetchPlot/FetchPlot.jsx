@@ -1,7 +1,7 @@
 import React,{ useState,useEffect } from "react";
 import useStyles from './styles';
 import { Bar } from 'react-chartjs-2'; 
-import { Card, CardMedia, CardContent, CardActions, Typography, IconButton } from '@material-ui/core';
+import { Card, CardContent } from '@material-ui/core';
 
 const FetchPlot = () => {
     const [arr,setArr] = useState([]);
