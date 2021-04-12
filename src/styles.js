@@ -6,11 +6,12 @@ export default makeStyles((theme) => ({
             textAlign: "center",
             top: 0, left: 0, right: 0, bottom: 0,
             height: "100%",
+            backgroundSize: 'cover',
             background: "#B0E0E6",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            position:'absolute',
-            overflow:'hidden',
+            position:'fixed',
+            // overflow:'hidden',
     }
 }));

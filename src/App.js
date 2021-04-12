@@ -11,7 +11,9 @@ const App = () => {
         <Router>
         <div>     
             <div className={classes.particleBg}>
-                <Particles height="100vh" width="100vw" config={particlesConfig}/>               
+                <Particles 
+                    height="100vh"
+                    width="100vw" config={particlesConfig}/>               
             </div>
             <Navbar/>
             <Switch>
@@ -24,7 +26,7 @@ const App = () => {
             </Switch>
             
         </div>
-        // </Router>
+        </Router>
     )
 }
 
