@@ -6,7 +6,9 @@ import { Link } from 'react-router-dom';
 
 const options = [
     {id: 0, name: 'Progressive Graph', root: '/'},
-    {id: 1, name: 'Random', root: '/random'},
+    {id: 1, name: 'Authentication', root: '/auth'},
+    {id: 2, name: 'Random', root: '/random'},
+    
 ]
 
 const ITEM_HEIGHT = 48;
