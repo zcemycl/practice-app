@@ -6,6 +6,7 @@ import image2b from './2b.png';
 
 const Random = () => {
     const classes = useStyles();
+    // console.log('hi');
     return (
         <div className={classes.content} style={{position:'relative'}}>
             <Grid container 

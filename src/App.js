@@ -5,8 +5,11 @@ import particlesConfig from './config/particlesConfig';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import useStyles from './styles';
 
+
+
 const App = () => {
     const classes = useStyles();
+    console.log(process.env.REACT_APP_SECRET_CODE);
     return (
         <Router>
         <div>     
