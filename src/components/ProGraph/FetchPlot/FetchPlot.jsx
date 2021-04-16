@@ -1,7 +1,7 @@
 import React,{ useState,useEffect } from "react";
 import useStyles from './styles';
 import { Bar } from 'react-chartjs-2'; 
-import { Card, CardContent } from '@material-ui/core';
+import { Card } from '@material-ui/core';
 
 const FetchPlot = () => {
     const [arr,setArr] = useState([]);
@@ -16,9 +16,9 @@ const FetchPlot = () => {
     },[]);
     
     return (
-        <Card style={{maxWidth:'100%', height: '100%'}}>
-            
+        <Card className={classes.card}>
             <Bar
+                className={classes.bar}
                 data={{
                     labels: ['Jan','Feb','Mar','Apr','May','Jun'],
                     datasets: [{
@@ -31,14 +31,6 @@ const FetchPlot = () => {
                 height={'35%'}
                 width={'35%'}
             />
-            <CardContent style={{display:'flex'}}>
-            {/* <Typography>
-                Data import from 
-                <a href="https://hidden-dusk-28735.herokuapp.com/" target="_blank">
-                 https://hidden-dusk-28735.herokuapp.com/
-                </a>
-            </Typography> */}
-            </CardContent>
         </Card>
     )
 }

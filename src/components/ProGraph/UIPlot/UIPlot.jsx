@@ -14,8 +14,9 @@ const UIPlot = () => {
                     {value:20,label:'20'}]
     const [val,setVal] = useState(5);
     return (
-        <Card style={{maxWidth:'100%', height: '100%'}}>   
+        <Card className={classes.card}>   
             <Bar 
+                className={classes.bar}
                 data={{
                     labels: ['Red','Blue','Yellow','Green','Purple','Orange'],
                     datasets: [{
@@ -29,15 +30,11 @@ const UIPlot = () => {
                 width={'35%'}
             />
             
-            <CardContent style={{display:'flex'}}>
+            <CardContent className={classes.cardContent}>
                 <Slider value={val} onChange={updateRange}
                     valueLabelDisplay="auto" min={0}
                     max={20}
                     marks={marks}/>
-                {/* <br></br>
-                <Typography>
-                    Slider + Chart testing
-                </Typography> */}
             </CardContent>
         </Card>
     )

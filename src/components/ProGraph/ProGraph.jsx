@@ -3,8 +3,7 @@ import FetchPlot from './FetchPlot/FetchPlot';
 import UIPlot from './UIPlot/UIPlot';
 import SocketPlot from './SocketPlot/SocketPlot';
 import { useTheme } from '@material-ui/core/styles';
-import { Grid } from '@material-ui/core';
-import { MobileStepper, Button} from '@material-ui/core';
+import { Grid, MobileStepper, Button } from '@material-ui/core';
 import { KeyboardArrowRight, KeyboardArrowLeft } from '@material-ui/icons';
 import useStyles from './styles';
 
@@ -21,9 +20,7 @@ const ProGraph = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
-    const handleStepChange = (step) => {
-    setActiveStep(step);
-    };
+
     const switchPlot = (step) => {
         switch (step) {
             case 0:
@@ -31,17 +28,19 @@ const ProGraph = () => {
             case 1:
                 return (<Grid xs={12} sm={6} md={4} lg={3}><UIPlot/></Grid>);
             case 2:
-                return (<Grid xs={12} sm={6} md={4} lg={3}><FetchPlot/></Grid>)
+                return (<Grid xs={12} sm={6} md={4} lg={3}><FetchPlot/></Grid>);
+            default:
+                return (<Grid xs={12} sm={6} md={4} lg={3}><SocketPlot/></Grid>);
         }
     };
 
     return (
-        <div className={classes.content} style={{position:'relative'}}>          
+        <div className={classes.content}>          
             <Grid container 
                 justify="center" 
                 direction="row"
                 spacing={0}
-                style={{padding: '15vh 0 0 0'}}>
+                className={classes.grid}>
                 {switchPlot(activeStep)}
                 <Grid  container
                     justify="center" 
