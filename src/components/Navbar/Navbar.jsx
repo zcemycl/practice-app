@@ -7,8 +7,8 @@ import { Link } from 'react-router-dom';
 const options = [
     {id: 0, name: 'Progressive Graph', root: '/'},
     {id: 1, name: 'Authentication', root: '/auth'},
-    {id: 2, name: 'Random', root: '/random'},
-    
+    {id: 2, name: 'Image Display', root: '/imgdisplay'},
+    {id: 3, name: 'Chatapp', root: '/chatapp'}
 ]
 
 const ITEM_HEIGHT = 48;
@@ -28,12 +28,9 @@ const Navbar = () => {
         setAnchorEl(null);
     };
 
-    // const location = useLocation();
     return (
         <div>
-            <AppBar position="fixed" 
-                className={classes.appBar} 
-                color="white">
+            <AppBar className={classes.appBar}>
                 <Toolbar>
                     <Typography variant="h6" 
                         className={classes.title}
@@ -43,7 +40,7 @@ const Navbar = () => {
                             setSelected('Progressive Graph')
                             )}
                         >
-                        Yui's Responsive
+                        Yui's 
                     </Typography>
                     <div className={classes.menuButton}>
                         <IconButton aria-label="bookmark"

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { ProGraph, Navbar, Random, Auth } from './components';
+import { ProGraph, Navbar, Random, Auth, Chatapp } from './components';
 import Particles from 'react-particles-js';
 import particlesConfig from './config/particlesConfig';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -10,7 +10,7 @@ import ProtectedRoute from './components/Auth/ProtectedRoute';
 const App = () => {
     const classes = useStyles();
     const [isAuth, setIsAuth] = useState(false);
-
+    
     return (
         <Router>
         <div>     
@@ -28,8 +28,11 @@ const App = () => {
                     <Auth isAuth={isAuth}
                         setIsAuth={setIsAuth}/>
                 </Route>
-                <Route exact path={process.env.PUBLIC_URL+"/random"}>
+                <Route exact path={process.env.PUBLIC_URL+"/imgdisplay"}>
                     <Random/>
+                </Route>
+                <Route exact path={process.env.PUBLIC_URL+"/chatapp"}>
+                    <Chatapp/>
                 </Route>
             </Switch>
             <ProtectedRoute
