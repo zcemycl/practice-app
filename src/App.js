@@ -18,9 +18,7 @@ const App = () => {
         if ( isUser && isPwd)
         {
             setIsAuth(true);
-        } 
-        console.log(valueUser.current.value);
-        
+        }        
     }
     return (
         <Router>
