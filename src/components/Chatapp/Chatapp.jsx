@@ -15,10 +15,10 @@ const Chatapp = () => {
     // const site = 'https://hidden-dusk-28735.herokuapp.com/session';
     // const socket = io.connect(site,{reconnection: true});
     const socketRef = useRef();
-    // socketRef.current = socketIOClient(site,{reconnection: true});
-    // console.log(socketRef.current.id);
+    socketRef.current = socketIOClient(site,{reconnection: true});
+    console.log(socketRef.current.id);
     useEffect(() => {
-        socketRef.current = socketIOClient(site,{reconnection: true});
+        // socketRef.current = socketIOClient(site,{reconnection: true});
         socketRef.current.on('my_response', (message) => {
             console.log('receiving...');
             
@@ -31,9 +31,9 @@ const Chatapp = () => {
             
             setArr((currentArr)=>[...currentArr,newmessage])
         });
-        return () => {
-            socketRef.current.disconnect();
-        };
+        // return () => {
+        //     socketRef.current.disconnect();
+        // };
     },[]);
 
     const sendMsg = () => {
