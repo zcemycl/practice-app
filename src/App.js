@@ -22,8 +22,6 @@ const App = () => {
         fetchProducts();
     }, []);
 
-    console.log(products);
-
     return (
         <Router>
         <div>     

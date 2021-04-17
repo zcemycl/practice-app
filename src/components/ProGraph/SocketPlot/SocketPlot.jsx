@@ -11,6 +11,8 @@ const SocketPlot = () => {
     //const socket = io.connect('http://127.0.0.1:5000/test',{reconnection: true});
     //const socket = io.connect('http://127.0.0.1:5000/test');
     useEffect(() => {
+        const socket = io.connect('https://hidden-dusk-28735.herokuapp.com/test',
+                {reconnection: true});
         socket.on('newnumber',(msg)=>{
             setArr((currentData) => {
             if (currentData.length >= 10){
