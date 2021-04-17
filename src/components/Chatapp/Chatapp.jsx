@@ -57,24 +57,27 @@ const Chatapp = () => {
             <Grid xs={12} sm={8} md={6} lg={4}>
                 <Card className={classes.card}>
                     <CardContent class={classes.message_holder}>
-                    <Typography variant="h5">
+                    <Typography variant="h5" 
+                        style={{padding:'0 0 5%'}}>
                     Chatapp [Testing]
                     </Typography>
                     <Divider />
-                    <div >
+                    <div style={{padding:'5% 0 0'}}>
                     
-                    <Message target="other" msg="I am Leo"/>
-                    <Message target="other" msg="Writing something to expand the lines so that it occupies two rows."/>
-                    <Message target="me" msg="Thanks for your message."/>
-                    <Message target="me" msg="Bye"/>
+                    <Message target="other" name="Admin" msg="I am Leo."/>
+                    <Message target="other" name="Admin" msg="Feel free to share this link, and start chatting. The record won't be stored."/>
+
                     {arr.map((item)=>{
-                        return <Message target={item.same ? "me":"other"} msg={item.user+': '+item.body}/>
+                        return <Message target={item.same ? "me":"other"} 
+                            name={item.user+' '+item.senderId.substring(0,6)}
+                            msg={item.body}/>
                     })}
                     </div>
                     
                     </CardContent >
-                    <Divider />
+                    
                     <form className={classes.form}>
+                        <Divider style={{marginBottom:'1%'}}/>
                         <TextField id="user" 
                             label="Nickname"
                             variant="outlined"
