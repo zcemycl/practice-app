@@ -15,9 +15,10 @@ const Chatapp = () => {
     // const site = 'https://hidden-dusk-28735.herokuapp.com/session';
     // const socket = io.connect(site,{reconnection: true});
     const socketRef = useRef();
-    socketRef.current = socketIOClient(site);
+    socketRef.current = socketIOClient(site,{reconnection: true});
     useEffect(() => {
         socketRef.current.on('my_response', (message) => {
+            // socketRef.current = socketIOClient(site);
             console.log(socketRef.current.id);
             console.log(message.senderId);
             if (socketRef.current.id===message.senderId){
