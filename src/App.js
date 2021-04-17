@@ -1,16 +1,29 @@
-import React, {useState} from "react";
-import { ProGraph, Navbar, Random, Auth, Chatapp } from './components';
+import React, {useState,useEffect} from "react";
+import { ProGraph, Navbar, Random, Auth, Chatapp, Products } from './components';
 import Particles from 'react-particles-js';
 import particlesConfig from './config/particlesConfig';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import useStyles from './styles';
 import Profile from './components/Auth/pages/Profile';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
+import { commerce } from './components/lib/commerce';
 
 const App = () => {
     const classes = useStyles();
+    const [products, setProducts] = useState([]);
     const [isAuth, setIsAuth] = useState(false);
     
+    const fetchProducts = async () => {
+        const { data } = await commerce.products.list();
+        setProducts(data);
+    }
+
+    useEffect(() => {
+        fetchProducts();
+    }, []);
+
+    console.log(products);
+
     return (
         <Router>
         <div>     
@@ -33,6 +46,9 @@ const App = () => {
                 </Route>
                 <Route exact path={process.env.PUBLIC_URL+"/chatapp"}>
                     <Chatapp/>
+                </Route>
+                <Route exact path={process.env.PUBLIC_URL+"/shop"}>
+                    <Products products={products}/>
                 </Route>
             </Switch>
             <ProtectedRoute

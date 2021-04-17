@@ -81,7 +81,8 @@ const Navbar = () => {
                             aria-label="LinkedIn Profile">
                             <LinkedIn/>
                         </IconButton>             
-                        <IconButton disabled>
+                        <IconButton component={Link} 
+                            to={process.env.PUBLIC_URL+'/shop'} >
                             <ShoppingCart/>
                         </IconButton>
                         

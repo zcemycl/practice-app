@@ -59,7 +59,7 @@ const Chatapp = () => {
                     <CardContent class={classes.message_holder}>
                     <Typography variant="h5" 
                         style={{padding:'0 0 5%'}}>
-                    Chatapp [Testing]
+                    Chatapp
                     </Typography>
                     <Divider />
                     <div style={{padding:'5% 0 0'}}>

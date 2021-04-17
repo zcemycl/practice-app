@@ -20,6 +20,7 @@ export default makeStyles((theme) => ({
   message_holder: {
     overflow:'scroll',
     // position:'relative',
+    overflowX: 'hidden',
     height: '80%',
     padding: '5%',
   },
