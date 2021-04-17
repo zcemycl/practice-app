@@ -13,18 +13,14 @@ const Chatapp = () => {
     const valueText = useRef("");
     const site = 'https://hidden-dusk-28735.herokuapp.com';
     // const site = 'https://hidden-dusk-28735.herokuapp.com/session';
-    // const socket = io.connect(site,{reconnection: true});
     const socketRef = useRef();
     socketRef.current = socketIOClient(site,{reconnection: true});
-    // console.log(socketRef.current.id);
     useEffect(() => {
         if (socketRef.current.id === undefined){
             socketRef.current = socketIOClient(site,{reconnection: true});
         }
         socketRef.current.on('my_response', (message) => {
             console.log('receiving...');
-            
-            // console.log(socketRef.current.id);
             console.log(socketRef.current.id);
             console.log(message.senderId);
             const newmessage = {
@@ -33,9 +29,6 @@ const Chatapp = () => {
             
             setArr((currentArr)=>[...currentArr,newmessage])
         });
-        // return () => {
-        //     socketRef.current.disconnect();
-        // };
     },[]);
 
     const sendMsg = () => {
@@ -52,9 +45,6 @@ const Chatapp = () => {
             senderId: socketRef.current.id,
           });
         valueText.current.value = "";
-        // return () => {
-            // socketRef.current.disconnect();
-        // };
     }
 
     return (
@@ -68,7 +58,7 @@ const Chatapp = () => {
                 <Card className={classes.card}>
                     <CardContent class={classes.message_holder}>
                     <Typography variant="h5">
-                    Chatapp [In Progress]
+                    Chatapp [Testing]
                     </Typography>
                     <Divider />
                     <div >
@@ -77,10 +67,7 @@ const Chatapp = () => {
                     <Message target="other" msg="Writing something to expand the lines so that it occupies two rows."/>
                     <Message target="me" msg="Thanks for your message."/>
                     <Message target="me" msg="Bye"/>
-                    <Message target="me" msg="Thanks for your message."/>
-                    <Message target="me" msg="Bye"/>
                     {arr.map((item)=>{
-                        console.log(item.same);
                         return <Message target={item.same ? "me":"other"} msg={item.user+': '+item.body}/>
                     })}
                     </div>
