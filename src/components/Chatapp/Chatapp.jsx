@@ -16,9 +16,11 @@ const Chatapp = () => {
     // const socket = io.connect(site,{reconnection: true});
     const socketRef = useRef();
     socketRef.current = socketIOClient(site,{reconnection: true});
-    console.log(socketRef.current.id);
+    // console.log(socketRef.current.id);
     useEffect(() => {
-        // socketRef.current = socketIOClient(site,{reconnection: true});
+        if (socketRef.current.id === undefined){
+            socketRef.current = socketIOClient(site,{reconnection: true});
+        }
         socketRef.current.on('my_response', (message) => {
             console.log('receiving...');
             
@@ -38,7 +40,9 @@ const Chatapp = () => {
 
     const sendMsg = () => {
         console.log('sending...');
-        // socketRef.current = socketIOClient(site,{reconnection: true});
+        if (socketRef.current.id === undefined){
+            socketRef.current = socketIOClient(site,{reconnection: true});
+        }
         console.log(valueText.current.value);
         console.log(valueUser.current.value);
         console.log(socketRef.current.id);
