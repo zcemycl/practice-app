@@ -15,11 +15,14 @@ const Chatapp = () => {
     // const site = 'https://hidden-dusk-28735.herokuapp.com/session';
     // const socket = io.connect(site,{reconnection: true});
     const socketRef = useRef();
-    socketRef.current = socketIOClient(site,{reconnection: true});
+    // socketRef.current = socketIOClient(site,{reconnection: true});
+    // console.log(socketRef.current.id);
     useEffect(() => {
+        socketRef.current = socketIOClient(site);
         socketRef.current.on('my_response', (message) => {
             console.log('receiving...');
-            socketRef.current = socketIOClient(site);
+            
+            // console.log(socketRef.current.id);
             console.log(socketRef.current.id);
             console.log(message.senderId);
             if (socketRef.current.id===message.senderId){
@@ -27,9 +30,10 @@ const Chatapp = () => {
             }
             
             setArr((currentArr)=>[...currentArr,message])
-            // if ()
-            // setIsSame
-          });
+        });
+        return () => {
+            socketRef.current.disconnect();
+        };
     },[console.log(arr)]);
 
     const sendMsg = () => {
@@ -67,10 +71,10 @@ const Chatapp = () => {
                     <Message target="me" msg="Bye"/>
                     <Message target="me" msg="Thanks for your message."/>
                     <Message target="me" msg="Bye"/>
-                    {arr.map(item=>{
-                        return (item.same
+                    {arr.map((item)=>{
+                        return item.same
                         ?<Message target="me" msg={item.user+':'+item.body}/>
-                        :<Message target="other" msg={item.user+': '+item.body}/>)
+                        :<Message target="other" msg={item.user+': '+item.body}/>
                     })}
                     </div>
                     
