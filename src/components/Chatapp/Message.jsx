@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Card, CardContent, Typography, Box } from '@material-ui/core';
+import { Typography, Box } from '@material-ui/core';
 import useStyles from './styles';
 
 const Message = ({target,msg}) => {

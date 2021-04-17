@@ -6,7 +6,7 @@ export default makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
     position: 'relative',
-    height:'80vh',
+    // height:'50vh',
     // overflow: 'auto',
     overflow: 'hidden',
   },
@@ -15,17 +15,19 @@ export default makeStyles((theme) => ({
   },
   grid: {
     padding: '15vh 0 0 0',
-    height: '100%',    
+    // height: '90%',    
   },
   message_holder: {
     overflow:'scroll',
-    height: '80%',
-    padding: '2%',
+    // position:'relative',
+    height: '70%',
+    padding: '5%',
   },
   card: {
     width:'100%',
-    height: '80%', 
+    height: '100%', 
     textAlign: 'center',
+    position:'relative',
   },
   bx1left: {
     display: 'flex',
@@ -49,4 +51,25 @@ export default makeStyles((theme) => ({
     width:"fit-content",
     borderRadius: '50px 15px 5px 30px ',
   },
+  form: {
+      width: '100%',
+      position: 'block',
+      height: '10%',
+      padding: '2% 1% 2%',
+  },
+  button: {
+    width: '10%',
+    height: '100%',
+  },
+  txtfm: {
+    width: '50%',
+    height: '100%',
+    marginBottom: '5%',
+  },
+  txtfu: {
+    width: '30%',
+    height: '100%',
+    marginRight: '2%',
+    marginBottom: '5%',
+  }
 }));
