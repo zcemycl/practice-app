@@ -18,7 +18,8 @@ const Chatapp = () => {
     socketRef.current = socketIOClient(site,{reconnection: true});
     useEffect(() => {
         socketRef.current.on('my_response', (message) => {
-            // socketRef.current = socketIOClient(site);
+            console.log('receiving...');
+            socketRef.current = socketIOClient(site);
             console.log(socketRef.current.id);
             console.log(message.senderId);
             if (socketRef.current.id===message.senderId){
@@ -32,8 +33,9 @@ const Chatapp = () => {
     },[console.log(arr)]);
 
     const sendMsg = () => {
-        // console.log(valueText.current.value);
-        // console.log(valueUser.current.value);
+        console.log('sending...');
+        console.log(valueText.current.value);
+        console.log(valueUser.current.value);
         socketRef.current.emit('my_event', {
             body: valueText.current.value,
             user: valueUser.current.value,
