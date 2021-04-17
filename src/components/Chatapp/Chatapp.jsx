@@ -18,7 +18,7 @@ const Chatapp = () => {
     // socketRef.current = socketIOClient(site,{reconnection: true});
     // console.log(socketRef.current.id);
     useEffect(() => {
-        socketRef.current = socketIOClient(site);
+        socketRef.current = socketIOClient(site,{reconnection: true});
         socketRef.current.on('my_response', (message) => {
             console.log('receiving...');
             
@@ -34,12 +34,13 @@ const Chatapp = () => {
         return () => {
             socketRef.current.disconnect();
         };
-    },[console.log(arr)]);
+    },[]);
 
     const sendMsg = () => {
         console.log('sending...');
         console.log(valueText.current.value);
         console.log(valueUser.current.value);
+        console.log(socketRef.current.id);
         socketRef.current.emit('my_event', {
             body: valueText.current.value,
             user: valueUser.current.value,
