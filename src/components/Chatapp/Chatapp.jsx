@@ -41,16 +41,16 @@ const Chatapp = () => {
         console.log(valueText.current.value);
         console.log(valueUser.current.value);
         console.log(socketRef.current.id);
-        // socketRef.current = socketIOClient(site,{reconnection: true});
+        socketRef.current = socketIOClient(site,{reconnection: true});
         socketRef.current.emit('my_event', {
             body: valueText.current.value,
             user: valueUser.current.value,
             senderId: socketRef.current.id,
           });
         valueText.current.value = "";
-        // return () => {
-        //     socketRef.current.disconnect();
-        // };
+        return () => {
+            socketRef.current.disconnect();
+        };
     }
 
     return (
