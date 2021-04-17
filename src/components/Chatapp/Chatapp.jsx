@@ -25,11 +25,11 @@ const Chatapp = () => {
             // console.log(socketRef.current.id);
             console.log(socketRef.current.id);
             console.log(message.senderId);
-            if (socketRef.current.id===message.senderId){
-                message.same = true;
-            }
+            const newmessage = {
+                ...message,
+                same: socketRef.current.id===message.senderId};
             
-            setArr((currentArr)=>[...currentArr,message])
+            setArr((currentArr)=>[...currentArr,newmessage])
         });
         return () => {
             socketRef.current.disconnect();
@@ -41,13 +41,16 @@ const Chatapp = () => {
         console.log(valueText.current.value);
         console.log(valueUser.current.value);
         console.log(socketRef.current.id);
+        // socketRef.current = socketIOClient(site,{reconnection: true});
         socketRef.current.emit('my_event', {
             body: valueText.current.value,
             user: valueUser.current.value,
             senderId: socketRef.current.id,
-            same: false,
           });
         valueText.current.value = "";
+        // return () => {
+        //     socketRef.current.disconnect();
+        // };
     }
 
     return (
@@ -73,9 +76,8 @@ const Chatapp = () => {
                     <Message target="me" msg="Thanks for your message."/>
                     <Message target="me" msg="Bye"/>
                     {arr.map((item)=>{
-                        return item.same
-                        ?<Message target="me" msg={item.user+':'+item.body}/>
-                        :<Message target="other" msg={item.user+': '+item.body}/>
+                        console.log(item.same);
+                        return <Message target={item.same ? "me":"other"} msg={item.user+': '+item.body}/>
                     })}
                     </div>
                     
