@@ -45,9 +45,13 @@ const App = () => {
                 <Route exact path={process.env.PUBLIC_URL+"/chatapp"}>
                     <Chatapp/>
                 </Route>
+                <Route exact path={process.env.PUBLIC_URL+"/threedim"}>
+
+                </Route>
                 <Route exact path={process.env.PUBLIC_URL+"/shop"}>
                     <Products products={products}/>
                 </Route>
+
             </Switch>
             <ProtectedRoute
             path={process.env.PUBLIC_URL+"/profile"}
