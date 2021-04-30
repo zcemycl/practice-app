@@ -1,5 +1,6 @@
 import React, {useState,useEffect} from "react";
 import { ProGraph, Navbar, Random, Auth, Chatapp, Products } from './components';
+import { ThreeFiber } from './components';
 import Particles from 'react-particles-js';
 import particlesConfig from './config/particlesConfig';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -45,8 +46,8 @@ const App = () => {
                 <Route exact path={process.env.PUBLIC_URL+"/chatapp"}>
                     <Chatapp/>
                 </Route>
-                <Route exact path={process.env.PUBLIC_URL+"/threedim"}>
-
+                <Route exact path={process.env.PUBLIC_URL+"/3d"}>
+                    <ThreeFiber/>
                 </Route>
                 <Route exact path={process.env.PUBLIC_URL+"/shop"}>
                     <Products products={products}/>

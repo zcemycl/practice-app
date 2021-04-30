@@ -4,3 +4,4 @@ export { default as Random } from './Random/Random';
 export { default as Auth } from './Auth/Auth';
 export { default as Chatapp } from './Chatapp/Chatapp';
 export { default as Products } from './Products/Products';
+export { default as ThreeFiber } from './ThreeFiber/ThreeFiber';
