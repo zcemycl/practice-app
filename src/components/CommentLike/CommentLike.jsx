@@ -32,6 +32,7 @@ const useStyles = theme => ({
 class CommentLike extends Component {
     constructor(props) {
         super(props);
+        this.state = {comments: []}
     }
     
     render() {
