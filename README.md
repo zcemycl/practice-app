@@ -12,6 +12,7 @@ Website: [https://zcemycl.github.io/practice-app/](https://zcemycl.github.io/pra
 - Chatapp
   - Support real-time messaging
 - 3D Scene
+- Like and Comment Section
 - Online shop [In Progress]
 
 ![img](./resources/view.png)
