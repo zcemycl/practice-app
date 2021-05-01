@@ -49,6 +49,7 @@ const Chatapp = () => {
 
     return (
         <div className={classes.content}>
+            <div className={classes.toolbar}/>
             <Grid container 
                 justify="center" 
                 direction="row"

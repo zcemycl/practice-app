@@ -14,7 +14,7 @@ export default makeStyles((theme) => ({
     flexGrow: 1,
   },
   grid: {
-    padding: '15vh 0 0 0',
+    // padding: '15vh 0 0 0',
     // height: '90%',    
   },
   message_holder: {
