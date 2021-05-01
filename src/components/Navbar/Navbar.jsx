@@ -13,7 +13,7 @@ const options = [
     {id: 5, name: 'Like Comment', root: '/commentlike'},
 ]
 
-const ITEM_HEIGHT = 48;
+const ITEM_HEIGHT = 12*Math.max(options.length,12);
 
 const Navbar = () => {
     const classes = useStyles();
