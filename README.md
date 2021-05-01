@@ -12,7 +12,12 @@ Website: [https://zcemycl.github.io/practice-app/](https://zcemycl.github.io/pra
 - Chatapp
   - Support real-time messaging
 - 3D Scene
+  - Three Fiber, drei
 - Like and Comment Section
+  - Like -- Lyket
+  - Comment -- Ably
+- Feedback Form [To-do]
+- Newsletter Subscription [To-do]
 - Online shop [In Progress]
 
 ![img](./resources/view.png)
