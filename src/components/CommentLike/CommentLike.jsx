@@ -1,11 +1,42 @@
-import React from 'react';
-import useStyles from './styles';
+import React,{Component} from 'react';
 import { Grid,Card,CardContent,Typography,Divider } from '@material-ui/core';
 import { Provider,LikeButton,ClapButton,UpdownButton } from '@lyket/react';
+import { withStyles } from '@material-ui/core/styles';
+require('./ably');
 
-const CommentLike = () => {
-    const classes = useStyles();
-    return (
+
+const useStyles = theme => ({
+  toolbar: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
+    position: 'relative',
+  },
+  root: {
+    flexGrow: 1,
+  },
+  grid: {
+    height: '70vh',
+  },
+  card: {
+    maxWidth:'100%',
+    height: '100%', 
+    textAlign: 'center',
+  },
+  cardcontent: {
+    paddingBottom: theme.spacing(0),
+    marginBottom: theme.spacing(-3),
+  },
+});
+
+class CommentLike extends Component {
+    constructor(props) {
+        super(props);
+    }
+    
+    render() {
+        const { classes } = this.props;
+        return (
         <div className={classes.content}>
         <div className={classes.toolbar}/>
         <Grid container 
@@ -48,6 +79,6 @@ const CommentLike = () => {
         </div>
 
     )
-}
+}}
 
-export default CommentLike
+export default withStyles(useStyles)(CommentLike);
