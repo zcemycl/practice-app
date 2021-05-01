@@ -23,6 +23,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-swipeable-views": "^0.13.9",
+    "react-three-gui": "^0.4.2",
     "recharts": "^2.0.9",
     "socket.io": "^4.0.1",
     "socket.io-client": "^2.4.0",
