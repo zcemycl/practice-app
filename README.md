@@ -11,6 +11,7 @@ Website: [https://zcemycl.github.io/practice-app/](https://zcemycl.github.io/pra
   - Password: IamLeo  
 - Chatapp
   - Support real-time messaging
+- 3D Scene
 - Online shop [In Progress]
 
 ![img](./resources/view.png)
