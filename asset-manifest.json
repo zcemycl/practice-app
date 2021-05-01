@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "/practice-app/static/js/main.1a4f2adf.chunk.js",
-    "main.js.map": "/practice-app/static/js/main.1a4f2adf.chunk.js.map",
+    "main.js": "/practice-app/static/js/main.053153b5.chunk.js",
+    "main.js.map": "/practice-app/static/js/main.053153b5.chunk.js.map",
     "runtime-main.js": "/practice-app/static/js/runtime-main.23cc5f4e.js",
     "runtime-main.js.map": "/practice-app/static/js/runtime-main.23cc5f4e.js.map",
-    "static/js/2.a3fa0242.chunk.js": "/practice-app/static/js/2.a3fa0242.chunk.js",
-    "static/js/2.a3fa0242.chunk.js.map": "/practice-app/static/js/2.a3fa0242.chunk.js.map",
+    "static/js/2.53ac61e5.chunk.js": "/practice-app/static/js/2.53ac61e5.chunk.js",
+    "static/js/2.53ac61e5.chunk.js.map": "/practice-app/static/js/2.53ac61e5.chunk.js.map",
     "index.html": "/practice-app/index.html",
-    "static/js/2.a3fa0242.chunk.js.LICENSE.txt": "/practice-app/static/js/2.a3fa0242.chunk.js.LICENSE.txt",
+    "static/js/2.53ac61e5.chunk.js.LICENSE.txt": "/practice-app/static/js/2.53ac61e5.chunk.js.LICENSE.txt",
     "static/media/2b.de3029cd.png": "/practice-app/static/media/2b.de3029cd.png"
   },
   "entrypoints": [
     "static/js/runtime-main.23cc5f4e.js",
-    "static/js/2.a3fa0242.chunk.js",
-    "static/js/main.1a4f2adf.chunk.js"
+    "static/js/2.53ac61e5.chunk.js",
+    "static/js/main.053153b5.chunk.js"
   ]
 }
