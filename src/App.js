@@ -3,13 +3,13 @@ import { ProGraph, Navbar, Random, Auth, Chatapp, Products } from './components'
 import { ThreeFiber, CommentLike } from './components';
 import Particles from 'react-particles-js';
 import particlesConfig from './config/particlesConfig';
-import { Switch,Route,HashRouter,Redirect } from 'react-router-dom';
+import { BrowserRouter as Router,Switch,Route,HashRouter,Redirect } from 'react-router-dom';
 import useStyles from './styles';
 import Profile from './components/Auth/pages/Profile';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 import { commerce } from './components/lib/commerce';
 
-const App = ({browserHistory}) => {
+const App = () => {
     const classes = useStyles();
     const [products, setProducts] = useState([]);
     const [isAuth, setIsAuth] = useState(false);
@@ -24,8 +24,8 @@ const App = ({browserHistory}) => {
     }, []);
 
     return (
-        <HashRouter>
-        {/* <Router history={browserHistory}> */}
+        // <HashRouter>
+        <Router basename="/practice-app">
         <div>     
             <div className={classes.particleBg}>
                 <Particles 
@@ -36,7 +36,7 @@ const App = ({browserHistory}) => {
             <Switch>
                 <Route exact path={process.env.PUBLIC_URL+"/"}
                     component={ProGraph}/>
-                <Redirect from="/" to="/practice-app" exact/>
+                {/* <Redirect from="/" to="/practice-app" exact/> */}
                 <Route path={process.env.PUBLIC_URL+"/auth"}>
                     <Auth isAuth={isAuth} setIsAuth={setIsAuth}/>
                 </Route>
@@ -59,8 +59,8 @@ const App = ({browserHistory}) => {
             isAuth={isAuth}/>
         </div>
             
-        {/* </Router> */}
-        </HashRouter>
+        </Router>
+        //</HashRouter>
     )
 }
 
