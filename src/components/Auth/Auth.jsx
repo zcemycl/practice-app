@@ -19,7 +19,7 @@ const Auth = ({isAuth,setIsAuth}) => {
     }
 
     if ( isAuth ){
-        return (<Redirect to={process.env.PUBLIC_URL+"/profile"}/>)
+        return (<Redirect to="/profile"/>)
     } else {
 
         return (

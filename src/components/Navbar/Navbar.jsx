@@ -5,12 +5,12 @@ import useStyles from './styles';
 import { Link } from 'react-router-dom';
 
 const options = [
-    {id: 0, name: 'Progressive Graph', root: '/'},
-    {id: 1, name: 'Authentication', root: '/auth'},
-    {id: 2, name: 'Image Display', root: '/imgdisplay'},
-    {id: 3, name: 'Chatapp', root: '/chatapp'},
-    {id: 4, name: '3D Scene', root: '/3d'},
-    {id: 5, name: 'Like Comment', root: '/commentlike'},
+    {id: 0, name: 'Progressive Graph', root: "/"},
+    {id: 1, name: 'Authentication', root: "/auth"},
+    {id: 2, name: 'Image Display', root: "/imgdisplay"},
+    {id: 3, name: 'Chatapp', root: "/chatapp"},
+    {id: 4, name: '3D Scene', root: "/3d"},
+    {id: 5, name: 'Like Comment', root: "/commentlike"},
 ]
 
 const ITEM_HEIGHT = 12*Math.max(options.length,12);

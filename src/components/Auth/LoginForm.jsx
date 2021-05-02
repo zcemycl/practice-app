@@ -65,7 +65,7 @@ const LoginForm = ({handleSignIn,valueUser,valuePwd,isAuth,setIsAuth}) => {
                 disableElevation
                 onClick={handleSignIn}
                 component={Link}
-                to={process.env.PUBLIC_URL+'/profile'}
+                to="/profile"
                 >Login</Button></div>
 
         </form>

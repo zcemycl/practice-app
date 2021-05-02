@@ -9,7 +9,7 @@ const ProtectedRoute = ({ isAuth, component: Component, ...rest }) => {
                 return <Component />
             } else {
                 return (
-                    <Redirect to={{pathname: process.env.PUBLIC_URL+"/auth"
+                    <Redirect to={{pathname:"/auth"
                     , state: { from: props.location }}}/>
                 );
             }
