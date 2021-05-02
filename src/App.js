@@ -3,7 +3,7 @@ import { ProGraph, Navbar, Random, Auth, Chatapp, Products } from './components'
 import { ThreeFiber, CommentLike } from './components';
 import Particles from 'react-particles-js';
 import particlesConfig from './config/particlesConfig';
-import { BrowserRouter as Router,Switch,Route } from 'react-router-dom';
+import { BrowserRouter as Router,Switch,Route,HashRouter } from 'react-router-dom';
 import useStyles from './styles';
 import Profile from './components/Auth/pages/Profile';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
@@ -24,7 +24,8 @@ const App = ({browserHistory}) => {
     }, []);
 
     return (
-        <Router history={browserHistory}>
+        <HashRouter>
+        {/* <Router history={browserHistory}> */}
         <div>     
             <div className={classes.particleBg}>
                 <Particles 
@@ -63,7 +64,8 @@ const App = ({browserHistory}) => {
             isAuth={isAuth}/>
         </div>
             
-        </Router>
+        {/* </Router> */}
+        </HashRouter>
     )
 }
 
