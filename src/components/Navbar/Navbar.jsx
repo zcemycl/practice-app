@@ -37,7 +37,7 @@ const Navbar = () => {
                     <Typography variant="h6" 
                         className={classes.title}
                         component={Link} 
-                        to={process.env.PUBLIC_URL+"/"}
+                        to="/"
                         onClick={()=>(
                             setSelected('Progressive Graph')
                             )}
@@ -68,7 +68,7 @@ const Navbar = () => {
                                 onClick={handleClose} 
                                 component={Link} 
                                 eventKey={option.id}
-                                to={process.env.PUBLIC_URL+option.root}>
+                                to={option.root}>
                                 {option.name}
                             </MenuItem>
                             ))}
@@ -84,7 +84,7 @@ const Navbar = () => {
                             <LinkedIn/>
                         </IconButton>             
                         <IconButton component={Link} 
-                            to={process.env.PUBLIC_URL+'/shop'} >
+                            to='/shop' >
                             <ShoppingCart/>
                         </IconButton>
                         

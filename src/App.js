@@ -34,27 +34,27 @@ const App = () => {
             </div>
             <Navbar/>
             <Switch>
-                <Route exact path={process.env.PUBLIC_URL+"/"}
+                <Route exact path="/"
                     component={ProGraph}/>
                 {/* <Redirect from="/" to="/practice-app" exact/> */}
-                <Route path={process.env.PUBLIC_URL+"/auth"}>
+                <Route path="/auth">
                     <Auth isAuth={isAuth} setIsAuth={setIsAuth}/>
                 </Route>
-                <Route path={process.env.PUBLIC_URL+"/imgdisplay"}
+                <Route path="/imgdisplay"
                     component={Random}/>
-                <Route path={process.env.PUBLIC_URL+"/chatapp"}
+                <Route path="/chatapp"
                     component={Chatapp}/>
-                <Route path={process.env.PUBLIC_URL+"/3d"}
+                <Route path="/3d"
                     component={ThreeFiber}/>
-                <Route path={process.env.PUBLIC_URL+"/shop"}>
+                <Route path="/shop">
                     <Products products={products}/>
                 </Route>
-                <Route path={process.env.PUBLIC_URL+"/commentlike"}
+                <Route path="/commentlike"
                     component={CommentLike}/>
 
             </Switch>
             <ProtectedRoute
-            path={process.env.PUBLIC_URL+"/profile"}
+            path="/profile"
             component={Profile}
             isAuth={isAuth}/>
         </div>
