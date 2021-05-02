@@ -11,6 +11,7 @@ Website: [https://zcemycl.github.io/practice-app/](https://zcemycl.github.io/pra
   - Password: IamLeo  
 - Chatapp
   - Support real-time messaging
+  - Not support conversation history
 - 3D Scene
   - Three Fiber, drei
 - Like and Comment Section
