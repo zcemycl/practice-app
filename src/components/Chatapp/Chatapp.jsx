@@ -36,14 +36,14 @@ const Chatapp = () => {
         if (socketRef.current.id === undefined){
             socketRef.current = socketIOClient(site,{reconnection: true});
         }
-        console.log(valueText.current.value);
-        console.log(valueUser.current.value);
-        console.log(socketRef.current.id);
-        socketRef.current.emit('my_event', {
-            body: valueText.current.value,
-            user: valueUser.current.value,
-            senderId: socketRef.current.id,
-          });
+
+        if (valueText.current.value !== "" && valueUser.current.value !== ""){
+            socketRef.current.emit('my_event', {
+                body: valueText.current.value,
+                user: valueUser.current.value,
+                senderId: socketRef.current.id,
+            });
+        } 
         valueText.current.value = "";
     }
 
