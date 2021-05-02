@@ -3,7 +3,7 @@ import { ProGraph, Navbar, Random, Auth, Chatapp, Products } from './components'
 import { ThreeFiber, CommentLike } from './components';
 import Particles from 'react-particles-js';
 import particlesConfig from './config/particlesConfig';
-import { BrowserRouter as Router,Switch,Route,HashRouter } from 'react-router-dom';
+import { Switch,Route,HashRouter,Redirect } from 'react-router-dom';
 import useStyles from './styles';
 import Profile from './components/Auth/pages/Profile';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
@@ -34,28 +34,23 @@ const App = ({browserHistory}) => {
             </div>
             <Navbar/>
             <Switch>
-                <Route exact path={process.env.PUBLIC_URL+"/"}>
-                    <ProGraph/>
+                <Route exact path={process.env.PUBLIC_URL+"/"}
+                    component={ProGraph}/>
+                <Redirect from="/" to="/practice-app" exact/>
+                <Route path={process.env.PUBLIC_URL+"/auth"}>
+                    <Auth isAuth={isAuth} setIsAuth={setIsAuth}/>
                 </Route>
-                <Route exact path={process.env.PUBLIC_URL+"/auth"}>
-                    <Auth isAuth={isAuth}
-                        setIsAuth={setIsAuth}/>
-                </Route>
-                <Route exact path={process.env.PUBLIC_URL+"/imgdisplay"}>
-                    <Random/>
-                </Route>
-                <Route exact path={process.env.PUBLIC_URL+"/chatapp"}>
-                    <Chatapp/>
-                </Route>
-                <Route exact path={process.env.PUBLIC_URL+"/3d"}>
-                    <ThreeFiber/>
-                </Route>
-                <Route exact path={process.env.PUBLIC_URL+"/shop"}>
+                <Route path={process.env.PUBLIC_URL+"/imgdisplay"}
+                    component={Random}/>
+                <Route path={process.env.PUBLIC_URL+"/chatapp"}
+                    component={Chatapp}/>
+                <Route path={process.env.PUBLIC_URL+"/3d"}
+                    component={ThreeFiber}/>
+                <Route path={process.env.PUBLIC_URL+"/shop"}>
                     <Products products={products}/>
                 </Route>
-                <Route exact path={process.env.PUBLIC_URL+"/commentlike"}>
-                    <CommentLike/>
-                </Route>
+                <Route path={process.env.PUBLIC_URL+"/commentlike"}
+                    component={CommentLike}/>
 
             </Switch>
             <ProtectedRoute
