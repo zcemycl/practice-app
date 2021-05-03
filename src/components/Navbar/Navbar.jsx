@@ -11,7 +11,7 @@ const options = [
     {id: 3, name: 'Chatapp', root: "/chatapp"},
     {id: 4, name: '3D Scene', root: "/3d"},
     {id: 5, name: 'Like Comment', root: "/commentlike"},
-    {id: 5, name: '3D Map', root: "/map"},
+    {id: 6, name: '3D Map', root: "/map"},
 ]
 
 const ITEM_HEIGHT = 12*Math.max(options.length,12);
