@@ -13,10 +13,12 @@ Website: [https://zcemycl.github.io/practice-app/](https://zcemycl.github.io/pra
   - Support real-time messaging
   - Not support conversation history
 - 3D Scene
-  - Three Fiber, drei
+  - Three Fiber, drei, Blender
 - Like and Comment Section
   - Like -- Lyket
   - Comment -- Ably
+- 3D City Map
+  - OpenStreetMap and Blender
 - Feedback Form [To-do]
 - Newsletter Subscription [To-do]
 - Online shop [In Progress]
