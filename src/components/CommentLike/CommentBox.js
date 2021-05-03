@@ -1,5 +1,14 @@
-
 import React, { Component } from 'react';
+import styled from "styled-components";
+
+const HoverTextArea = styled.textarea`
+  color: #000;
+  borderRadius: 10px;
+  :hover {
+		color: #ed1212;
+		cursor: pointer;
+	}
+`
 
 class CommentBox extends Component {
   constructor(props) {
@@ -38,16 +47,29 @@ class CommentBox extends Component {
   render() {
     return (
       <div>
-        <h1 className="title">Kindly leave your thoughts below</h1>
-        <form onSubmit={this.addComment}>
-          <div className="field">
-            <div className="control">
-              <input type="text" className="input" name="name" placeholder="Your name"/>
+        <h3 style={{fontFamily:"sans-serif"}}>
+          Kindly leave your thoughts below</h3>
+        <form 
+          style={{}}
+          onSubmit={this.addComment}>
+          <div style={{}}>
+            <div style={{}}>
+              <input type="text"
+               style={{width:'50%',fontFamily:"sans-serif"}}
+               name="name" placeholder="Your name"/>
             </div>
           </div>
-          <div className="field">
-            <div className="control">
-              <textarea className="textarea" name="comment" placeholder="Add a comment"></textarea>
+          <div >
+            <div >
+              <HoverTextArea
+                style={{width:'50%',border:'1px solid #888',
+                padding:'5px',height:'12vh',
+                fontFamily:"sans-serif",
+                borderRadius:'5px',
+                transition: "all 0.2s",
+                "&:hover":{backgroundColor:"red"}}}
+                name="comment" placeholder="Leave a comment"/>
+
             </div>
           </div>
           <div className="field">
