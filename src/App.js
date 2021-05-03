@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from "react";
 import { ProGraph,Navbar,Random,Auth,Chatapp } from './components';
 import { Products,ThreeFiber,CommentLike,NotFound } from './components';
+import { Map } from './components';
 import Particles from 'react-particles-js';
 import particlesConfig from './config/particlesConfig';
 import { BrowserRouter as Router,Switch,Route } from 'react-router-dom';
@@ -43,6 +44,7 @@ const App = () => {
                 <Route path="/shop">
                     <Products products={products}/>
                 </Route>
+                <Route path="/map" component={Map}/>
                 <Route path="/commentlike" component={CommentLike}/>
                 <Route component={NotFound}/>
             </Switch>
