@@ -8,3 +8,4 @@ export { default as ThreeFiber } from './ThreeFiber/ThreeFiber';
 export { default as CommentLike } from './CommentLike/CommentLike';
 export { default as NotFound } from './NotFound/NotFound';
 export { default as Map } from './Map/Map';
+export { default as Annotate } from './Annotate/Annotate';
