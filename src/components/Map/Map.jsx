@@ -1,10 +1,10 @@
-import React, { useRef,Suspense } from 'react';
-import { Canvas, useFrame, useLoader } from '@react-three/fiber';
+import React, { Suspense } from 'react';
+import { Canvas, useLoader } from '@react-three/fiber';
 import useStyles from './styles';
 import { Grid, Card } from '@material-ui/core';
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import city from './city.glb';
-import { Environment,OrbitControls,PointerLockControls } from '@react-three/drei'
+import { Environment,OrbitControls } from '@react-three/drei'
 
 const Victoria = () =>{
     const gltf = useLoader(GLTFLoader,city);
