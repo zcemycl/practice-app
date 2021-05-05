@@ -20,4 +20,10 @@ export default makeStyles((theme) => ({
     height: '100%', 
     textAlign: 'center',
   },
+  media: {
+    position:"absolute",
+    zIndex:"1",
+    width:"100%",
+    opacity:"0.5",
+  },
 }));

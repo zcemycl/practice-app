@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useRef,useState,useEffect,useLayoutEffect } from 'react';
 import useStyles from './styles';
 import { Grid, Card, CardMedia } from '@material-ui/core';
 import placeholder from './image.png';
@@ -9,6 +9,11 @@ const Annotate = () => {
     const [{alt, src}, setImg] = useState({
         src: placeholder,
         alt: 'Upload an Image'
+    });
+
+    useLayoutEffect(() =>{
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
     });
 
     useEffect(() => {
@@ -38,8 +43,18 @@ const Annotate = () => {
             className={classes.grid}>
             <Grid xs={12} sm={10} md={8} lg={6}>
                 <Card className={classes.card}>
-                <CardMedia component="img" className={classes.media} 
+
+                <div style={{display:"inline-block",
+                    position:"relative",
+                    width:"100%"}}>
+                <CardMedia component="img" 
+                    className={classes.media} 
                     image={placeholder} />
+                <canvas id="canvas" style={{
+                    backgroundColor:"grey",
+                    zIndex:"20",width:"100%"}}/>
+                </div>
+
                 <h1>
                     {`Image H,W = ${imgH},${imgW}`}
                     <br></br>
