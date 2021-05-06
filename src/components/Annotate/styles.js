@@ -20,10 +20,21 @@ export default makeStyles((theme) => ({
     height: '100%', 
     textAlign: 'center',
   },
+  annotateRegion:{
+    display:"inline-block",
+    position:"relative",
+    width:"100%"
+  },
   media: {
     position:"absolute",
     zIndex:"1",
     width:"100%",
     opacity:"0.5",
+  },
+  canvas: {
+    width:"100%",
+    backgroundColor:"grey",
+    zIndex:"20",
+
   },
 }));
