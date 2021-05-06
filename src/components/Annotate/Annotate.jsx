@@ -2,6 +2,15 @@ import React, { useRef,useState,useEffect,useLayoutEffect } from 'react';
 import useStyles from './styles';
 import { Grid, Card, CardMedia } from '@material-ui/core';
 import placeholder from './image.png';
+import rough from 'roughjs/bundled/rough.esm';
+import { RoughCanvas } from 'roughjs/bin/canvas';
+
+// https://stackoverflow.com/questions/15639726/how-to-set-canvas-on-top-of-image-in-html
+// https://www.youtube.com/watch?v=6arkndScw7A
+// https://github.com/ooade/react-rough
+// https://stackoverflow.com/questions/49058890/how-to-get-a-react-components-size-height-width-before-render
+const generator = rough.generator();
+
 
 const Annotate = () => {
     const classes = useStyles();
@@ -10,28 +19,34 @@ const Annotate = () => {
         src: placeholder,
         alt: 'Upload an Image'
     });
-
-    useLayoutEffect(() =>{
-        const canvas = document.getElementById("canvas");
-        const ctx = canvas.getContext("2d");
-    });
-
-    useEffect(() => {
-        window.addEventListener("mousemove", 
-            ev=>{
-                setMousePosition({ x: ev.clientX, y: ev.clientY });
-            });
-        return () => window.removeEventListener("mousemove",
-            ev=>{
-                setMousePosition({ x: ev.clientX, y: ev.clientY });
-            });
-    },[setMousePosition]);
-
     const theImg = new Image();
     theImg.src = placeholder;
     const imgW = theImg.width;
     const imgH = theImg.height;
 
+
+
+
+    useLayoutEffect(() =>{
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+        const roughCanvas = rough.canvas(canvas);
+        const rect = generator.rectangle(10,10,100,100);
+        roughCanvas.draw(rect);
+    });
+
+
+    // useEffect(() => {
+    //     window.addEventListener("mousemove", 
+    //         ev=>{
+    //             setMousePosition({ x: ev.clientX, y: ev.clientY });
+    //         });
+    //     return () => window.removeEventListener("mousemove",
+    //         ev=>{
+    //             setMousePosition({ x: ev.clientX, y: ev.clientY });
+    //         });
+    // },[setMousePosition]);
 
     return (
         <div className={classes.content}>
