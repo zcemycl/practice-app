@@ -51,8 +51,8 @@ const Annotate = () => {
     const handleMouseDown = (event) => {
         setDrawing(true);
         const {clientX,clientY} = event;
-        const element = createElement(clientX
-            ,clientY,0,0);
+        const element = createElement(clientX-100
+            ,clientY-100,clientX-100,clientY-100);
         setElements((prevState)=>[...prevState,element]);
     }
 
@@ -61,8 +61,8 @@ const Annotate = () => {
         const {clientX,clientY} = event;
         const index = elements.length - 1;
         const {x1,y1} = elements[index];
-        const updateElement = createElement(x1,
-            y1,clientX,clientY);
+        const updateElement = createElement(x1-100,
+            y1-100,clientX-100,clientY-100);
         const elementsCopy = [...elements];
         elementsCopy[index] = updateElement;
         setElements(elementsCopy);
