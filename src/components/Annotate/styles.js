@@ -23,7 +23,8 @@ export default makeStyles((theme) => ({
   annotateRegion:{
     display:"inline-block",
     position:"relative",
-    width:"100%"
+    width:"100%",
+    // height:"100%",
   },
   media: {
     position:"absolute",
@@ -34,7 +35,7 @@ export default makeStyles((theme) => ({
   canvas: {
     width:"100%",
     backgroundColor:"grey",
-    zIndex:"20",
-
+    zIndex:"0",
+    // height:"100%",
   },
 }));
