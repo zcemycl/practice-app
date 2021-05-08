@@ -17,6 +17,7 @@ const options = [
 const Annotate = () => {
     const classes = useStyles();
     const targetRef = useRef();
+    const [data,setData] = useState([]);
     const [elements,setElements] = useState([]);
     const theImg = new Image();
     theImg.src = placeholder;
@@ -44,6 +45,31 @@ const Annotate = () => {
                 img: theImg,
             });  
         } 
+    }
+
+    const handleDownload = (e) => {
+        setData([]);
+        var i = 0;
+        for (i=0;i<elements.length;i++){
+            const {x1,x2,y1,y2,color,clabel} = elements[i];
+            const bbox = {x:x1,y:y1,w:x2,h:y2};
+            const bbox_class_color = {bbox:bbox,color:color,label:clabel}
+            data.push(bbox_class_color);
+            setData(data);
+        }
+
+        const fileName = "annotations";
+        const json = JSON.stringify(data);
+        const blob = new Blob([json],{type:"application/json"});
+        const href = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = href;
+        link.download = fileName + ".json";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        setData([]);
     }
 
     return (
@@ -114,12 +140,14 @@ const Annotate = () => {
 
                 </ToggleButtonGroup>
 
-                <input accept="image/*" className={classes.input} id="icon-button-file" type="file" />
-                <label htmlFor="icon-button-file">
-                    <IconButton color="primary" aria-label="upload picture" component="span">
-                    <GetApp />
-                    </IconButton>
-                </label>
+
+                <IconButton color="primary" 
+                    aria-label="upload picture" 
+                    component="span"
+                    onClick={handleDownload}>
+                <GetApp />
+                </IconButton>
+
                 </div>
 
                 <TextInfo theImg={img} dims={dims} setDims={setDims} targetRef={targetRef}/>
