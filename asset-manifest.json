@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/practice-app/static/js/main.0073fce0.chunk.js",
-    "main.js.map": "/practice-app/static/js/main.0073fce0.chunk.js.map",
+    "main.js": "/practice-app/static/js/main.fe394083.chunk.js",
+    "main.js.map": "/practice-app/static/js/main.fe394083.chunk.js.map",
     "runtime-main.js": "/practice-app/static/js/runtime-main.23cc5f4e.js",
     "runtime-main.js.map": "/practice-app/static/js/runtime-main.23cc5f4e.js.map",
     "static/js/2.22c04f02.chunk.js": "/practice-app/static/js/2.22c04f02.chunk.js",
@@ -10,12 +10,12 @@
     "static/js/2.22c04f02.chunk.js.LICENSE.txt": "/practice-app/static/js/2.22c04f02.chunk.js.LICENSE.txt",
     "static/media/2b.de3029cd.png": "/practice-app/static/media/2b.de3029cd.png",
     "static/media/city.eb3e2962.glb": "/practice-app/static/media/city.eb3e2962.glb",
-    "static/media/image.121d1c79.png": "/practice-app/static/media/image.121d1c79.png",
+    "static/media/kitchen1.053fa938.jpg": "/practice-app/static/media/kitchen1.053fa938.jpg",
     "static/media/woman.4049d374.glb": "/practice-app/static/media/woman.4049d374.glb"
   },
   "entrypoints": [
     "static/js/runtime-main.23cc5f4e.js",
     "static/js/2.22c04f02.chunk.js",
-    "static/js/main.0073fce0.chunk.js"
+    "static/js/main.fe394083.chunk.js"
   ]
 }
