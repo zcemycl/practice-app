@@ -1,7 +1,7 @@
 import React, { useRef,useState } from 'react';
 import useStyles from './styles';
-import { Grid,Card,Button,IconButton } from '@material-ui/core';
-import { GetApp } from '@material-ui/icons';
+import { Grid,Card,Button,IconButton,Typography } from '@material-ui/core';
+import { GetApp,Delete,RotateLeft } from '@material-ui/icons';
 import TextInfo from './TextInfo';
 import Board from './Board';
 import { ToggleButton,ToggleButtonGroup } from '@material-ui/lab';
@@ -11,13 +11,14 @@ import placeholder from './kitchen1.jpg';
 const Annotate = () => {
     const classes = useStyles();
     const targetRef = useRef();
+    const [elements,setElements] = useState([]);
     const theImg = new Image();
     theImg.src = placeholder;
     const imgW = theImg.width;
     const imgH = theImg.height;
     const [{src,alt,img}, setImg] = useState({
         src: placeholder,
-        alt: 'Upload an Image',
+        alt: ' No Files ',
         img: theImg,
     });
     
@@ -37,7 +38,6 @@ const Annotate = () => {
                 alt: e.target.files[0].name,
                 img: theImg,
             });  
-            
         } 
     }
 
@@ -52,23 +52,43 @@ const Annotate = () => {
             <Grid xs={12} sm={10} md={8} lg={6}>
                 <Card className={classes.card}>
 
-                <Board setDims={setDims}
+                <Board setDims={setDims} elements={elements}
+                    setElements={setElements}
                     img={img} targetRef={targetRef}/>
 
-                <input
-                    accept="image/*"
-                    className={classes.input}
-                    id="contained-button-file"
-                    multiple
-                    type="file"
-                    onChange={handleImg}
-                />
-                <label htmlFor="contained-button-file">
-                    <Button variant="contained" color="primary" component="span">
-                    Upload
-                    </Button>
-                </label>
-
+                <div>
+                    <input
+                        accept="image/*"
+                        className={classes.input}
+                        id="contained-button-file"
+                        multiple
+                        type="file"
+                        onChange={handleImg}
+                    />
+                    <label htmlFor="contained-button-file">
+                        <Button variant="contained" color="primary" component="span">
+                        Upload
+                        </Button>
+                    </label>
+                    <Typography variant="p" style={{fontFamily:"Arial",
+                            padding:"10px",border:"1px grey solid"}} gutterBottom>
+                        {alt}
+                    </Typography>
+                    <IconButton color="primary" aria-label="delete elements" 
+                        onClick={()=>{setElements([]);}} component="span">
+                        <Delete />
+                    </IconButton>
+                    <IconButton color="primary" aria-label="reset" 
+                        onClick={()=>{ setImg({
+                            src: placeholder,
+                            alt: ' No Files ',
+                            img: theImg,
+                        })}} component="span">
+                        <RotateLeft />
+                    </IconButton>
+                </div>
+                
+                <div>
                 <ToggleButtonGroup
                     value={alignment}
                     exclusive
@@ -92,6 +112,7 @@ const Annotate = () => {
                     <GetApp />
                     </IconButton>
                 </label>
+                </div>
 
                 <TextInfo theImg={img} dims={dims} setDims={setDims} targetRef={targetRef}/>
                 

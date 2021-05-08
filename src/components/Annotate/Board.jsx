@@ -13,9 +13,9 @@ const createElement = (x1,y1,x2,y2) => {
     return {x1,y1,x2,y2,roughElement};
 }
 
-const Board = ({img,setDims,targetRef}) => {
+const Board = ({img,setDims,targetRef,elements,setElements}) => {
     const classes = useStyles();
-    const [elements,setElements] = useState([]);
+    
     const [drawing,setDrawing] = useState(false);
     const [currSrc,setCurrSrc] = useState("");
     const imgW = img.width;
@@ -44,7 +44,7 @@ const Board = ({img,setDims,targetRef}) => {
         elements.forEach(({roughElement}) => {
             roughCanvas.draw(roughElement);
         });
-    },[elements,img,imgW,imgH]);
+    },[img,imgW,imgH,currSrc,setCurrSrc,elements,setElements]);
 
     const getParams = () =>{
         updateOffset();

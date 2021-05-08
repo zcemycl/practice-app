@@ -39,7 +39,7 @@ const TextInfo = ({theImg,dims,setDims,targetRef}) => {
 
     return (
         <>
-        <h4>
+        <h5>
             {`Image H,W = ${imgH},${imgW}`}
             <br/>
             {`H,W = ${window.innerHeight},${window.innerWidth}`}
@@ -47,7 +47,7 @@ const TextInfo = ({theImg,dims,setDims,targetRef}) => {
             {`Image Offset H,W = ${dims.height},${dims.width}`}
             <br/>
             {`Your cursor is at X,Y = ${mousePosition.x}, ${mousePosition.y}.`}
-        </h4>
+        </h5>
         </>
     )
 }
