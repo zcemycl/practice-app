@@ -18,7 +18,8 @@ const TextInfo = ({theImg,dims,setDims,targetRef}) => {
     }
     const updateTouchPos = ev=>{
         const touch = ev.targetTouches[0];
-        setMousePosition({ x: touch.clientX, y: touch.clientY });
+        setMousePosition({ x: Math.floor(touch.clientX), 
+                           y: Math.floor(touch.clientY)});
     }
 
     useEffect(() => {
