@@ -12,6 +12,7 @@ const options = [
     {id: 4, name: '3D Scene', root: "/3d"},
     {id: 5, name: 'Like Comment', root: "/commentlike"},
     {id: 6, name: '3D Map', root: "/map"},
+    {id: 7, name: 'Image Annotation', root: "/annotate"},
 ]
 
 const ITEM_HEIGHT = 12*Math.max(options.length,12);
