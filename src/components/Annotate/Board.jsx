@@ -13,13 +13,14 @@ const createElement = (x1,y1,x2,y2) => {
     return {x1,y1,x2,y2,roughElement};
 }
 
-const Board = ({theImg,setDims,targetRef}) => {
+const Board = ({img,setDims,targetRef}) => {
     const classes = useStyles();
     const [elements,setElements] = useState([]);
     const [drawing,setDrawing] = useState(false);
-    const imgW = theImg.width;
-    const imgH = theImg.height;
-
+    const [currSrc,setCurrSrc] = useState("");
+    const imgW = img.width;
+    const imgH = img.height;
+    
     const updateOffset = () =>{
         if (targetRef.current){
             setDims({width:targetRef.current.offsetWidth,
@@ -31,27 +32,51 @@ const Board = ({theImg,setDims,targetRef}) => {
         const canvas = document.getElementById("canvas");
         const context = canvas.getContext("2d");
         context.clearRect(0,0,canvas.width,canvas.height);
-        context.drawImage(theImg,0,0,imgW,imgH);
+        if (currSrc!==img.src){
+            img.onload = () => {
+                context.drawImage(img,0,0,imgW,imgH);
+                setCurrSrc(img.src);
+                setElements([]);
+            };
+        }
+        context.drawImage(img,0,0,imgW,imgH);
         const roughCanvas = rough.canvas(canvas);
         elements.forEach(({roughElement}) => {
             roughCanvas.draw(roughElement);
         });
-    },[elements,theImg,imgW,imgH]);
+    },[elements,img,imgW,imgH]);
 
     const getParams = () =>{
         updateOffset();
         const cr = targetRef.current.getBoundingClientRect();
+        const imgW = img.width;
+        const imgH = img.height;
         const ratioW = imgW/cr.width;
         const ratioH = imgH/cr.height;
-        return {cr,ratioW,ratioH}
+        return {cr,ratioW,ratioH,imgW,imgH}
+    }
+
+    const startElement = (clientX,clientY,cr,ratioW,ratioH) => {
+        const element = createElement(
+            Math.floor((clientX-cr.x)*ratioW),
+            Math.floor((clientY-cr.y)*ratioH),0,0);
+        return {element}
+    }
+
+    const endElement = (elements,clientX,clientY,cr,ratioW,ratioH) => {
+        const index = elements.length - 1;
+        const {x1,y1} = elements[index];
+        const updateElement = createElement(
+            x1,y1,Math.floor((clientX-cr.x)*ratioW-x1),
+            Math.floor((clientY-cr.y)*ratioH-y1));
+        return {updateElement,index}
     }
 
     const handleMouseDown = (event) => {
         setDrawing(true);
         const {cr,ratioW,ratioH} = getParams();
         const {clientX,clientY} = event;
-        const element = createElement(
-            (clientX-cr.x)*ratioW,(clientY-cr.y)*ratioH,0,0);
+        const {element} = startElement(clientX,clientY,cr,ratioW,ratioH);
         setElements((prevState)=>[...prevState,element]);
     }
 
@@ -59,10 +84,7 @@ const Board = ({theImg,setDims,targetRef}) => {
         if (!drawing) return;
         const {cr,ratioW,ratioH} = getParams();
         const {clientX,clientY} = event;
-        const index = elements.length - 1;
-        const {x1,y1} = elements[index];
-        const updateElement = createElement(
-            x1,y1,(clientX-cr.x)*ratioW-x1,(clientY-cr.y)*ratioH-y1);
+        const {updateElement,index} = endElement(elements,clientX,clientY,cr,ratioW,ratioH);
         const elementsCopy = [...elements];
         elementsCopy[index] = updateElement;
         setElements(elementsCopy);
@@ -70,14 +92,14 @@ const Board = ({theImg,setDims,targetRef}) => {
 
     const handleMouseUp = (event) => {
         setDrawing(false);
+        console.log(elements);
     }
 
     const handleTouchStart = (event) => {
         setDrawing(true);
         const {cr,ratioW,ratioH} = getParams();
         const {clientX,clientY} = event.targetTouches[0];
-        const element = createElement(
-            (clientX-cr.x)*ratioW,(clientY-cr.y)*ratioH,0,0);
+        const {element} = startElement(clientX,clientY,cr,ratioW,ratioH);
         setElements((prevState)=>[...prevState,element]);
     }
 
@@ -85,10 +107,7 @@ const Board = ({theImg,setDims,targetRef}) => {
         if (!drawing) return;
         const {cr,ratioW,ratioH} = getParams();
         const {clientX,clientY} = event.targetTouches[0];
-        const index = elements.length - 1;
-        const {x1,y1} = elements[index];
-        const updateElement = createElement(
-            x1,y1,(clientX-cr.x)*ratioW-x1,(clientY-cr.y)*ratioH-y1);
+        const {updateElement,index} = endElement(elements,clientX,clientY,cr,ratioW,ratioH);
         const elementsCopy = [...elements];
         elementsCopy[index] = updateElement;
         setElements(elementsCopy);

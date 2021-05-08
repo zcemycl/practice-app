@@ -8,7 +8,6 @@ import { ToggleButton,ToggleButtonGroup } from '@material-ui/lab';
 // import placeholder from './image.png';
 import placeholder from './kitchen1.jpg';
 
-
 const Annotate = () => {
     const classes = useStyles();
     const targetRef = useRef();
@@ -16,6 +15,12 @@ const Annotate = () => {
     theImg.src = placeholder;
     const imgW = theImg.width;
     const imgH = theImg.height;
+    const [{src,alt,img}, setImg] = useState({
+        src: placeholder,
+        alt: 'Upload an Image',
+        img: theImg,
+    });
+    
     const [dims, setDims] = useState({width:imgW,height:imgH});
 
     const [alignment, setAlignment] = useState('left');
@@ -24,7 +29,18 @@ const Annotate = () => {
       setAlignment(newAlignment);
     };
 
-    
+    const handleImg = (e) => {
+        if(e.target.files[0]) {
+            theImg.src = URL.createObjectURL(e.target.files[0]);
+            setImg({
+                src: URL.createObjectURL(e.target.files[0]),
+                alt: e.target.files[0].name,
+                img: theImg,
+            });  
+            
+        } 
+    }
+
     return (
         <div className={classes.content}>
         <div className={classes.toolbar}/>
@@ -37,7 +53,7 @@ const Annotate = () => {
                 <Card className={classes.card}>
 
                 <Board setDims={setDims}
-                    theImg={theImg} targetRef={targetRef}/>
+                    img={img} targetRef={targetRef}/>
 
                 <input
                     accept="image/*"
@@ -45,6 +61,7 @@ const Annotate = () => {
                     id="contained-button-file"
                     multiple
                     type="file"
+                    onChange={handleImg}
                 />
                 <label htmlFor="contained-button-file">
                     <Button variant="contained" color="primary" component="span">
@@ -76,7 +93,7 @@ const Annotate = () => {
                     </IconButton>
                 </label>
 
-                <TextInfo theImg={theImg} dims={dims} setDims={setDims} targetRef={targetRef}/>
+                <TextInfo theImg={img} dims={dims} setDims={setDims} targetRef={targetRef}/>
                 
                 </Card>
             </Grid>
