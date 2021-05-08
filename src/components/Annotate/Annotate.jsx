@@ -79,11 +79,13 @@ const Annotate = () => {
                         <Delete />
                     </IconButton>
                     <IconButton color="primary" aria-label="reset" 
-                        onClick={()=>{ setImg({
-                            src: placeholder,
-                            alt: ' No Files ',
-                            img: theImg,
-                        })}} component="span">
+                        onClick={()=>{ 
+                            setImg({
+                                src: placeholder,
+                                alt: ' No Files ',
+                                img: theImg,});
+                            setElements([]);
+                        }} component="span">
                         <RotateLeft />
                     </IconButton>
                 </div>
