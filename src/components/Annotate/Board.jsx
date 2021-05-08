@@ -106,7 +106,6 @@ const Board = ({img,setDims,targetRef,elements,setElements,label}) => {
             elements.pop();
             setElements(elements);
         }
-        console.log(elements);
     }
 
     const handleTouchStart = (event) => {
