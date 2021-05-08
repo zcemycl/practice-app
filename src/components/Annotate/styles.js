@@ -19,6 +19,9 @@ export default makeStyles((theme) => ({
     maxWidth:'100%',
     height: '100%', 
     textAlign: 'center',
+    padding: "0",
+    margin:"0",
+    borderRadius:"0",
   },
   annotateRegion:{
     display:"inline-block",
@@ -36,6 +39,9 @@ export default makeStyles((theme) => ({
     width:"100%",
     backgroundColor:"grey",
     zIndex:"0",
+    margin: "0",
+    padding: "0",
+    borderRadius:"0",
     // height:"100%",
   },
 }));

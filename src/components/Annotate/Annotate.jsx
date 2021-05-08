@@ -1,7 +1,8 @@
 import React, { useRef,useState,useEffect,useLayoutEffect } from 'react';
 import useStyles from './styles';
 import { Grid, Card } from '@material-ui/core';
-import placeholder from './image.png';
+// import placeholder from './image.png';
+import placeholder from './kitchen1.jpg';
 import rough from 'roughjs/bundled/rough.esm';
 
 // https://www.youtube.com/watch?v=6arkndScw7A
@@ -9,7 +10,11 @@ import rough from 'roughjs/bundled/rough.esm';
 const generator = rough.generator();
 
 const createElement = (x1,y1,x2,y2) => {
-    const roughElement = generator.rectangle(x1,y1,x2,y2);
+    const roughElement = generator.rectangle(x1,y1,x2,y2,
+        {fill: "rgb(10,150,10,0.4)",
+         stroke: "rgb(10,150,10)",
+         fillStyle: "solid", strokeWidth: 7});
+    // console.log(Math.floor(Math.random()*256))
     return {x1,y1,x2,y2,roughElement};
 }
 
@@ -44,33 +49,35 @@ const Annotate = () => {
         elements.forEach(({roughElement}) => {
             roughCanvas.draw(roughElement);
         });
-    },[elements]);
+    },[elements,theImg,imgW,imgH]);
 
     const handleMouseDown = (event) => {
         updateOffset();
         setDrawing(true);
-        const ratioW = imgW/dims.width;
-        const ratioH = imgH/dims.height;
+        const cr = targetRef.current.getBoundingClientRect();
+        const ratioW = imgW/cr.width;
+        const ratioH = imgH/cr.height;
         const {clientX,clientY} = event;
+        const startX = (clientX-cr.x)*ratioW;
+        const startY = (clientY-cr.y)*ratioH;
         const element = createElement(
-            (clientX-targetRef.current.offsetLeft)*ratioW,
-            (clientY-targetRef.current.offsetTop)*ratioH,
-            0,0);
+            startX,startY,0,0);
         setElements((prevState)=>[...prevState,element]);
     }
 
     const handleMouseMove = (event) => {
         if (!drawing) return;
         updateOffset();
-        const ratioW = imgW/dims.width;
-        const ratioH = imgH/dims.height;
+        const cr = targetRef.current.getBoundingClientRect();
+        const ratioW = imgW/cr.width;
+        const ratioH = imgH/cr.height;
         const {clientX,clientY} = event;
         const index = elements.length - 1;
         const {x1,y1} = elements[index];
+        const x2 = (clientX-cr.x)*ratioW-x1;
+        const y2 = (clientY-cr.y)*ratioH-y1;
         const updateElement = createElement(
-            x1,y1,
-            (clientX-targetRef.current.offsetLeft)*ratioW-x1,
-            (clientY-targetRef.current.offsetTop)*ratioH-y1);
+            x1,y1,x2,y2);
         const elementsCopy = [...elements];
         elementsCopy[index] = updateElement;
         setElements(elementsCopy);
@@ -114,7 +121,6 @@ const Annotate = () => {
                     width={imgW} height={imgH}
                     ref={targetRef}
                     />
-                {/* </div> */}
 
                 <h3>
                     {`Image H,W = ${imgH},${imgW}`}
