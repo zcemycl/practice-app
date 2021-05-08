@@ -69,7 +69,7 @@ const Navbar = () => {
                                 selected={option.name === selected} 
                                 onClick={handleClose} 
                                 component={Link} 
-                                eventKey={option.id}
+                                eventkey={option.id}
                                 to={option.root}>
                                 {option.name}
                             </MenuItem>

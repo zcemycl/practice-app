@@ -8,6 +8,12 @@ import { ToggleButton,ToggleButtonGroup } from '@material-ui/lab';
 // import placeholder from './image.png';
 import placeholder from './kitchen1.jpg';
 
+const options = [
+    {id: 0, name: "Class A"},
+    {id: 1, name: "Class B"},
+    {id: 2, name: "Class C"},
+]
+
 const Annotate = () => {
     const classes = useStyles();
     const targetRef = useRef();
@@ -23,11 +29,10 @@ const Annotate = () => {
     });
     
     const [dims, setDims] = useState({width:imgW,height:imgH});
+    const [label, setLabel] = useState("Class A");
 
-    const [alignment, setAlignment] = useState('left');
-
-    const handleAlignment = (event, newAlignment) => {
-      setAlignment(newAlignment);
+    const handleAlignment = (event,newValue) => {
+        setLabel(newValue);
     };
 
     const handleImg = (e) => {
@@ -49,12 +54,13 @@ const Annotate = () => {
             direction="row"
             spacing={0}
             className={classes.grid}>
-            <Grid xs={12} sm={10} md={8} lg={6}>
+            <Grid xs={12} sm={10} md={8} lg={6} item={true}>
                 <Card className={classes.card}>
 
                 <Board setDims={setDims} elements={elements}
                     setElements={setElements}
-                    img={img} targetRef={targetRef}/>
+                    img={img} targetRef={targetRef}
+                    label={label}/>
 
                 <div>
                     <input
@@ -70,7 +76,7 @@ const Annotate = () => {
                         Upload
                         </Button>
                     </label>
-                    <Typography variant="p" style={{fontFamily:"Arial",
+                    <Typography variant="inherit" style={{fontFamily:"Arial",
                             padding:"10px",border:"1px grey solid"}} gutterBottom>
                         {alt}
                     </Typography>
@@ -92,20 +98,20 @@ const Annotate = () => {
                 
                 <div>
                 <ToggleButtonGroup
-                    value={alignment}
+                    value={label}
                     exclusive
-                    onChange={handleAlignment}
-                    aria-label="text alignment"
-                >
-                    <ToggleButton value="left" aria-label="left aligned" style={{padding:"5px",margin:"5px"}}>
-                        Class 1
-                    </ToggleButton>
-                    <ToggleButton value="center" aria-label="centered" style={{padding:"5px",margin:"5px"}}>
-                        Class 2
-                    </ToggleButton>
-                    <ToggleButton value="right" aria-label="right aligned" style={{padding:"5px",margin:"5px"}}>
-                        Class 3
-                    </ToggleButton>
+                    aria-label="label select"
+                    onChange={handleAlignment}>
+                    {options.map((option)=>(
+                        <ToggleButton
+                            selected={option.name===label}
+                            aria-label={option.name}
+                            value={option.name}
+                            key={option.id}>
+                            {option.name}
+                        </ToggleButton>
+                    ))}
+
                 </ToggleButtonGroup>
 
                 <input accept="image/*" className={classes.input} id="icon-button-file" type="file" />

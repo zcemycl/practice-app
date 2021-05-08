@@ -47,4 +47,10 @@ export default makeStyles((theme) => ({
     borderRadius:"0",
     // height:"100%",
   },
+  toggleButton:{
+    padding:"5px",
+    margin:"5px",
+    border:"2px blue solid",
+    borderRadius:"3px",
+  },
 }));
