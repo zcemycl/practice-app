@@ -1,6 +1,8 @@
 import React, { useRef,useState,useEffect,useLayoutEffect } from 'react';
 import useStyles from './styles';
-import { Grid, Card } from '@material-ui/core';
+import { Grid,Card,Button,IconButton } from '@material-ui/core';
+import { GetApp } from '@material-ui/icons';
+import { ToggleButton,ToggleButtonGroup } from '@material-ui/lab';
 // import placeholder from './image.png';
 import placeholder from './kitchen1.jpg';
 import rough from 'roughjs/bundled/rough.esm';
@@ -88,8 +90,6 @@ const Annotate = () => {
         setDrawing(false);
     }
 
-    
-
     useEffect(() => {
         window.addEventListener('resize',updateOffset);
         return () => window.removeEventListener('resize',updateOffset);
@@ -100,8 +100,13 @@ const Annotate = () => {
         return () => window.removeEventListener("mousemove",updateCursorPos);
     },[mousePosition,setMousePosition]);
 
-    
+    const [alignment, setAlignment] = React.useState('left');
 
+    const handleAlignment = (event, newAlignment) => {
+      setAlignment(newAlignment);
+    };
+
+    
     return (
         <div className={classes.content}>
         <div className={classes.toolbar}/>
@@ -122,15 +127,53 @@ const Annotate = () => {
                     ref={targetRef}
                     />
 
-                <h3>
+                <input
+                    accept="image/*"
+                    className={classes.input}
+                    id="contained-button-file"
+                    multiple
+                    type="file"
+                />
+                <label htmlFor="contained-button-file">
+                    <Button variant="contained" color="primary" component="span">
+                    Upload
+                    </Button>
+                </label>
+
+                <ToggleButtonGroup
+                    value={alignment}
+                    exclusive
+                    onChange={handleAlignment}
+                    aria-label="text alignment"
+                >
+                    <ToggleButton value="left" aria-label="left aligned" style={{padding:"5px",margin:"5px"}}>
+                        Class 1
+                    </ToggleButton>
+                    <ToggleButton value="center" aria-label="centered" style={{padding:"5px",margin:"5px"}}>
+                        Class 2
+                    </ToggleButton>
+                    <ToggleButton value="right" aria-label="right aligned" style={{padding:"5px",margin:"5px"}}>
+                        Class 3
+                    </ToggleButton>
+                </ToggleButtonGroup>
+
+                <input accept="image/*" className={classes.input} id="icon-button-file" type="file" />
+                <label htmlFor="icon-button-file">
+                    <IconButton color="primary" aria-label="upload picture" component="span">
+                    <GetApp />
+                    </IconButton>
+                </label>
+
+
+                <h4>
                     {`Image H,W = ${imgH},${imgW}`}
                     <br/>
                     {`H,W = ${window.innerHeight},${window.innerWidth}`}
                     <br/>
-                    {`Image Offset H,W = ${dims.height},${dims.width}`}
+                    {`Image Offset H,W = ${dims.height},${dims.width} `}
                     <br/>
-                    {`Your cursor is at ${mousePosition.x}, ${mousePosition.y}.`}
-                </h3>
+                    {`Your cursor is at X,Y = ${mousePosition.x}, ${mousePosition.y}.`}
+                </h4>
                 
                 </Card>
             </Grid>

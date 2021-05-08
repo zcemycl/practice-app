@@ -11,6 +11,9 @@ export default makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+  input: {
+    display: 'none',
+  },
   grid: {
     // padding: '15vh 0 0 0',
     height: '70vh',
