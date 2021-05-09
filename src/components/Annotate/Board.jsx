@@ -236,18 +236,6 @@ const Board = ({img,setDims,targetRef,elements,setElements,label,mode}) => {
     const handleMouseMove = (event) => {
         const {cr,ratioW,ratioH} = getParams();
         const {clientX,clientY} = event;
-        const x = Math.floor((clientX-cr.x)*ratioW);
-        const y = Math.floor((clientY-cr.y)*ratioH);
-        const selectElement = getElementAtPosition(x,y,elements);
-        if (selectElement) {
-            const anyCorner = setMoveOrResize(x,y,selectElement);
-            if (anyCorner !== null){
-                setEditMode("Resize");
-            } else {
-                setEditMode("Move");
-            }
-            setCorner(anyCorner);
-        } 
         event.target.style.cursor = cursorType();
         if (mode === "Edit"){
             if (selectedElement !== null){
@@ -314,18 +302,6 @@ const Board = ({img,setDims,targetRef,elements,setElements,label,mode}) => {
     const handleTouchMove = (event) => {
         const {cr,ratioW,ratioH} = getParams();
         const {clientX,clientY} = event.targetTouches[0];
-        const x = Math.floor((clientX-cr.x)*ratioW);
-        const y = Math.floor((clientY-cr.y)*ratioH);
-        const selectElement = getElementAtPosition(x,y,elements);
-        if (selectElement) {
-            const anyCorner = setMoveOrResize(x,y,selectElement);
-            if (anyCorner !== null){
-                setEditMode("Resize");
-            } else {
-                setEditMode("Move");
-            }
-            setCorner(anyCorner);
-        } 
         event.target.style.cursor = cursorType();
         if (mode === "Edit"){
             if (selectedElement !== null){
