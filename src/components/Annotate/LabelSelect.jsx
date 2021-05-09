@@ -8,8 +8,10 @@ const options = [
 ]
 
 const LabelSelect = ({label,setLabel}) => {
-    const handleAlignment = (event,newValue) => {
-        setLabel(newValue);
+    const handleLabel = (event,newValue) => {
+        if (newValue !== null) {
+            setLabel(newValue);
+        }
     };
     return (
         <>
@@ -17,7 +19,7 @@ const LabelSelect = ({label,setLabel}) => {
             value={label}
             exclusive
             aria-label="label select"
-            onChange={handleAlignment}>
+            onChange={handleLabel}>
             {options.map((option)=>(
                 <ToggleButton
                     selected={option.name===label}
