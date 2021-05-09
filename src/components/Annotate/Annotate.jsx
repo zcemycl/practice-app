@@ -1,8 +1,7 @@
 import React, { useRef,useState } from 'react';
 import useStyles from './styles';
-import { Grid,Card,IconButton } from '@material-ui/core';
-import { Delete,RotateLeft } from '@material-ui/icons';
-import { TextInfo,Board,FileManage,FileDownload,LabelSelect } from '.';
+import { Grid,Card } from '@material-ui/core';
+import { TextInfo,Board,FileManage,FileDownload,LabelSelect,DelRename } from '.';
 import placeholder from './kitchen1.jpg';
 
 const Annotate = () => {
@@ -33,28 +32,12 @@ const Annotate = () => {
             <Grid xs={12} sm={10} md={8} lg={6} item={true}>
                 <Card className={classes.card}>
 
-                <Board setDims={setDims} elements={elements}
-                    setElements={setElements}
-                    img={img} targetRef={targetRef}
-                    label={label}/>
+                <Board setDims={setDims} elements={elements} setElements={setElements}
+                    img={img} targetRef={targetRef} label={label}/>
 
                 <div>
                     <FileManage placeholder={placeholder} theImg={theImg} setImg={setImg} alt={alt} />
-
-                    <IconButton color="primary" aria-label="delete elements" 
-                        onClick={()=>{setElements([]);}} component="span">
-                        <Delete />
-                    </IconButton>
-                    <IconButton color="primary" aria-label="reset" 
-                        onClick={()=>{ 
-                            setImg({
-                                src: placeholder,
-                                alt: ' No Files ',
-                                img: theImg,});
-                            setElements([]);
-                        }} component="span">
-                        <RotateLeft />
-                    </IconButton>
+                    <DelRename theImg={theImg} placeholder={placeholder} setImg={setImg} setElements={setElements}/>
                 </div>
                 
                 <div>
