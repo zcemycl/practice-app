@@ -20,7 +20,8 @@ Website: [https://zcemycl.github.io/practice-app/](https://zcemycl.github.io/pra
 - 3D City Map
   - OpenStreetMap and Blender
 - Image Annotation
-  - rough 
+  - rough -- draw, drag, resize and delete
+  - Maybe connect to S3 for data synchronization
 - Feedback Form [To-do]
 - Newsletter Subscription [To-do]
 - Online shop [In Progress]
