@@ -47,10 +47,11 @@ const App = () => {
                 <Route path="/map" component={Map}/>
                 <Route path="/commentlike" component={CommentLike}/>
                 <Route path="/annotate" component={Annotate}/>
+                <ProtectedRoute path="/profile" component={Profile}
+                    isAuth={isAuth}/>
                 <Route component={NotFound}/>
             </Switch>
-            <ProtectedRoute path="/profile" component={Profile}
-                isAuth={isAuth}/>
+            
         </div>
         </Router>
     )

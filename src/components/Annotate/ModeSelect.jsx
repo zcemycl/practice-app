@@ -18,13 +18,13 @@ const ModeSelect = ({mode,setMode}) => {
             aria-label="mode select"
             onChange={handleMode}>
             <ToggleButton
-                style={{bottom:"-7px" }}
+                style={{top:"7px",marginBottom:"10px" }}
                 selected={"Box"===mode}
                 aria-label="Box" value="Box" key={0}>
                 <AddBox color="primary"/>
             </ToggleButton>
             <ToggleButton
-                style={{bottom:"-7px" }}
+                style={{top:"7px",marginBottom:"10px" }}
                 selected={"Edit"===mode}
                 aria-label="Edit" value="Edit" key={1}>
                 <Edit color="primary"/>

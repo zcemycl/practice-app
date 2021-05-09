@@ -141,6 +141,7 @@ const Board = ({img,setDims,targetRef,elements,setElements,label,mode}) => {
     const handleMouseMove = (event) => {
         const {cr,ratioW,ratioH} = getParams();
         const {clientX,clientY} = event;
+        event.target.style.cursor = selectedElement ? "move" : "default";
         if (mode === "Edit"){
             if (selectedElement !== null){
                 const {id,x2,y2,offsetX,offsetY} = selectedElement;
@@ -206,6 +207,7 @@ const Board = ({img,setDims,targetRef,elements,setElements,label,mode}) => {
     const handleTouchMove = (event) => {
         const {cr,ratioW,ratioH} = getParams();
         const {clientX,clientY} = event.targetTouches[0];
+        event.target.style.cursor = selectedElement ? "move" : "default";
         if (mode === "Edit"){
             if (selectedElement !== null){
                 const {id,x2,y2,offsetX,offsetY} = selectedElement;
