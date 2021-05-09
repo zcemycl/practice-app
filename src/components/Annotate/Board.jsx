@@ -150,25 +150,14 @@ const Board = ({img,setDims,targetRef,elements,setElements,label,mode}) => {
                 var maxX = Math.max(x,x+x2);
                 var minY = Math.min(y,y+y2);
                 var maxY = Math.max(y,y+y2);
-                var corner1 = minX>=0 && minY>=0;
-                var corner2 = maxX<=imgW && minY>=0;
-                var corner3 = minX>=0 && maxY<=imgH;
-                var corner4 = minX<=imgW && minY<=imgH;
-                if (corner1 && corner2 && corner3 && corner4){
-                    const {updateElement,index} = endElement(elements,clientX-offsetX,clientY-offsetY,cr,ratioW,ratioH,id);
-                    updateElements(updateElement,index);
-                }
-                if (! (corner1 && corner2 && corner3 && corner4)){
-                    var varoffX = offsetX;
-                    var varoffY = offsetY;
-                    if (minX<0) {varoffX = clientX-cr.x;}
-                    if (minY<0) {varoffY = clientY-cr.y;}
-                    if (maxX>imgW) {varoffX = clientX-cr.x-(imgW-x2)/ratioW}
-                    if (maxY>imgH) {varoffY = clientY-cr.y-(imgH-y2)/ratioH}
-                    const {updateElement,index} = endElement(elements,clientX-varoffX,clientY-varoffY,cr,ratioW,ratioH,id);
-                    updateElements(updateElement,index);
-                }
-                
+                var varoffX = offsetX;
+                var varoffY = offsetY;
+                if (minX<0) {varoffX = clientX-cr.x;}
+                if (minY<0) {varoffY = clientY-cr.y;}
+                if (maxX>imgW) {varoffX = clientX-cr.x-(imgW-x2)/ratioW}
+                if (maxY>imgH) {varoffY = clientY-cr.y-(imgH-y2)/ratioH}
+                const {updateElement,index} = endElement(elements,clientX-varoffX,clientY-varoffY,cr,ratioW,ratioH,id);
+                updateElements(updateElement,index);
             }
         } else {
             if (!drawing) return;
@@ -226,24 +215,14 @@ const Board = ({img,setDims,targetRef,elements,setElements,label,mode}) => {
                 var maxX = Math.max(x,x+x2);
                 var minY = Math.min(y,y+y2);
                 var maxY = Math.max(y,y+y2);
-                var corner1 = minX>=0 && minY>=0;
-                var corner2 = maxX<=imgW && minY>=0;
-                var corner3 = minX>=0 && maxY<=imgH;
-                var corner4 = minX<=imgW && minY<=imgH;
-                if (corner1 && corner2 && corner3 && corner4){
-                    var {updateElement,index} = endElement(elements,clientX-offsetX,clientY-offsetY,cr,ratioW,ratioH,id);
-                    updateElements(updateElement,index);
-                }
-                if (! (corner1 && corner2 && corner3 && corner4)){
-                    var varoffX = offsetX;
-                    var varoffY = offsetY;
-                    if (minX<0) {varoffX = clientX-cr.x;}
-                    if (minY<0) {varoffY = clientY-cr.y;}
-                    if (maxX>imgW) {varoffX = clientX-cr.x-(imgW-x2)/ratioW}
-                    if (maxY>imgH) {varoffY = clientY-cr.y-(imgH-y2)/ratioH}
-                    const {updateElement,index} = endElement(elements,clientX-varoffX,clientY-varoffY,cr,ratioW,ratioH,id);
-                    updateElements(updateElement,index);
-                }
+                var varoffX = offsetX;
+                var varoffY = offsetY;
+                if (minX<0) {varoffX = clientX-cr.x;}
+                if (minY<0) {varoffY = clientY-cr.y;}
+                if (maxX>imgW) {varoffX = clientX-cr.x-(imgW-x2)/ratioW}
+                if (maxY>imgH) {varoffY = clientY-cr.y-(imgH-y2)/ratioH}
+                const {updateElement,index} = endElement(elements,clientX-varoffX,clientY-varoffY,cr,ratioW,ratioH,id);
+                updateElements(updateElement,index);
             }
         } else {
             if (!drawing) return;
