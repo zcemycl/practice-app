@@ -14,10 +14,11 @@ const createElement = (id,x1,y1,x2,y2,clabel,color) => {
 
 const Board = ({img,setDims,targetRef,elements,setElements,label,mode}) => {
     const classes = useStyles();
-    
     const [drawing,setDrawing] = useState(false);
     const [currSrc,setCurrSrc] = useState("");
     const [selectedElement,setSelectedElement] = useState(null);
+    const [editMode,setEditMode] = useState("Move"); // move or resize
+    const [corner,setCorner] = useState(null);
     const imgW = img.width;
     const imgH = img.height;
     
@@ -33,7 +34,6 @@ const Board = ({img,setDims,targetRef,elements,setElements,label,mode}) => {
         const context = canvas.getContext("2d");
         context.clearRect(0,0,canvas.width,canvas.height);
         context.font = "800 35px Arial";
-        context.fillStyle = "blue";
         if (currSrc!==img.src){
             img.onload = () => {
                 context.drawImage(img,0,0,imgW,imgH);
@@ -97,29 +97,53 @@ const Board = ({img,setDims,targetRef,elements,setElements,label,mode}) => {
         return {updateElement,index}
     }
 
-    const isWithinElement = (x,y,element) => {
-        const {x1,x2,y1,y2} = element;
+    const MinMaxXY = (x1,x2,y1,y2) => {
         const minX = Math.min(x1,x1+x2);
         const maxX = Math.max(x1,x1+x2);
         const minY = Math.min(y1,y1+y2);
         const maxY = Math.max(y1,y1+y2);
-        return x>=minX && x<=maxX && y>=minY && y<=maxY;
+        return {minX,maxX,minY,maxY}
+    }
+
+    const isWithinElement = (x,y,element) => {
+        const {x1,x2,y1,y2} = element;
+        return x>=x1 && x<=x1+x2 && y>=y1 && y<=y1+y2;
     }
 
     const getElementAtPosition = (x,y,elements) => {
         return elements.find(element => isWithinElement(x,y,element));
     }
 
+    const nearPoint = (x,y,refX,refY,w,h,name) => {
+        return Math.abs(x-refX)<Math.ceil(w*0.2) && Math.abs(y-refY)<Math.ceil(h*0.2) ? name:null;
+    }
+
+    const setMoveOrResize = (x,y,element) => {
+        const {x1,x2,y1,y2} = element;
+        const topLeft = nearPoint(x,y,x1,y1,x2,y2,"tl");
+        const topRight = nearPoint(x,y,x1+x2,y1,x2,y2,"tr");
+        const bottomLeft = nearPoint(x,y,x1,y1+y2,x2,y2,"bl");
+        const bottomRight = nearPoint(x,y,x1+x2,y1+y2,x2,y2,"br");
+        return topLeft||topRight||bottomLeft||bottomRight;
+    }
+
     const handleMouseDown = (event) => {
         const {cr,ratioW,ratioH} = getParams();
         const {clientX,clientY} = event;
         if (mode === "Edit"){
-            const selectElement = getElementAtPosition(
-                Math.floor((clientX-cr.x)*ratioW),
-                Math.floor((clientY-cr.y)*ratioH),
-                elements);
+            const x = Math.floor((clientX-cr.x)*ratioW);
+            const y = Math.floor((clientY-cr.y)*ratioH);
+            const selectElement = getElementAtPosition(x,y,elements);
 
             if (selectElement) {
+                const anyCorner = setMoveOrResize(x,y,selectElement);
+                if (anyCorner !== null){
+                    setEditMode("Resize");
+                } else {
+                    setEditMode("Move");
+                }
+                setCorner(anyCorner);
+                console.log(anyCorner);
                 const offsetX = clientX-selectElement.x1/ratioW-cr.x;
                 const offsetY = clientY-selectElement.y1/ratioH-cr.y;
                 setSelectedElement({...selectElement,offsetX,offsetY});
@@ -138,27 +162,100 @@ const Board = ({img,setDims,targetRef,elements,setElements,label,mode}) => {
         setElements(elementsCopy);
     }
 
+    const move = (clientX,clientY,selectedElement,cr,ratioW,ratioH) => {
+        const {id,x2,y2,offsetX,offsetY} = selectedElement;
+        var x = Math.floor((clientX-offsetX-cr.x)*ratioW);
+        var y = Math.floor((clientY-offsetY-cr.y)*ratioH);
+        const {minX,maxX,minY,maxY} = MinMaxXY(x,x2,y,y2);
+        var varoffX = offsetX;
+        var varoffY = offsetY;
+        if (minX<0) {varoffX = clientX-cr.x;}
+        if (minY<0) {varoffY = clientY-cr.y;}
+        if (maxX>imgW) {varoffX = clientX-cr.x-(imgW-x2)/ratioW}
+        if (maxY>imgH) {varoffY = clientY-cr.y-(imgH-y2)/ratioH}
+        const {updateElement,index} = endElement(elements,clientX-varoffX,clientY-varoffY,cr,ratioW,ratioH,id);
+        updateElements(updateElement,index);
+    }
+
+    const resize = (clientX,clientY,selectedElement,cr,ratioW,ratioH) => {
+        const {id,x1,y1,x2,y2,color} = selectedElement;
+        const x = Math.floor((clientX-cr.x)*ratioW);
+        const y = Math.floor((clientY-cr.y)*ratioH);
+        var updateElement = null;
+        switch (corner) {
+            case "tl":
+                updateElement = createElement(id,
+                    x,y,x1+x2-x,y1+y2-y,label,color);
+                updateElements(updateElement,id);
+                break;
+            case "tr":
+                updateElement = createElement(id,
+                    x1,y,x-x1,y1+y2-y,label,color);
+                updateElements(updateElement,id);
+                break;
+            case "bl":
+                updateElement = createElement(id,
+                    x,y1,x1+x2-x,y-y1,label,color);
+                updateElements(updateElement,id);
+                break;
+            case "br":
+                updateElement = createElement(id,
+                    x1,y1,x-x1,y-y1,label,color);
+                updateElements(updateElement,id);
+                break;
+            default:return
+        }
+        
+    }
+
+    const cursorType = () => {
+        switch (mode) {
+            default:
+            case "Box":
+                return "default";
+            case "Edit":
+                switch (editMode){
+                    default:
+                    case "Move":
+                        return "move";
+                    case "Resize":
+                        switch (corner) {
+                            default:
+                            case "tl":
+                            case "br":
+                                return "nwse-resize";
+                            case "tr":
+                            case "bl":
+                                return "nesw-resize";
+                        }
+                }
+
+        }
+    }
+
     const handleMouseMove = (event) => {
         const {cr,ratioW,ratioH} = getParams();
         const {clientX,clientY} = event;
-        event.target.style.cursor = selectedElement ? "move" : "default";
+        const x = Math.floor((clientX-cr.x)*ratioW);
+        const y = Math.floor((clientY-cr.y)*ratioH);
+        const selectElement = getElementAtPosition(x,y,elements);
+        if (selectElement) {
+            const anyCorner = setMoveOrResize(x,y,selectElement);
+            if (anyCorner !== null){
+                setEditMode("Resize");
+            } else {
+                setEditMode("Move");
+            }
+            setCorner(anyCorner);
+        } 
+        event.target.style.cursor = cursorType();
         if (mode === "Edit"){
             if (selectedElement !== null){
-                const {id,x2,y2,offsetX,offsetY} = selectedElement;
-                var x = Math.floor((clientX-offsetX-cr.x)*ratioW);
-                var y = Math.floor((clientY-offsetY-cr.y)*ratioH);
-                var minX = Math.min(x,x+x2);
-                var maxX = Math.max(x,x+x2);
-                var minY = Math.min(y,y+y2);
-                var maxY = Math.max(y,y+y2);
-                var varoffX = offsetX;
-                var varoffY = offsetY;
-                if (minX<0) {varoffX = clientX-cr.x;}
-                if (minY<0) {varoffY = clientY-cr.y;}
-                if (maxX>imgW) {varoffX = clientX-cr.x-(imgW-x2)/ratioW}
-                if (maxY>imgH) {varoffY = clientY-cr.y-(imgH-y2)/ratioH}
-                const {updateElement,index} = endElement(elements,clientX-varoffX,clientY-varoffY,cr,ratioW,ratioH,id);
-                updateElements(updateElement,index);
+                if (editMode === "Move"){
+                    move(clientX,clientY,selectedElement,cr,ratioW,ratioH);
+                } else if (editMode === "Resize"){
+                    resize(clientX,clientY,selectedElement,cr,ratioW,ratioH);
+                }
             }
         } else {
             if (!drawing) return;
@@ -173,7 +270,10 @@ const Board = ({img,setDims,targetRef,elements,setElements,label,mode}) => {
         } else {
             setDrawing(false);
             const index = elements.length - 1;
-            const {x2,y2} = elements[index];
+            const {x1,y1,x2,y2} = elements[index];
+            const {minX,maxX,minY,maxY} = MinMaxXY(x1,x2,y1,y2);
+            const updateElement = {...elements[index],x1:minX,x2:maxX-minX,y1:minY,y2:maxY-minY};
+            updateElements(updateElement,index);
             if (x2===0 || y2===0){
                 elements.pop();
                 setElements(elements);
@@ -186,12 +286,19 @@ const Board = ({img,setDims,targetRef,elements,setElements,label,mode}) => {
         const {cr,ratioW,ratioH} = getParams();
         const {clientX,clientY} = event.targetTouches[0];
         if (mode === "Edit"){
-            const selectElement = getElementAtPosition(
-                Math.floor((clientX-cr.x)*ratioW),
-                Math.floor((clientY-cr.y)*ratioH),
-                elements);
+            const x = Math.floor((clientX-cr.x)*ratioW);
+            const y = Math.floor((clientY-cr.y)*ratioH);
+            const selectElement = getElementAtPosition(x,y,elements);
 
             if (selectElement) {
+                const anyCorner = setMoveOrResize(x,y,selectElement);
+                if (anyCorner !== null){
+                    setEditMode("Resize");
+                } else {
+                    setEditMode("Move");
+                }
+                setCorner(anyCorner);
+                console.log(anyCorner);
                 const offsetX = clientX-selectElement.x1/ratioW-cr.x;
                 const offsetY = clientY-selectElement.y1/ratioH-cr.y;
                 setSelectedElement({...selectElement,offsetX,offsetY});
@@ -207,30 +314,32 @@ const Board = ({img,setDims,targetRef,elements,setElements,label,mode}) => {
     const handleTouchMove = (event) => {
         const {cr,ratioW,ratioH} = getParams();
         const {clientX,clientY} = event.targetTouches[0];
-        event.target.style.cursor = selectedElement ? "move" : "default";
+        const x = Math.floor((clientX-cr.x)*ratioW);
+        const y = Math.floor((clientY-cr.y)*ratioH);
+        const selectElement = getElementAtPosition(x,y,elements);
+        if (selectElement) {
+            const anyCorner = setMoveOrResize(x,y,selectElement);
+            if (anyCorner !== null){
+                setEditMode("Resize");
+            } else {
+                setEditMode("Move");
+            }
+            setCorner(anyCorner);
+        } 
+        event.target.style.cursor = cursorType();
         if (mode === "Edit"){
             if (selectedElement !== null){
-                const {id,x2,y2,offsetX,offsetY} = selectedElement;
-                var x = Math.floor((clientX-offsetX-cr.x)*ratioW);
-                var y = Math.floor((clientY-offsetY-cr.y)*ratioH);
-                var minX = Math.min(x,x+x2);
-                var maxX = Math.max(x,x+x2);
-                var minY = Math.min(y,y+y2);
-                var maxY = Math.max(y,y+y2);
-                var varoffX = offsetX;
-                var varoffY = offsetY;
-                if (minX<0) {varoffX = clientX-cr.x;}
-                if (minY<0) {varoffY = clientY-cr.y;}
-                if (maxX>imgW) {varoffX = clientX-cr.x-(imgW-x2)/ratioW}
-                if (maxY>imgH) {varoffY = clientY-cr.y-(imgH-y2)/ratioH}
-                const {updateElement,index} = endElement(elements,clientX-varoffX,clientY-varoffY,cr,ratioW,ratioH,id);
-                updateElements(updateElement,index);
+                if (editMode === "Move"){
+                    move(clientX,clientY,selectedElement,cr,ratioW,ratioH);
+                } else if (editMode === "Resize"){
+                    resize(clientX,clientY,selectedElement,cr,ratioW,ratioH);
+                }
             }
         } else {
             if (!drawing) return;
-            const {updateElement,index} = endElement(elements,clientX,clientY,cr,ratioW,ratioH);
+            var {updateElement,index} = endElement(elements,clientX,clientY,cr,ratioW,ratioH);
             updateElements(updateElement,index);
-        }       
+        }        
     }
 
     return (
