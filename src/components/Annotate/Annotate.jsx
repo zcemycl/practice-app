@@ -34,7 +34,7 @@ const Annotate = () => {
                 <Card className={classes.card}>
 
                 <Board setDims={setDims} elements={elements} setElements={setElements}
-                    img={img} targetRef={targetRef} label={label}/>
+                    img={img} targetRef={targetRef} label={label} mode={mode}/>
 
                 <div>
                     <FileManage placeholder={placeholder} theImg={theImg} setImg={setImg} alt={alt} />
