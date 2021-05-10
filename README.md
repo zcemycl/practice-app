@@ -23,7 +23,8 @@ Website: [https://zcemycl.github.io/practice-app/](https://zcemycl.github.io/pra
   - rough -- draw, drag, resize and delete
   - Maybe connect to S3 for data synchronization
 - Feedback Form [To-do]
-- Try D3, react-diagram, drag and drop, etc.
+- Try D3 force, cytoscapejs, react-diagram, drag and drop, etc.
+- Need to use more lifecycle.
 - Newsletter Subscription [To-do]
 - Online shop [In Progress]
 
