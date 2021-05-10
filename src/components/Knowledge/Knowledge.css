@@ -1,0 +1,22 @@
+.links {stroke: grey}
+  
+
+.line {stroke: grey}
+  
+
+.flag{
+  background: url('https://dl.dropboxusercontent.com/s/yx2q52k9g420tov/flags.png') no-repeat;
+  background-color: #000;
+  position: relative;
+}
+  
+  
+.tooltip{
+  position: relative;
+  background-color: lightgrey;
+  padding: 10px;
+  
+}
+  
+
+  
