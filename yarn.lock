@@ -4940,7 +4940,7 @@
   dependencies:
     "d3-dsv" "1 - 2"
 
-"d3-force@2":
+"d3-force@^2.1.1", "d3-force@2":
   "integrity" "sha512-nAuHEzBqMvpFVMf9OX75d00OxvOXdxY+xECIXjW6Gv8BRrXu6gAWbv/9XKrvfJ5i5DCokDW7RYE50LRoK092ew=="
   "resolved" "https://registry.npmjs.org/d3-force/-/d3-force-2.1.1.tgz"
   "version" "2.1.1"
