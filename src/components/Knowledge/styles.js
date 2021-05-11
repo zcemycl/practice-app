@@ -16,9 +16,9 @@ export default makeStyles((theme) => ({
     height: '70vh',
   },
   card: {
-    maxWidth:'100%',
+    width:'100%',
     height: '100%', 
-    textAlign: 'center',
+    // textAlign: 'center',
     // backgroundColor: 'black',
   },
 }));
