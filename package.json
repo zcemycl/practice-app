@@ -37,6 +37,7 @@
     "react-force-graph-3d": "^1.21.4",
     "react-force-graph-ar": "^1.5.0",
     "react-force-graph-vr": "^1.14.1",
+    "react-graph-vis": "^1.0.7",
     "react-particles-js": "^3.4.1",
     "react-rough": "^2.3.0",
     "react-router-dom": "^5.2.0",
