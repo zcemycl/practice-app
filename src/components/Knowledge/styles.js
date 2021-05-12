@@ -12,7 +12,7 @@ export default makeStyles((theme) => ({
   },
   grid: {
     // padding: '15vh 0 0 0',
-    height: '80vh',
+    height: '75vh',
   },
   card: {
     width:'100%',
