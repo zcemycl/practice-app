@@ -1,102 +1,32 @@
 {
+  "options": {
+    "edges": {
+      "color": "#000000"
+    },
+    "nodes": {
+      "color": "#11fff6"
+    },
+    "physics": {
+      "enabled": true
+    },
+    "interaction": { "multiselect": true, "dragView": true }
+  },
+  "graph": {
     "nodes": [
-      {
-        "id": 1,
-        "name": "Andy",
-        "gender": "male"
-      },
-      {
-        "id": 2,
-        "name": "Betty",
-        "gender": "female"
-      },
-      {
-        "id": 3,
-        "name": "Cate",
-        "gender": "female"
-      },
-      {
-        "id": 4,
-        "name": "Dave",
-        "gender": "male"
-      },
-      {
-        "id": 5,
-        "name": "Ellen",
-        "gender": "female"
-      },
-      {
-        "id": 6,
-        "name": "Fiona",
-        "gender": "female"
-      },
-      {
-        "id": 7,
-        "name": "Garry",
-        "gender": "male"
-      },
-      {
-        "id": 8,
-        "name": "Holly",
-        "gender": "female"
-      },
-      {
-        "id": 9,
-        "name": "Iris",
-        "gender": "female"
-      },
-      {
-        "id": 10,
-        "name": "Jane",
-        "gender": "female"
-      }
+      { "id": 1, "shape": "image", "size": 25, "label": "Leo",
+        "font":{"size":20,"bold":{"size":15, "face":"arial", "color": "black"}},
+        "image": "https://www.iconninja.com/files/631/966/414/repository-github-icon.png" },
+      { "id": 2, "shape": "image", "size": 25,
+        "image": "./resources/ai.png"},
+      { "id": 3, "label": "Node 3"},
+      { "id": 4, "label": "Node 4"},
+      { "id": 5, "label": "Node 5"}
     ],
-    "links": [
-      {
-        "source": 1,
-        "target": 2
-      },
-      {
-        "source": 1,
-        "target": 5
-      },
-      {
-        "source": 1,
-        "target": 6
-      },
-  
-      {
-        "source": 2,
-        "target": 3
-      },
-      {
-        "source": 2,
-        "target": 7
-      }
-    ,
-  
-      {
-        "source": 3,
-        "target": 4
-      },
-      {
-        "source": 8,
-        "target": 3
-      }
-    ,
-      {
-        "source": 4,
-        "target": 5
-      }
-    ,
-  
-      {
-        "source": 4,
-        "target": 9
-      },
-      {
-        "source": 5,
-        "target": 10
-      }
+    "edges": [
+      { "from": 1, "to": 2, "label": "hi" },
+      { "from": 1, "to": 3 },
+      { "from": 2, "to": 4 },
+      { "from": 2, "to": 5 }
     ]
   }
+}
