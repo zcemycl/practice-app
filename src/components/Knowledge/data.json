@@ -14,10 +14,10 @@
   "graph": {
     "nodes": [
       { "id": 1, "shape": "image", "size": 25, "label": "Leo",
-        "font":{"size":20,"bold":{"size":15, "face":"arial", "color": "black"}},
+        "font":{"size":20,"bold":{"size":25, "face":"arial", "color": "black"}},
         "image": "https://www.iconninja.com/files/631/966/414/repository-github-icon.png" },
-      { "id": 2, "shape": "image", "size": 25,
-        "image": "./resources/ai.png"},
+      { "id": 2, "shape": "image", "size": 25, "label": "AI",
+        "image": "https://raw.githubusercontent.com/zcemycl/practice-app/master/resources/ai.png"},
       { "id": 3, "label": "Node 3"},
       { "id": 4, "label": "Node 4"},
       { "id": 5, "label": "Node 5"}
