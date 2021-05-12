@@ -4,8 +4,7 @@ export default makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    // backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(3),
+    padding: theme.spacing(0),
     position: 'relative',
   },
   root: {
@@ -13,12 +12,11 @@ export default makeStyles((theme) => ({
   },
   grid: {
     // padding: '15vh 0 0 0',
-    height: '70vh',
+    height: '80vh',
   },
   card: {
     width:'100%',
     height: '100%', 
-    // textAlign: 'center',
-    // backgroundColor: 'black',
+    textAlign: 'center',
   },
 }));
