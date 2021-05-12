@@ -18,7 +18,8 @@
         "image": "https://www.iconninja.com/files/631/966/414/repository-github-icon.png" },
       { "id": 2, "shape": "image", "size": 25, "label": "AI",
         "image": "https://raw.githubusercontent.com/zcemycl/practice-app/master/resources/ai.png"},
-      { "id": 3, "label": "Node 3"},
+      { "id": 3, "shape": "image", "size": 25, "label": "Frontend", 
+        "image": "https://raw.githubusercontent.com/zcemycl/practice-app/master/resources/frontend.png"},
       { "id": 4, "label": "Node 4"},
       { "id": 5, "label": "Node 5"}
     ],
