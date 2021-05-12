@@ -13,7 +13,7 @@ const options = [
     {id: 5, name: 'Like Comment', root: "/commentlike"},
     {id: 6, name: '3D Map', root: "/map"},
     {id: 7, name: 'Image Annotation', root: "/annotate"},
-    // {id: 8, name: 'Knowledge Graph', root: "/knowledge"},
+    {id: 8, name: 'Knowledge Graph', root: "/knowledge"},
 ]
 
 const ITEM_HEIGHT = 12*Math.max(options.length,12);
