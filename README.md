@@ -22,6 +22,9 @@ Website: [https://zcemycl.github.io/practice-app/](https://zcemycl.github.io/pra
 - Image Annotation
   - rough -- draw, drag, resize and delete
   - Maybe connect to S3 for data synchronization
+- Knowledge Graph
+  - vis.js -- Show force network.
+  - Can act as a table of content.
 - Feedback Form [To-do]
 - Try D3 force, cytoscapejs, react-diagram, drag and drop, etc.
 - Need to use more lifecycle.
