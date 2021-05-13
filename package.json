@@ -23,6 +23,7 @@
     "bezier-js": "^4.1.1",
     "bootstrap": "^4.6.0",
     "chart.js": "^2.9.4",
+    "depcheck": "^1.4.1",
     "gh-pages": "^3.1.0",
     "react": "^17.0.2",
     "react-bootstrap": "^1.5.2",
