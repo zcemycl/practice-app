@@ -21,6 +21,11 @@ Website: [https://zcemycl.github.io/practice-app/](https://zcemycl.github.io/pra
   - OpenStreetMap and Blender
 - Image Annotation
   - rough -- draw, drag, resize and delete
+  - Can use json file to import annotation
+```
+cd resources
+python readAnnotate.py [--img str] [--annotatefile str]
+```
   - Maybe connect to S3 for data synchronization
 - Knowledge Graph
   - vis.js -- Show force network.
