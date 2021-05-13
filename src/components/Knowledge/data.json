@@ -1,23 +1,40 @@
 {
   "options": {
     "edges": {
-      "color": "#000000"
+      "color": "grey",
+      "smooth": {
+        "enabled": true,
+        "type": "horizontal",
+        "forceDirection":"horizontal",
+        "roundness": 1
+      },
+      "width":2,
+      "arrows": {
+        "from": {
+          "enabled": true,
+          "scaleFactor": 0.7
+        },
+        "to": {
+          "enabled": false
+        }
+      }
     },
     "nodes": {
-      "color": "#11fff6"
+      "labelHighlightBold": true
     },
     "physics": {
       "enabled": true
     },
-    "interaction": { "multiselect": true, "dragView": true }
+    "interaction": { "multiselect": true, "dragView": true, "hover": true }
   },
   "graph": {
     "nodes": [
-        { "id": 1, "shape": "image", "size": 25, "label": "Leo",
+        { "id": 1, "shape": "image", "size": 25, "label": "Leo", "title":"Leo", 
             "font":{"size":20,"bold":{"size":25, "face":"arial", "color": "black"}},
             "image": "https://www.iconninja.com/files/631/966/414/repository-github-icon.png" },
         { "id": 2, "shape": "image", "size": 25, "label": "AI",
-            "image": "https://raw.githubusercontent.com/zcemycl/practice-app/master/resources/ai.png"},
+          "image": "https://raw.githubusercontent.com/zcemycl/practice-app/master/resources/ai.png"
+          },
         { "id": 3, "shape": "image", "size": 25, "label": "Frontend", 
             "image": "https://raw.githubusercontent.com/zcemycl/practice-app/master/resources/frontend.png"},
         { "id": 4, "shape": "image", "size": 25, "label": "computer vision",
@@ -45,7 +62,7 @@
         { "id": 15, "shape": "image", "size": 25, "label": "AWS",
           "image": "https://raw.githubusercontent.com/zcemycl/practice-app/master/resources/aws.png"},
         { "id": 16, "shape": "image", "size": 25, "label": "Ubuntu",
-            "image": "https://raw.githubusercontent.com/zcemycl/practice-app/master/resources/ubuntu.png"}
+          "image": "https://raw.githubusercontent.com/zcemycl/practice-app/master/resources/ubuntu.png"}
 
     ],
     "edges": [
