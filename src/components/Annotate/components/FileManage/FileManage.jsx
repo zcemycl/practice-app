@@ -1,5 +1,5 @@
 import React from 'react';
-import useStyles from './styles';
+import useStyles from '../../styles';
 import { Button,Typography } from '@material-ui/core';
 
 const FileManage = ({theImg,setImg,alt}) => {

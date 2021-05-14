@@ -1,7 +1,8 @@
 import React, { useRef,useState } from 'react';
 import useStyles from './styles';
 import { Grid,Card } from '@material-ui/core';
-import { TextInfo,Board,FileManage,FileDownload,LabelSelect,DelRename,ModeSelect } from '.';
+import { TextInfo,Board,FileManage,FileDownload } from './components';
+import { LabelSelect,DelRename,ModeSelect } from './components';
 import placeholder from './kitchen1.jpg';
 
 const Annotate = () => {

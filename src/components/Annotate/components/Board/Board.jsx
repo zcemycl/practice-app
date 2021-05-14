@@ -1,5 +1,5 @@
 import React, { useState,useLayoutEffect } from 'react';
-import useStyles from './styles';
+import useStyles from '../../styles';
 import rough from 'roughjs/bundled/rough.esm';
 
 const generator = rough.generator();
