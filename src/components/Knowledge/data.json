@@ -33,9 +33,8 @@
             "font":{"size":20,"bold":{"size":25, "face":"arial", "color": "black"}},
             "image": "https://www.iconninja.com/files/631/966/414/repository-github-icon.png" },
         { "id": 2, "shape": "image", "size": 25, "label": "AI",
-          "image": {"unselected":"https://raw.githubusercontent.com/zcemycl/practice-app/master/resources/ai.png",
-            "selected":"https://raw.githubusercontent.com/zcemycl/practice-app/master/resources/ai2.png"}
-          },
+          "image": "https://raw.githubusercontent.com/zcemycl/practice-app/master/resources/ai.png"
+            },
         { "id": 3, "shape": "image", "size": 25, "label": "Frontend", 
             "image": "https://raw.githubusercontent.com/zcemycl/practice-app/master/resources/frontend.png"},
         { "id": 4, "shape": "image", "size": 25, "label": "computer vision",

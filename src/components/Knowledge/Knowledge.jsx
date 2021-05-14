@@ -52,8 +52,8 @@ const Knowledge = () => {
 
 
   const events = {
-    dragStart: (event) => {},
-    dragEnd: (event) => {},
+    // dragStart: (event) => {},
+    // dragEnd: (event) => {},
     select: (e) => {
       if (e.nodes[0] !== logoId && logoId){
         updateGraph(25,logoId);
