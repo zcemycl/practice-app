@@ -101,15 +101,12 @@ const Tree = ({data,logoId,setLogoId,setShowIframe}) => {
         },
         doubleClick: (e) => {
           setLogoId(e.nodes[0]);
-          // if (e.nodes[0] === 1){
-            setShowIframe(true);
-          // }
+          setShowIframe(true);
           compareEvent(e.nodes[0],e);
         }
     
       };
     
-
     return (
         <div onMouseMove={handleMouseMove} 
             onMouseOver={handleMouseMove}

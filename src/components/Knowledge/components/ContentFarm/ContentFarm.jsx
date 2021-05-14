@@ -5,8 +5,8 @@ const contentSwitch = (nodeId) => {
         default:
         case 1:
             return (<div style={{ height:"100%", width:"100%" }}
-            dangerouslySetInnerHTML={
-            { __html: "<iframe style='height:100%; width:100%' src='https://zcemycl.github.io' />"}}
+            dangerouslySetInnerHTML={{__html:
+            "<iframe style='height:100%; width:100%' src='https://zcemycl.github.io'/>"}}
              /> )
     }
 }
