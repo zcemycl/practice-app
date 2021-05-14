@@ -32,8 +32,8 @@ python readAnnotate.py [--img str] [--annotatefile str]
   - vis.js -- Show force network.
   - Can act as a table of content.
 - Feedback Form [To-do]
-- Try D3 force, cytoscapejs, react-diagram, drag and drop, etc.
-- React Tour 
+- Try cytoscapejs, react-diagram, drag and drop, etc.
+- React Tour [To-do]
 - Need to use more lifecycle.
 - Newsletter Subscription [To-do]
 - Online shop [In Progress]
