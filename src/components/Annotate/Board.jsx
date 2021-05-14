@@ -143,7 +143,6 @@ const Board = ({img,setDims,targetRef,elements,setElements,label,mode}) => {
                     setEditMode("Move");
                 }
                 setCorner(anyCorner);
-                console.log(anyCorner);
                 const offsetX = clientX-selectElement.x1/ratioW-cr.x;
                 const offsetY = clientY-selectElement.y1/ratioH-cr.y;
                 setSelectedElement({...selectElement,offsetX,offsetY});
@@ -267,7 +266,6 @@ const Board = ({img,setDims,targetRef,elements,setElements,label,mode}) => {
                 setElements(elements);
             }
         }
-        console.log(elements);
     }
 
     const handleTouchStart = (event) => {
@@ -286,7 +284,6 @@ const Board = ({img,setDims,targetRef,elements,setElements,label,mode}) => {
                     setEditMode("Move");
                 }
                 setCorner(anyCorner);
-                console.log(anyCorner);
                 const offsetX = clientX-selectElement.x1/ratioW-cr.x;
                 const offsetY = clientY-selectElement.y1/ratioH-cr.y;
                 setSelectedElement({...selectElement,offsetX,offsetY});

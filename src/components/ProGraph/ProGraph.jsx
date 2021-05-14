@@ -24,18 +24,19 @@ const ProGraph = () => {
     const switchPlot = (step) => {
         switch (step) {
             case 0:
-                return (<Grid xs={12} sm={6} md={4} lg={3}><SocketPlot/></Grid>);
+                return (<Grid xs={12} sm={10} md={8} lg={4} item={true}><SocketPlot/></Grid>);
             case 1:
-                return (<Grid xs={12} sm={6} md={4} lg={3}><UIPlot/></Grid>);
+                return (<Grid xs={12} sm={10} md={8} lg={4} item={true}><UIPlot/></Grid>);
             case 2:
-                return (<Grid xs={12} sm={6} md={4} lg={3}><FetchPlot/></Grid>);
+                return (<Grid xs={12} sm={10} md={8} lg={4} item={true}><FetchPlot/></Grid>);
             default:
-                return (<Grid xs={12} sm={6} md={4} lg={3}><SocketPlot/></Grid>);
+                return (<Grid xs={12} sm={10} md={8} lg={4} item={true}><SocketPlot/></Grid>);
         }
     };
 
     return (
-        <div className={classes.content}>          
+        <div className={classes.content}>  
+        <div className={classes.toolbar}/>        
             <Grid container 
                 justify="center" 
                 direction="row"
@@ -46,7 +47,8 @@ const ProGraph = () => {
                     justify="center" 
                     direction="row"
                     spacing={0}>
-                    <Grid xs={12} sm={6} md={4} lg={3}><MobileStepper
+                    <Grid xs={12} sm={10} md={8} lg={4} item={true}>
+                        <MobileStepper
                         steps={maxSteps}
                         position="static"
                         variant="text"

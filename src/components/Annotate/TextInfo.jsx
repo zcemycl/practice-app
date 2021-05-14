@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState,useEffect,useCallback } from 'react';
 
 const TextInfo = ({theImg,dims,setDims,targetRef}) => {
     const imgW = theImg.width;
@@ -6,12 +6,12 @@ const TextInfo = ({theImg,dims,setDims,targetRef}) => {
 
     const [mousePosition, setMousePosition] = useState({x:null,y:null});
 
-    const updateOffset = () =>{
+    const updateOffset = useCallback(() =>{
         if (targetRef.current){
             setDims({width:targetRef.current.offsetWidth,
                 height:targetRef.current.offsetHeight});
         }
-    }
+    },[targetRef,setDims])
 
     const updateCursorPos = ev=>{
         setMousePosition({ x: ev.clientX, y: ev.clientY });

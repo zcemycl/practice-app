@@ -8,16 +8,7 @@
         "forceDirection":"horizontal",
         "roundness": 1
       },
-      "width":2,
-      "arrows": {
-        "from": {
-          "enabled": true,
-          "scaleFactor": 0.7
-        },
-        "to": {
-          "enabled": false
-        }
-      }
+      "width":2
     },
     "nodes": {
       "labelHighlightBold": true

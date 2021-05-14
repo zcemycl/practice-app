@@ -6,20 +6,24 @@ import useStyles from './styles';
 
 const SocketPlot = () => {
     const [arr,setArr] = useState([]);
+    const updateMsg = (msg) => {
+        setArr((currentData) => {
+            if (currentData.length >= 10){
+                currentData.shift();
+            }
+        return [...currentData,{'uv':msg.number}]});
+    }
     const classes = useStyles();
-    const socket = io.connect('https://hidden-dusk-28735.herokuapp.com/test',{reconnection: true});
     //const socket = io.connect('http://127.0.0.1:5000/test',{reconnection: true});
     //const socket = io.connect('http://127.0.0.1:5000/test');
     useEffect(() => {
         const socket = io.connect('https://hidden-dusk-28735.herokuapp.com/test',
-                {reconnection: true});
-        socket.on('newnumber',(msg)=>{
-            setArr((currentData) => {
-            if (currentData.length >= 10){
-                currentData.shift();
-            }
-            return [...currentData,{'uv':msg.number}]});
-        })
+            {reconnection: true});
+        
+        socket.on('newnumber',updateMsg);
+        return () => {
+            socket.off('newnumber',updateMsg);
+        };
     },[]);
     return (
         <Card className={classes.card}>

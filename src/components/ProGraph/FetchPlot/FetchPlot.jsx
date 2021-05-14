@@ -28,8 +28,11 @@ const FetchPlot = () => {
                     },
                     ],
                 }}
-                height={'35%'}
-                width={'35%'}
+                height={null}
+                width={null}
+                options={{
+                    aspectRatio: 1, 
+                }}
             />
         </Card>
     )

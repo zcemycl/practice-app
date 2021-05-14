@@ -12,8 +12,7 @@ const Annotate = () => {
     theImg.src = placeholder;
     const imgW = theImg.width;
     const imgH = theImg.height;
-    const [{src,alt,img}, setImg] = useState({
-        src: placeholder,
+    const [{alt,img}, setImg] = useState({
         alt: ' No Files ',
         img: theImg,
     });

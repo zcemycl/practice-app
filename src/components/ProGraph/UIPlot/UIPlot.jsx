@@ -26,8 +26,11 @@ const UIPlot = () => {
                     },
                     ],
                 }}
-                height={'35%'}
-                width={'35%'}
+                height={null}
+                width={null}
+                options={{
+                    aspectRatio: 1, 
+                }}
             />
             
             <CardContent className={classes.cardContent}>
