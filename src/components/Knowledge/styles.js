@@ -11,8 +11,7 @@ export default makeStyles((theme) => ({
     flexGrow: 1,
   },
   grid: {
-    // padding: '15vh 0 0 0',
-    // height: '75vh',
+    height: '75vh',
   },
   card: {
     width:'100%',
