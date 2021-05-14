@@ -3,8 +3,6 @@ import { Grid, Card } from '@material-ui/core';
 import useStyles from './styles';
 import data from "./data.json";
 import {ButtonsGrid,Tree} from ".";
-import './styles.css';
-
 
 const Knowledge = () => {
   const classes = useStyles();

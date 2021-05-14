@@ -6,12 +6,33 @@
         "enabled": true,
         "type": "horizontal",
         "forceDirection":"horizontal",
-        "roundness": 1
+        "roundness": 0.5
       },
       "width":2
     },
     "nodes": {
-      "labelHighlightBold": true
+      "shapeProperties": {
+        "useBorderWithImage": true
+      },
+      "labelHighlightBold": true,
+      "color": {
+        "border": "white",
+        "background": "white",
+        "hover": {
+          "border": "transparent",
+          "background": "white"
+        },
+        "highlight": {
+          "border": "transparent",
+          "background": "white"
+        }
+      },
+      "font": {
+        "background": "white",
+        "strokeWidth": 2
+      },
+      "margin": 0,
+      "borderWidth": 5
     },
     "physics": {
       "enabled": true
