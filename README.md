@@ -33,6 +33,7 @@ python readAnnotate.py [--img str] [--annotatefile str]
   - Can act as a table of content.
 - Feedback Form [To-do]
 - Try D3 force, cytoscapejs, react-diagram, drag and drop, etc.
+- React Tour 
 - Need to use more lifecycle.
 - Newsletter Subscription [To-do]
 - Online shop [In Progress]
