@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import { Grid, Card } from '@material-ui/core';
 import useStyles from './styles';
 import Graph from "react-graph-vis";
@@ -9,35 +9,82 @@ import './styles.css';
 const Knowledge = () => {
   const classes = useStyles();
   const [showIframe, setShowIframe] = useState(false);
-
-  var custom = (values, id, selected, hovering) => {
-    values.size = 100;
-    console.log(values);
-  }
-  var tmp = {...data};
-  const length = tmp.graph.nodes.length;
-  for (var i=0;i<length;i++){
-    tmp.graph.nodes[i].chosen = {node:custom,label:false};
-  }
-  // var [state,setState] = useState(tmp);
+  const [canvasEvent,setCanvasEvent] = useState(null);
+  const [logoEvent, setLogoEvent] = useState(null);
   const [network,setNetwork] = useState(null);
+  const toptions = data.options;
+  const tgraph = data.graph;
+  var [graph,setGraph] = useState(tgraph);
+  const threshold = 7;
+  const [logoId,setLogoId] = useState(null);
+
+  const updateGraph = (size,targetId=null) => {
+    if (!targetId){
+      targetId = logoId;
+    }
+    const data = graph.nodes.map((el) => {
+      if (el.id === targetId) return { ...el, size: size };
+      else return el;
+    });
+
+    const temp = { ...graph };
+    temp.nodes = data;
+    setGraph(temp);
+  }
+
+  const handleMouseMove = (e) => {
+    setCanvasEvent(e.nativeEvent); 
+   
+    if (logoEvent && canvasEvent){
+      const [x2,y2] = [canvasEvent.clientX,canvasEvent.clientY];
+      const [x1,y1] = [e.nativeEvent.clientX,e.nativeEvent.clientY];
+      if (Math.abs(x1-x2)>=threshold && Math.abs(y1-y2)>=threshold){
+        updateGraph(25);
+      }
+    }
+
+  }
+
+  useEffect(() => {
+    window.addEventListener("onMouseMove", handleMouseMove);
+    window.addEventListener("onMouseOver",handleMouseMove);
+  },[])
 
 
   const events = {
     dragStart: (event) => {},
     dragEnd: (event) => {},
-    select: (event) => {
-      var { nodes, edges } = event;
-      if (nodes[0] === 1){
+    select: (e) => {
+      if (e.nodes[0] !== logoId && logoId){
+        updateGraph(25,logoId);
+      }
+      
+      if (e.nodes[0] === 1){
         setShowIframe(true);
       }
-      network.on("afterDrawing",(ctx)=>{
-        // console.log(ctx);
-        var nodePosition = network.getPositions([nodes]);
-        // console.log(nodePosition)
-      })
+      const [x1,y1] = [e.event.clientX,e.event.clientY];
+      const [x2,y2] = [canvasEvent.clientX,canvasEvent.clientY];
+      if (Math.abs(x1-x2)<threshold*2 && Math.abs(y1-y2)<threshold*2){
+        updateGraph(20,e.node);
+      }
+      setLogoEvent(e.event);
+      setLogoId(e.nodes[0]);
+      
     },
-
+    hoverNode: (e) => {
+      if (e.node !== logoId && logoId){
+        updateGraph(25,logoId);
+      }
+      
+      const [x1,y1] = [e.event.clientX,e.event.clientY];
+      const [x2,y2] = [canvasEvent.clientX,canvasEvent.clientY];
+      if (Math.abs(x1-x2)<threshold*2 && Math.abs(y1-y2)<threshold*2){
+        updateGraph(20,e.node);
+      }
+      setLogoEvent(e.event);
+      setLogoId(e.node);
+      
+    }
 
   };
 
@@ -56,15 +103,19 @@ const Knowledge = () => {
                   <div style={{ height:"100%", width:"100%" }}
                   dangerouslySetInnerHTML={{ __html: "<iframe style='height:100%; width:100%' src='https://zcemycl.github.io' />"}} /> 
                   :
+                  <div onMouseMove={handleMouseMove} 
+                    onMouseOver={handleMouseMove}
+                    style={{ height:"100%", width:"100%" }}>
                   <Graph
-                    graph={tmp.graph}
-                    options={tmp.options}
+                    graph={graph}
+                    options={toptions}
                     events={events}
                     getNetwork={(network) => {
                       setNetwork(network);
-                      setTimeout(() => network.fit(), 2000);
+                      // setTimeout(() => network.fit(), 2000);
                     }}
                   />
+                  </div>
                 }
                 
             </Card>
