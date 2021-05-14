@@ -19,6 +19,5 @@ export default makeStyles((theme) => ({
     height: '100%', 
     textAlign: 'center',
     background: "transparent",
-    border: "transparent",
   },
 }));
