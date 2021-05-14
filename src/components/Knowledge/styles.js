@@ -6,6 +6,7 @@ export default makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(0),
     position: 'relative',
+    
   },
   root: {
     flexGrow: 1,
@@ -17,5 +18,7 @@ export default makeStyles((theme) => ({
     width:'100%',
     height: '100%', 
     textAlign: 'center',
+    background: "transparent",
+    border: "transparent",
   },
 }));

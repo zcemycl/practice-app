@@ -36,6 +36,7 @@
     "react-scripts": "4.0.3",
     "react-swipeable-views": "^0.13.9",
     "react-three-gui": "^0.4.2",
+    "reactour": "^1.18.3",
     "recharts": "^2.0.9",
     "roughjs": "^4.3.1",
     "socket.io": "^4.0.1",

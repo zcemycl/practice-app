@@ -16,23 +16,23 @@
       },
       "labelHighlightBold": true,
       "color": {
-        "border": "white",
-        "background": "white",
+        "border": "transparent",
+        "background": "transparent",
         "hover": {
           "border": "transparent",
-          "background": "white"
+          "background": "transparent"
         },
         "highlight": {
           "border": "transparent",
-          "background": "white"
+          "background": "transparent"
         }
       },
       "font": {
-        "background": "white",
-        "strokeWidth": 2
+        "background": "transparent",
+        "strokeWidth": 3
       },
-      "margin": 0,
-      "borderWidth": 5
+      "margin": 10,
+      "borderWidth": 10
     },
     "physics": {
       "enabled": true
