@@ -18,7 +18,7 @@ const Knowledge = () => {
         spacing={0}
         className={classes.grid}>
         <Grid xs={12} sm={10} md={8} lg={6} item={true}>
-            <Card className={classes.card}>
+            <Card className={classes.card} >
                 {showIframe ? <ContentFarm nodeId={logoId}/>
                   : <Tree data={data} logoId={logoId} setLogoId={setLogoId}
                         setShowIframe={setShowIframe}/>}

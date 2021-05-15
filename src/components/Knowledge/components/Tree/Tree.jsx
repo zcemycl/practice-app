@@ -115,7 +115,7 @@ const Tree = ({data,logoId,setLogoId,setShowIframe}) => {
           }
         },
         click: (e) => {
-          console.log(e);
+          // console.log(e);
           if (e.event && e.nodes.length===0 && e.edges.length===0 && network){
             network.net.moveTo({position:{x:0,y:0},scale:scale,animation:true});
           }
