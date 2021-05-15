@@ -5,7 +5,7 @@ import useStyles from './styles';
 import { Link } from 'react-router-dom';
 
 const options = [
-    {id: 0, name: 'Progressive Graph', root: "/"},
+    {id: 0, name: 'Progressive Graph', root: "/prograph"},
     {id: 1, name: 'Authentication', root: "/auth"},
     {id: 2, name: 'Image Display', root: "/imgdisplay"},
     {id: 3, name: 'Chatapp', root: "/chatapp"},
@@ -13,14 +13,14 @@ const options = [
     {id: 5, name: 'Like Comment', root: "/commentlike"},
     {id: 6, name: '3D Map', root: "/map"},
     {id: 7, name: 'Image Annotation', root: "/annotate"},
-    {id: 8, name: 'Knowledge Graph', root: "/knowledge"},
+    {id: 8, name: 'Knowledge Graph', root: "/"},
 ]
 
 const ITEM_HEIGHT = 12*Math.max(options.length,12);
 
 const Navbar = () => {
     const classes = useStyles();
-    const [selected, setSelected] = useState('Progressive Graph');
+    const [selected, setSelected] = useState('Knowledge Graph');
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 

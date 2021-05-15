@@ -34,7 +34,7 @@ const App = () => {
             </div>
             <Navbar/>
             <Switch>
-                <Route exact path="/" component={ProGraph}/>
+                <Route exact path="/prograph" component={ProGraph}/>
                 <Route path="/auth">
                     <Auth isAuth={isAuth} setIsAuth={setIsAuth}/>
                 </Route>
@@ -47,7 +47,7 @@ const App = () => {
                 <Route path="/map" component={Map}/>
                 <Route path="/commentlike" component={CommentLike}/>
                 <Route path="/annotate" component={Annotate}/>
-                <Route path="/knowledge" component={Knowledge}/>
+                <Route path="/" component={Knowledge}/>
                 <ProtectedRoute path="/profile" component={Profile}
                     isAuth={isAuth}/>
                 <Route component={NotFound}/>
