@@ -19,6 +19,8 @@ Website: [https://zcemycl.github.io/practice-app/](https://zcemycl.github.io/pra
   - Comment -- Ably
 - 3D City Map
   - OpenStreetMap and Blender
+- UK Map
+  - Simple map
 - Image Annotation
   - rough -- draw, drag, resize and delete
   - Maybe connect to S3 for data synchronization
