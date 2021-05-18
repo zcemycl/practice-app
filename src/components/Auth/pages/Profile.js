@@ -30,58 +30,58 @@ const Profile = () => {
                     <Card className={classes.card}>
 
                         <ComposableMap 
-                            data-tip=""
-                            projection="geoAzimuthalEqualArea"
-                            projectionConfig={{
-                                rotate: [3.0, -53.0, -11],
-                                scale: 3000
-                            }}
-                            width={300}
-                            height={300}
-                            style={{overflow:"auto",height:"100%",width:"100%"}}
-                            >
-                            <ZoomableGroup zoom={1}
-                                maxZoom={12}>
-                            <Geographies geography={geoUrl}
-                            >
-                            {({ geographies }) =>
-                                geographies.map(geo => (
-                                    <Geography
-                                    key={geo.rsmKey}
-                                    geography={geo}
-                                    style={{
-                                        default: {
-                                            fill:"darkseagreen",
-                                            stroke:"#EAEAEC",
-                                            strokeWidth:.25,
-                                            outline:"none"
-                                        },
-                                        hover: {
-                                            fill:"lightgreen",
-                                            stroke:"grey",
-                                            strokeWidth:.25,
-                                            outline:"none"
-                                        },
-                                        pressed: {
-                                            fill:"lightgreen",
-                                            stroke:"grey",
-                                            strokeWidth:.25,
-                                            outline:"none"
-                                        }
-                                    }}
-                                    onMouseEnter={()=>{
-                                        const {NAME_1,NAME_2,TYPE_2}=geo.properties;
-                                        setContent(`${NAME_1}: ${NAME_2}: ${TYPE_2}`);
-                                    }}
-                                    onMouseLeave={()=>{
-                                        setContent("")
-                                    }}
-                                    onClick={handleClick(geo.properties)}
-                                    />
-                                ))
+                        data-tip=""
+                        projection="geoAzimuthalEqualArea"
+                        projectionConfig={{
+                            rotate: [3.0, -53.0, -11],
+                            scale: 3000
+                        }}
+                        width={300}
+                        height={300}
+                        style={{overflow:"auto",height:"100%",width:"100%"}}
+                        >
+                        <ZoomableGroup zoom={1}
+                            maxZoom={12}>
+                        <Geographies geography={geoUrl}
+                        >
+                        {({ geographies }) =>
+                            geographies.map(geo => (
+                            <Geography
+                            key={geo.rsmKey}
+                            geography={geo}
+                            style={{
+                                default: {
+                                    fill:"darkseagreen",
+                                    stroke:"#EAEAEC",
+                                    strokeWidth:.25,
+                                    outline:"none"
+                                },
+                                hover: {
+                                    fill:"lightgreen",
+                                    stroke:"grey",
+                                    strokeWidth:.25,
+                                    outline:"none"
+                                },
+                                pressed: {
+                                    fill:"lightgreen",
+                                    stroke:"grey",
+                                    strokeWidth:.25,
+                                    outline:"none"
                                 }
-                            </Geographies>
-                            </ZoomableGroup>
+                            }}
+                            onMouseEnter={()=>{
+                                const {NAME_1,NAME_2,TYPE_2}=geo.properties;
+                                setContent(`${NAME_1}: ${NAME_2}: ${TYPE_2}`);
+                            }}
+                            onMouseLeave={()=>{
+                                setContent("")
+                            }}
+                            onClick={handleClick(geo)}
+                            />
+                        ))
+                        }
+                        </Geographies>
+                        </ZoomableGroup>
                         </ComposableMap>
                         <ReactTooltip>{content}</ReactTooltip>
                     </Card>
