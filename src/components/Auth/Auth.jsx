@@ -29,7 +29,7 @@ const Auth = ({isAuth,setIsAuth}) => {
                 direction="row"
                 spacing={0}
                 className={classes.grid}>
-                <Grid xs={12} sm={6} md={4} lg={3}>
+                <Grid xs={12} sm={6} md={4} lg={3} item={true}>
                     <Card className={classes.card}>
                         <CardContent><Typography variant="h5">
                         Login Form

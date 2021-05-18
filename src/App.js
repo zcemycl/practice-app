@@ -34,20 +34,20 @@ const App = () => {
             </div>
             <Navbar/>
             <Switch>
+                <Route exact path="/" component={Knowledge}/>
                 <Route exact path="/prograph" component={ProGraph}/>
-                <Route path="/auth">
+                <Route exact path="/auth">
                     <Auth isAuth={isAuth} setIsAuth={setIsAuth}/>
                 </Route>
-                <Route path="/imgdisplay" component={Random}/>
-                <Route path="/chatapp" component={Chatapp}/>
-                <Route path="/3d" component={ThreeFiber}/>
-                <Route path="/shop">
+                <Route exact path="/imgdisplay" component={Random}/>
+                <Route exact path="/chatapp" component={Chatapp}/>
+                <Route exact path="/3d" component={ThreeFiber}/>
+                <Route exact path="/shop">
                     <Products products={products}/>
                 </Route>
-                <Route path="/map" component={Map}/>
-                <Route path="/commentlike" component={CommentLike}/>
-                <Route path="/annotate" component={Annotate}/>
-                <Route path="/" component={Knowledge}/>
+                <Route exact path="/map" component={Map}/>
+                <Route exact path="/commentlike" component={CommentLike}/>
+                <Route exact path="/annotate" component={Annotate}/>
                 <ProtectedRoute path="/profile" component={Profile}
                     isAuth={isAuth}/>
                 <Route component={NotFound}/>
