@@ -24,7 +24,7 @@ const Map = () => {
             direction="row"
             spacing={0}
             className={classes.grid}>
-            <Grid xs={12} sm={10} md={8} lg={6}>
+            <Grid xs={12} sm={10} md={8} lg={6} item={true}>
                 <Card className={classes.card}>
                     <Canvas 
                         camera={{position:[5,100,20],

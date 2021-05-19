@@ -13,7 +13,7 @@ const Random = () => {
                 direction="row"
                 spacing={0}
                 className={classes.grid}>
-                <Grid xs={12} sm={6} md={4} lg={3}>
+                <Grid xs={12} sm={6} md={4} lg={3} item={true}>
                     <Card className={classes.card}>
                     <CardMedia component="img" image={image2b} 
                         title="2b"></CardMedia>

@@ -55,9 +55,9 @@ const Chatapp = () => {
                 direction="row"
                 spacing={0}
                 className={classes.grid}>
-            <Grid xs={12} sm={8} md={6} lg={4}>
+            <Grid xs={12} sm={8} md={6} lg={4} item={true}>
                 <Card className={classes.card}>
-                    <CardContent class={classes.message_holder}>
+                    <CardContent className={classes.message_holder}>
                     <Typography variant="h5" 
                         style={{padding:'0 0 5%'}}>
                     Chatapp
@@ -69,7 +69,8 @@ const Chatapp = () => {
                     <Message target="other" name="Admin" msg="Feel free to share this link, and start chatting. The record won't be stored."/>
 
                     {arr.map((item)=>{
-                        return <Message target={item.same ? "me":"other"} 
+                        return <Message key={item.senderId} 
+                            target={item.same ? "me":"other"} 
                             name={item.user+' '+item.senderId.substring(0,6)}
                             msg={item.body}/>
                     })}
