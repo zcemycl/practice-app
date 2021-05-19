@@ -78,7 +78,7 @@ class CommentLike extends Component {
             direction="row"
             spacing={0}
             className={classes.grid}>
-            <Grid xs={12} sm={10} md={8} lg={6} itme={true}>
+            <Grid xs={12} sm={10} md={8} lg={6} item={true}>
                 <Card className={classes.card}>
                 <Provider apiKey={process.env.REACT_APP_LYKET_API_TOKEN}>
                     <CardContent className={classes.cardcontent}>
