@@ -1,23 +1,31 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import { withRouter } from 'react-router-dom';
 import { Grid, Card } from '@material-ui/core';
 import { ComposableMap,
     Geographies, ZoomableGroup,
-    Geography } from "react-simple-maps";
+    Geography, Marker } from "react-simple-maps";
 import useStyles from './styles';
 import ReactTooltip from 'react-tooltip';
-
-// import data from './uk-counties.json';
+import { csv } from "d3-fetch";
 
 const geoUrl =
   "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/united-kingdom/uk-counties.json";
 
 const Profile = () => {
     const [content,setContent] = useState("");
+    const [data,setData] = useState([]);
     const classes = useStyles();
     const handleClick = geo => () => {
         console.log(geo);
     }
+    useEffect(() => {
+        csv("./data/postcode-outcodes.csv").then(outcodes => {
+          setData(outcodes);
+        //   console.log(outcodes);
+        });
+      }, []);
+
+    
     return (
         <div className={classes.content} >
             <div className={classes.toolbar}/>
@@ -81,7 +89,23 @@ const Profile = () => {
                         ))
                         }
                         </Geographies>
+                        {
+                            data.map(({id,latitude,longitude,postcode})=>
+                             (<Marker key={id}
+                                    coordinates={[parseFloat(longitude),
+                                    parseFloat(latitude)]} 
+                                    onMouseEnter={() => {
+                                        setContent(postcode);
+                                      }}
+                                    onMouseLeave={() => {
+                                        setContent("");
+                                      }}>
+                                    <circle r={.25} fill="#4169E1" />
+                                </Marker>)
+                            )
+                        }
                         </ZoomableGroup>
+                        
                         </ComposableMap>
                         <ReactTooltip>{content}</ReactTooltip>
                     </Card>
