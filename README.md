@@ -2,6 +2,14 @@
 
 Website: [https://zcemycl.github.io/practice-app/](https://zcemycl.github.io/practice-app/)
 
+### How to Start?
+```
+git clone https://github.com/zcemycl/practice-app.git
+npm install
+touch .env # edit api keys
+npm start
+```
+
 ### Functionalities 
 - Backend connection
   - Real time data graph
