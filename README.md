@@ -21,6 +21,7 @@ Website: [https://zcemycl.github.io/practice-app/](https://zcemycl.github.io/pra
   - OpenStreetMap and Blender
 - UK Map
   - Simple map
+  - Leaflet + Leaflet marker cluster
 - Image Annotation
   - rough -- draw, drag, resize and delete
   - Maybe connect to S3 for data synchronization
