@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import FetchPlot from './FetchPlot/FetchPlot';
 import UIPlot from './UIPlot/UIPlot';
 import SocketPlot from './SocketPlot/SocketPlot';
@@ -7,7 +7,7 @@ import { Grid, MobileStepper, Button } from '@material-ui/core';
 import { KeyboardArrowRight, KeyboardArrowLeft } from '@material-ui/icons';
 import useStyles from './styles';
 
-const ProGraph = () => {
+const ProGraph = ({setSelected}) => {
     const [activeStep, setActiveStep] = React.useState(0);
     const classes = useStyles();
     const theme = useTheme();
@@ -20,6 +20,9 @@ const ProGraph = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
+    useEffect(()=>{
+        setSelected("Progressive Graph");
+    },[setSelected])
 
     const switchPlot = (step) => {
         switch (step) {

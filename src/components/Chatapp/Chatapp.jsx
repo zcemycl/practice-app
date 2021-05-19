@@ -6,7 +6,7 @@ import socketIOClient from 'socket.io-client';
 import Message from './Message';
 import SendIcon from '@material-ui/icons/Send';
 
-const Chatapp = () => {
+const Chatapp = ({setSelected}) => {
     const classes = useStyles();
     const [arr,setArr] = useState([]);
     const valueUser = useRef("");
@@ -15,6 +15,9 @@ const Chatapp = () => {
     // const site = 'https://hidden-dusk-28735.herokuapp.com/session';
     const socketRef = useRef();
     socketRef.current = socketIOClient(site,{reconnection: true});
+    useEffect(()=>{
+        setSelected("Chatapp");
+    },[setSelected])
     useEffect(() => {
         if (socketRef.current.id === undefined){
             socketRef.current = socketIOClient(site,{reconnection: true});

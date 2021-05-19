@@ -14,13 +14,13 @@ const options = [
     {id: 6, name: '3D Map', root: "/map"},
     {id: 7, name: 'Image Annotation', root: "/annotate"},
     {id: 8, name: 'Progressive Graph', root: "/prograph"},
+    {id: 9, name: 'Cluster Map', root: "/clustermap"},
 ]
 
 const ITEM_HEIGHT = 12*Math.max(options.length,12);
 
-const Navbar = () => {
+const Navbar = ({selected,setSelected}) => {
     const classes = useStyles();
-    const [selected, setSelected] = useState('Knowledge Graph');
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 

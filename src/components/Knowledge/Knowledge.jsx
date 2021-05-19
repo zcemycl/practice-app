@@ -1,13 +1,16 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import { Grid, Card } from '@material-ui/core';
 import useStyles from './styles';
 import data from "./data.json";
 import {ButtonsGrid,Tree,ContentFarm} from "./components";
 
-const Knowledge = () => {
-  const classes = useStyles();
-  const [showIframe, setShowIframe] = useState(false);
-  const [logoId,setLogoId] = useState(null);
+const Knowledge = ({setSelected}) => {
+    const classes = useStyles();
+    const [showIframe, setShowIframe] = useState(false);
+    const [logoId,setLogoId] = useState(null);
+    useEffect(()=>{
+        setSelected("Knowledge Graph");
+    },[setSelected])
 
 	return (
     <div className={classes.content}>

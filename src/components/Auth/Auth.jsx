@@ -1,13 +1,16 @@
-import React, {useRef} from 'react';
+import React, {useRef,useEffect} from 'react';
 import useStyles from './styles';
 import { Redirect } from 'react-router-dom';
 import { Grid, Card, CardContent, Typography } from '@material-ui/core';
 import LoginForm from './LoginForm';
 
-const Auth = ({isAuth,setIsAuth}) => {
+const Auth = ({isAuth,setIsAuth,setSelected}) => {
     const classes = useStyles();
     const valueUser = useRef('');
     const valuePwd = useRef('');
+    useEffect(()=>{
+        setSelected("Authentication");
+    },[setSelected])
     const handleSignIn = () => {
         const key = process.env.REACT_APP_SECRET_CODE;
         const isUser=valueUser.current.value===key;

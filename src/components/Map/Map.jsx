@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, {Suspense,useEffect} from 'react';
 import { Canvas, useLoader } from '@react-three/fiber';
 import useStyles from './styles';
 import { Grid, Card } from '@material-ui/core';
@@ -14,8 +14,11 @@ const Victoria = () =>{
     );
 }
 
-const Map = () => {
+const Map = ({setSelected}) => {
     const classes = useStyles();
+    useEffect(()=>{
+        setSelected("3D Map");
+    },[setSelected])
     return (
         <div className={classes.content}>
         <div className={classes.toolbar}/>

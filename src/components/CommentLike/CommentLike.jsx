@@ -37,6 +37,7 @@ class CommentLike extends Component {
         super(props);
         this.handleAddComment = this.handleAddComment.bind(this);
         this.state = {comments: []}
+        props.setSelected("Like Comment")
     }
 
     componentDidMount() {

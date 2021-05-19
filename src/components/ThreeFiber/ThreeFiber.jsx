@@ -1,4 +1,4 @@
-import React, { useRef,Suspense } from 'react';
+import React, {useEffect,useRef,Suspense} from 'react';
 import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import useStyles from './styles';
 import { Grid, Card } from '@material-ui/core';
@@ -32,8 +32,11 @@ const Woman = () =>{
     );
 }
 
-const ThreeFiber = () => {
+const ThreeFiber = ({setSelected}) => {
     const classes = useStyles();
+    useEffect(()=>{
+        setSelected("3D Scene");
+    },[setSelected])
     return (
         <div className={classes.content}>
         <div className={classes.toolbar}/>

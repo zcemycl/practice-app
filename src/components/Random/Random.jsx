@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import useStyles from './styles';
 import { Grid, Card, CardMedia, CardContent, Typography } from '@material-ui/core';
 import image2b from './2b.png';
 
-const Random = () => {
+const Random = ({setSelected}) => {
     const classes = useStyles();
+    useEffect(()=>{
+        setSelected("Image Display");
+    },[setSelected])
     return (
         <div className={classes.content}>
             <div className={classes.toolbar}/>

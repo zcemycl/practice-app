@@ -10,3 +10,4 @@ export { default as NotFound } from './NotFound/NotFound';
 export { default as Map } from './Map/Map';
 export { default as Annotate } from './Annotate/Annotate';
 export { default as Knowledge } from './Knowledge/Knowledge';
+export { default as Leaflet } from './Leaflet/Leaflet';

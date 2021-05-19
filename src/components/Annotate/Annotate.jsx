@@ -1,11 +1,11 @@
-import React, { useRef,useState } from 'react';
+import React, {useEffect,useRef,useState} from 'react';
 import useStyles from './styles';
 import { Grid,Card } from '@material-ui/core';
 import { TextInfo,Board,FileManage,FileDownload } from './components';
 import { LabelSelect,DelRename,ModeSelect } from './components';
 import placeholder from './kitchen1.jpg';
 
-const Annotate = () => {
+const Annotate = ({setSelected}) => {
     const classes = useStyles();
     const targetRef = useRef();
     const [elements,setElements] = useState([]);
@@ -21,6 +21,10 @@ const Annotate = () => {
     const [dims, setDims] = useState({width:imgW,height:imgH});
     const [label, setLabel] = useState("Class A");
     const [mode, setMode] = useState("Box");
+
+    useEffect(()=>{
+        setSelected("Image Annotation");
+    },[setSelected])
     
     return (
         <div className={classes.content}>

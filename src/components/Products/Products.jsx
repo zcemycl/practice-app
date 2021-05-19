@@ -1,11 +1,14 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Grid } from '@material-ui/core';
 import Product from './Product/Product';
 
 import useStyles from './styles';
 
-const Products = ({ products }) => {
+const Products = ({ products,setSelected }) => {
     const classes = useStyles();
+    useEffect(()=>{
+        setSelected("");
+    },[setSelected])
     return (
         <main className={classes.content}>
             <div className={classes.toolbar}/>
