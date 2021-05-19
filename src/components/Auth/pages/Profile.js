@@ -16,16 +16,14 @@ const Profile = () => {
     const [data,setData] = useState([]);
     const classes = useStyles();
     const handleClick = geo => () => {
-        console.log(geo);
+        // console.log(geo);
     }
     useEffect(() => {
         csv("./data/postcode-outcodes.csv").then(outcodes => {
           setData(outcodes);
-        //   console.log(outcodes);
         });
       }, []);
 
-    
     return (
         <div className={classes.content} >
             <div className={classes.toolbar}/>
@@ -90,19 +88,19 @@ const Profile = () => {
                         }
                         </Geographies>
                         {
-                            data.map(({id,latitude,longitude,postcode})=>
-                             (<Marker key={id}
-                                    coordinates={[parseFloat(longitude),
-                                    parseFloat(latitude)]} 
-                                    onMouseEnter={() => {
-                                        setContent(postcode);
-                                      }}
-                                    onMouseLeave={() => {
-                                        setContent("");
-                                      }}>
-                                    <circle r={.25} fill="#4169E1" />
-                                </Marker>)
-                            )
+                        data.map(({id,latitude,longitude,postcode})=>
+                            (<Marker key={id}
+                                coordinates={[parseFloat(longitude),
+                                parseFloat(latitude)]} 
+                                onMouseEnter={() => {
+                                    setContent(postcode);
+                                    }}
+                                onMouseLeave={() => {
+                                    setContent("");
+                                    }}>
+                                <circle r={.25} fill="#4169E1" />
+                            </Marker>)
+                        )
                         }
                         </ZoomableGroup>
                         

@@ -2,13 +2,14 @@ import React, {useState,useEffect} from 'react'
 import { Grid, Card } from '@material-ui/core';
 import useStyles from './styles';
 import L from 'leaflet';
-import { MapContainer,TileLayer,Marker,Popup } from 'react-leaflet';
+import { MapContainer,TileLayer,Marker,Popup,GeoJSON } from 'react-leaflet';
 import './styles.css'
 import 'leaflet/dist/leaflet.css'
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import { csv } from "d3-fetch";
 import MarkerClusterGroup from "react-leaflet-markercluster";
+import geojsonLondon from './England_London.json'
 
 let DefaultIcon = L.icon({
     iconUrl: icon,
@@ -47,11 +48,9 @@ const Leaflet = ({setSelected}) => {
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
-                    {/* <Marker position={position}>
-                        <Popup>
-                            A pretty CSS3 popup. <br /> Easily customizable.
-                        </Popup>
-                    </Marker> */}
+                    <GeoJSON key="my-geojson" data={geojsonLondon}
+                        style={{fillColor:'blue',
+                                fillOpacity: 0.1}}/>
                     <MarkerClusterGroup>
                     {
                     data.map(({id,latitude,longitude,postcode})=>
