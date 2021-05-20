@@ -53,7 +53,23 @@ const Leaflet = ({setSelected}) => {
             .then((response)=> response.text())
             .then((kmlText)=>{
                 const parser = new DOMParser();
-                const doc = parser.parseFromString(kmlText,'text/html');
+                // const re = new RegExp('^(<Style\b[^>]*>)[^<>]*(<\/Style>)$','i');
+                // kmlText = kmlText.replace(re,
+                //     "$1<PolyStyle><color>71ff33</color></PolyStyle>$2")
+                // console.log(kmlText)
+                var doc = parser.parseFromString(kmlText,'text/html');
+                // var style = doc.createElement("Style");
+                // var polystyle = doc.createElement("PolyStyle");
+                // var color = doc.createElement("color");
+                // var colorcode = doc.createTextNode("71ff33");
+                // color.appendChild(colorcode);
+                // polystyle.appendChild(color);
+                // style.appendChild(polystyle);
+                // console.log(style.outerHTML)
+                // var oldstyle = doc.querySelector("style");
+                // var parent = doc.querySelector("placemark");
+                // parent.replaceChild(style,oldstyle);
+                // console.log(doc)
                 setKml(doc);
             })
     },[]);
