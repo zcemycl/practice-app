@@ -47,7 +47,7 @@ const App = () => {
                 hour:'2-digit',minute:'2-digit',second:'2-digit'})
                 .format(currentTimestamp)
             const ip = await publicIp.v4({fallbackUrls:["https://ifconfig.co/ip"]});
-            if (selected!==""){
+            if (selected!=="" && country!==""){
                 const objt = {IP:ip,Topic:selected,Timestamp:date,Country:country};
                 axios.post(sheeturi,objt)
                     .then((response) => {
