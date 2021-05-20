@@ -9,12 +9,15 @@ import useStyles from './styles';
 import Profile from './components/Auth/pages/Profile';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 import { commerce } from './components/lib/commerce';
+import axios from 'axios';
+import publicIp from 'public-ip'
 
 const App = () => {
     const classes = useStyles();
     const [products, setProducts] = useState([]);
     const [isAuth, setIsAuth] = useState(false);
     const [selected, setSelected] = useState('Knowledge Graph');
+    const [country,setCountry] = useState("");
 
     const fetchProducts = async () => {
         const { data } = await commerce.products.list();
@@ -24,6 +27,29 @@ const App = () => {
     useEffect(() => {
         fetchProducts();
     }, []);
+
+    useEffect(async () => {
+        await axios.get('https://ipapi.co/json/').then((response) => {
+            let data = response.data;
+            setCountry(data.country_name)
+        }).catch((error) => {
+            console.log(error);
+        });
+
+        let currentTimestamp = Date.now()
+        let date = new Intl.DateTimeFormat('en-US',
+            {year:'numeric',month:'2-digit',day:'2-digit',
+            hour:'2-digit',minute:'2-digit',second:'2-digit'})
+            .format(currentTimestamp)
+        const ip = await publicIp.v4({fallbackUrls:["https://ifconfig.co/ip"]});
+        const objt = {IP:ip,Topic:selected,Timestamp:date,Country:country};
+
+		await axios.post(
+            'https://sheet.best/api/sheets/82c23d79-9535-4ef8-9970-f59acfed6f0a',objt)
+            .then((response) => {
+                console.log(response);
+            });
+    }, [selected]);
 
     return (
         <Router basename="/practice-app">
