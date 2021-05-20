@@ -12,11 +12,13 @@ import { commerce } from './components/lib/commerce';
 import axios from 'axios';
 import publicIp from 'public-ip'
 
+const sheeturi = 'https://sheet.best/api/sheets/82c23d79-9535-4ef8-9970-f59acfed6f0a'
+
 const App = () => {
     const classes = useStyles();
     const [products, setProducts] = useState([]);
     const [isAuth, setIsAuth] = useState(false);
-    const [selected, setSelected] = useState('Knowledge Graph');
+    const [selected, setSelected] = useState('');
     const [country,setCountry] = useState("");
 
     const fetchProducts = async () => {
@@ -28,28 +30,33 @@ const App = () => {
         fetchProducts();
     }, []);
 
-    useEffect(async () => {
+    const updateCountry = async () => {
         await axios.get('https://ipapi.co/json/').then((response) => {
-            let data = response.data;
-            setCountry(data.country_name)
-        }).catch((error) => {
-            console.log(error);
-        });
+            const data = response.data;
+            setCountry(data.country_name);
+        })
+    }
 
-        let currentTimestamp = Date.now()
-        let date = new Intl.DateTimeFormat('en-US',
-            {year:'numeric',month:'2-digit',day:'2-digit',
-            hour:'2-digit',minute:'2-digit',second:'2-digit'})
-            .format(currentTimestamp)
-        const ip = await publicIp.v4({fallbackUrls:["https://ifconfig.co/ip"]});
-        const objt = {IP:ip,Topic:selected,Timestamp:date,Country:country};
+    updateCountry();
 
-		await axios.post(
-            'https://sheet.best/api/sheets/82c23d79-9535-4ef8-9970-f59acfed6f0a',objt)
-            .then((response) => {
-                console.log(response);
-            });
-    }, [selected]);
+    useEffect(() => {
+        const getVisitorInfo = async ({country}) => {    
+            let currentTimestamp = Date.now()
+            let date = new Intl.DateTimeFormat('en-US',
+                {year:'numeric',month:'2-digit',day:'2-digit',
+                hour:'2-digit',minute:'2-digit',second:'2-digit'})
+                .format(currentTimestamp)
+            const ip = await publicIp.v4({fallbackUrls:["https://ifconfig.co/ip"]});
+            if (selected!==""){
+                const objt = {IP:ip,Topic:selected,Timestamp:date,Country:country};
+                axios.post(sheeturi,objt)
+                    .then((response) => {
+                        console.log(response);
+                    });
+            }}
+        getVisitorInfo({country});
+        
+        }, [selected,country]);
 
     return (
         <Router basename="/practice-app">

@@ -5,7 +5,7 @@ import { Grid, Card, CardContent, Typography } from '@material-ui/core';
 const NotFound = ({setSelected}) => {
     const classes = useStyles();
     useEffect(()=>{
-        setSelected("");
+        setSelected("Not Found");
     },[setSelected])
     return (
         <div className={classes.content}>

@@ -7,7 +7,7 @@ import useStyles from './styles';
 const Products = ({ products,setSelected }) => {
     const classes = useStyles();
     useEffect(()=>{
-        setSelected("");
+        setSelected("Shop");
     },[setSelected])
     return (
         <main className={classes.content}>
