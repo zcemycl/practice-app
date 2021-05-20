@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/practice-app/static/css/main.a472b21a.chunk.css",
-    "main.js": "/practice-app/static/js/main.ef1defb4.chunk.js",
-    "main.js.map": "/practice-app/static/js/main.ef1defb4.chunk.js.map",
+    "main.js": "/practice-app/static/js/main.f16bcae6.chunk.js",
+    "main.js.map": "/practice-app/static/js/main.f16bcae6.chunk.js.map",
     "runtime-main.js": "/practice-app/static/js/runtime-main.23cc5f4e.js",
     "runtime-main.js.map": "/practice-app/static/js/runtime-main.23cc5f4e.js.map",
     "static/css/2.b4ebbe46.chunk.css": "/practice-app/static/css/2.b4ebbe46.chunk.css",
@@ -22,6 +22,6 @@
     "static/css/2.b4ebbe46.chunk.css",
     "static/js/2.07e940ca.chunk.js",
     "static/css/main.a472b21a.chunk.css",
-    "static/js/main.ef1defb4.chunk.js"
+    "static/js/main.f16bcae6.chunk.js"
   ]
 }
