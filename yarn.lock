@@ -4270,6 +4270,11 @@
   dependencies:
     "cross-env" "^6.0.3"
 
+"chroma-js@1.1.1":
+  "integrity" "sha1-m7lDSVkzbs51cAqq3+7ccYBtjAU="
+  "resolved" "https://registry.npmjs.org/chroma-js/-/chroma-js-1.1.1.tgz"
+  "version" "1.1.1"
+
 "chrome-trace-event@^1.0.2":
   "integrity" "sha512-9e/zx1jw7B4CO+c/RXoCsfg/x1AfUBioy4owYH0bJprEYAx5hRFLRhWBqHAG57D0ZM4H7vxbP7bPe0VwhQRYDQ=="
   "resolved" "https://registry.npmjs.org/chrome-trace-event/-/chrome-trace-event-1.0.2.tgz"
@@ -11304,6 +11309,13 @@
   "integrity" "sha512-INBT1QEgtcCCgvccr5/86CfD71fw9EPmDxgiJX4I2Ddr6ZsV6iFXsuby+qWJPtmNuMY0zByTsG4468P7nHuNWA=="
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.10.2.tgz"
   "version" "16.10.2"
+
+"react-leaflet-choropleth@^2.0.1":
+  "integrity" "sha512-OACZWbcPgQ+WI2LxI6xalHQukTcHAolcSd+ZbNtNmMOK4xN1ITWRPb8bFIPlVmofh6iYFv7SGlz8YrkjeDSQ5g=="
+  "resolved" "https://registry.npmjs.org/react-leaflet-choropleth/-/react-leaflet-choropleth-2.0.1.tgz"
+  "version" "2.0.1"
+  dependencies:
+    "chroma-js" "1.1.1"
 
 "react-leaflet-kml@^2.0.2":
   "integrity" "sha512-7WmSwWgLQU/deXf9k8pzxYruSEA2ti1YUOU5PJ5zFZv5P4mkkonbHXxqRuekExKyFZb+oTs02UWbv1oJPVVVNQ=="

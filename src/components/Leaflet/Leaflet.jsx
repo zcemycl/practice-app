@@ -11,6 +11,8 @@ import { csv } from "d3-fetch";
 import MarkerClusterGroup from "react-leaflet-markercluster";
 import geojsonLondon from './England_London.json'
 import ReactLeafletKml from 'react-leaflet-kml';
+import Choropleth from "react-leaflet-choropleth";
+import country_geo from './country.json';
 
 let DefaultIcon = L.icon({
     iconUrl: icon,
@@ -26,6 +28,15 @@ const Leaflet = ({setSelected}) => {
     const center = [51.505, -0.09]
     const [data,setData] = useState([]);
     const [Kml,setKml] = useState(null);
+
+    const style = {
+        fillColor: "#F28F3B",
+        weight: 2,
+        opacity: 1,
+        color: "white",
+        dashArray: "3",
+        fillOpacity: 0.5
+      };
 
     useEffect(()=>{
         setSelected("Cluster Map");
@@ -58,6 +69,20 @@ const Leaflet = ({setSelected}) => {
             <Grid xs={12} sm={10} md={8} lg={6} item={true}>
                 <Card className={classes.card}>
                 <MapContainer center={center} zoom={9}>
+                <Choropleth
+                    data={{ type: "FeatureCollection", features: country_geo.features }}
+                    valueProperty={feature => feature.properties.value}
+                    scale={["#b3cde0", "#011f4b"]}
+                    steps={7}
+                    mode="e"
+                    style={style}
+                    onEachFeature={(feature, layer) =>
+                        layer.bindPopup(
+                        feature.properties.name + " " + feature.properties.type
+                        )
+                    }
+                    //onEachFeature={this.onEachFeature}
+                    />
                     <TileLayer
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
