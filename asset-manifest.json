@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/practice-app/static/css/main.098a7884.chunk.css",
+    "main.css": "/practice-app/static/css/main.5ee5ee34.chunk.css",
     "main.js": "/practice-app/static/js/main.345a1472.chunk.js",
     "main.js.map": "/practice-app/static/js/main.345a1472.chunk.js.map",
     "runtime-main.js": "/practice-app/static/js/runtime-main.23cc5f4e.js",
@@ -10,7 +10,7 @@
     "static/js/2.88e5328e.chunk.js.map": "/practice-app/static/js/2.88e5328e.chunk.js.map",
     "index.html": "/practice-app/index.html",
     "static/css/2.b4ebbe46.chunk.css.map": "/practice-app/static/css/2.b4ebbe46.chunk.css.map",
-    "static/css/main.098a7884.chunk.css.map": "/practice-app/static/css/main.098a7884.chunk.css.map",
+    "static/css/main.5ee5ee34.chunk.css.map": "/practice-app/static/css/main.5ee5ee34.chunk.css.map",
     "static/js/2.88e5328e.chunk.js.LICENSE.txt": "/practice-app/static/js/2.88e5328e.chunk.js.LICENSE.txt",
     "static/media/2b.de3029cd.png": "/practice-app/static/media/2b.de3029cd.png",
     "static/media/city.eb3e2962.glb": "/practice-app/static/media/city.eb3e2962.glb",
@@ -21,7 +21,7 @@
     "static/js/runtime-main.23cc5f4e.js",
     "static/css/2.b4ebbe46.chunk.css",
     "static/js/2.88e5328e.chunk.js",
-    "static/css/main.098a7884.chunk.css",
+    "static/css/main.5ee5ee34.chunk.css",
     "static/js/main.345a1472.chunk.js"
   ]
 }
