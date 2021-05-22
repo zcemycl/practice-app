@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://src/components/Leaflet/styles.css"],"names":[],"mappings":"AACA,mBACI,WAAY,CACZ,UAEF,CAEA,kBACE,sBAAuB,CACvB,WACF","file":"main.a472b21a.chunk.css","sourcesContent":["\n.leaflet-container {\n    height: 100%;\n    width: 100%;\n    /* margin: 0 auto; */\n  }\n  \n  .leaflet-div-icon {\n    background: transparent;\n    border: none;\n  }\n  "]}
