@@ -3,9 +3,10 @@ import { Grid, Card } from '@material-ui/core';
 import useStyles from './styles';
 import data from "./data.json";
 import {ButtonsGrid,Tree,ContentFarm} from "./components";
-import {Glitch,Text,Tooltip} from "./components";
+import {Glitch,Text,Tooltip,Arrow} from "./components";
 import Tour from 'reactour'
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import './styles.css';
 
 const Knowledge = ({setSelected,isTourOpen,setIsTourOpen,setAnchorEl}) => {
     const classes = useStyles();
@@ -142,6 +143,9 @@ const Knowledge = ({setSelected,isTourOpen,setIsTourOpen,setAnchorEl}) => {
         content: ()=>(
             <div>
                 <Glitch data-glitch="Shop">Shop</Glitch>
+                <Text color="#e5e5e5">
+                    To donate or buy my services.
+                </Text>
             </div>
         ),
         style: {
@@ -184,6 +188,13 @@ const Knowledge = ({setSelected,isTourOpen,setIsTourOpen,setAnchorEl}) => {
         accentColor={"#5cb7b7"}
         onAfterOpen={disableBody}
         onBeforeClose={enableBody}
+        prevButton={<Arrow
+            className="CustomHelper__navArrow"
+          />}
+        nextButton={<Arrow
+            className="CustomHelper__navArrow"
+            inverted
+          />}
         />
     <ButtonsGrid openTour={()=>setIsTourOpen(true)}
         showIframe={showIframe} setShowIframe={setShowIframe}/>
