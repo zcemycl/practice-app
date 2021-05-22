@@ -43,12 +43,14 @@ python readAnnotate.py [--img str] [--annotatefile str]
   - vis.js -- Show force network.
   - Can act as a table of content.
 - Visitor Tracker
-  -   axios, public-ip, sheet.best, google sheet
+  - axios, public-ip, sheet.best, google sheet
+- React Tour
+  - To guide the ui navigation.
+- Online shop [In Progress]
 - Feedback Form [To-do]
 - Try cytoscapejs, react-diagram, drag and drop, etc.
-- React Tour [To-do]
 - Need to use more lifecycle.
 - Newsletter Subscription [To-do]
-- Online shop [In Progress]
+
 
 ![img](./resources/view.png)
