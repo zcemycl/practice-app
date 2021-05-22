@@ -19,7 +19,8 @@ const App = () => {
     const [products, setProducts] = useState([]);
     const [isAuth, setIsAuth] = useState(false);
     const [selected, setSelected] = useState('');
-    const [country,setCountry] = useState("");
+    const [isTourOpen, setIsTourOpen] = useState(false);
+    const [anchorEl, setAnchorEl] = useState(null);
 
     const fetchProducts = async () => {
         const { data } = await commerce.products.list();
@@ -30,33 +31,23 @@ const App = () => {
         fetchProducts();
     }, []);
 
-    const updateCountry = async () => {
-        await axios.get('https://ipapi.co/json/').then((response) => {
-            const data = response.data;
-            setCountry(data.country_name);
-        })
-    }
-
-    updateCountry();
-
     useEffect(() => {
-        const getVisitorInfo = async ({country}) => {    
+        const getVisitorInfo = async () => {    
             let currentTimestamp = Date.now()
             let date = new Intl.DateTimeFormat('en-US',
                 {year:'numeric',month:'2-digit',day:'2-digit',
                 hour:'2-digit',minute:'2-digit',second:'2-digit'})
                 .format(currentTimestamp)
             const ip = await publicIp.v4({fallbackUrls:["https://ifconfig.co/ip"]});
-            if (selected!=="" && country!==""){
-                const objt = {IP:ip,Topic:selected,Timestamp:date,Country:country};
+            if (selected!=="" ){
+                const objt = {IP:ip,Topic:selected,Timestamp:date};
                 axios.post(sheeturi,objt)
                     .then((response) => {
                         console.log(response);
                     });
             }}
-        getVisitorInfo({country});
-        
-        }, [selected,country]);
+        getVisitorInfo();
+        }, [selected]);
 
     return (
         <Router basename="/practice-app">
@@ -65,10 +56,14 @@ const App = () => {
                 <Particles className={classes.particles}
                     config={particlesConfig}/>               
             </div>
-            <Navbar selected={selected} setSelected={setSelected}/>
+            <Navbar selected={selected} setSelected={setSelected}
+                setIsTourOpen={setIsTourOpen} anchorEl={anchorEl}
+                setAnchorEl={setAnchorEl}/>
             <Switch>
                 <Route exact path="/" render={(props) => (
-                    <Knowledge {...props} setSelected={setSelected}/>)}/>
+                    <Knowledge {...props} setSelected={setSelected}
+                     isTourOpen={isTourOpen} setIsTourOpen={setIsTourOpen}
+                     setAnchorEl={setAnchorEl}/>)}/>
                 <Route exact path="/prograph" render={(props) => (
                     <ProGraph {...props} setSelected={setSelected}/>)}/>
                 <Route exact path="/auth">

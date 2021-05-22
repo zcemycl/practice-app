@@ -61,7 +61,7 @@ const Leaflet = ({setSelected}) => {
                 // var style = doc.createElement("Style");
                 // var polystyle = doc.createElement("PolyStyle");
                 // var color = doc.createElement("color");
-                // var colorcode = doc.createTextNode("71ff33");
+                // var colorcode = doc.createTextNode("7dff0000");
                 // color.appendChild(colorcode);
                 // polystyle.appendChild(color);
                 // style.appendChild(polystyle);

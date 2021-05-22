@@ -124,10 +124,11 @@ const Tree = ({data,logoId,setLogoId,setShowIframe}) => {
       };
     
     return (
-        <div onMouseMove={handleMouseMove} 
+        <div data-tut="reactour__tree" 
+            onMouseMove={handleMouseMove} 
             onMouseOver={handleMouseMove}
             style={{ height:"100%", width:"100%" }}>
-            <Graph
+            <Graph 
             graph={graph}
             options={toptions}
             events={events}
