@@ -18,6 +18,7 @@ npm start
 |Backend Support|[flask2react](https://github.com/zcemycl/flask2react)|Support chatapp socket, fetch non-dynamic and dynamic data. |
 |Router|[Link](https://github.com/zcemycl/practice-app/blob/master/src/App.js)|Enable access to different pages.|
 |Single Page Application|[Link](https://github.com/zcemycl/practice-app/tree/master/public)|Enable resources suffix.|
+|Particle Background|[Link](https://github.com/zcemycl/practice-app/blob/master/src/App.js#L8)|Website animated background.|
 |Navigation Bar|[Link](https://github.com/zcemycl/practice-app/blob/master/src/components/Navbar/Navbar.jsx)|Link the home page to different demos and profiles.|
 |Slider Graph|[Link](https://github.com/zcemycl/practice-app/blob/master/src/components/ProGraph/UIPlot/UIPlot.jsx)|Update datapoint dynamically via slider control.|
 |Fetch Data Graph|[Link](https://github.com/zcemycl/practice-app/blob/master/src/components/ProGraph/FetchPlot/FetchPlot.jsx)|Fetch JSON data via REST API from flask2react.|
