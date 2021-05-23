@@ -1,6 +1,9 @@
 # Yui's Responsive [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Website: [https://zcemycl.github.io/practice-app/](https://zcemycl.github.io/practice-app/)
+
+
+![img](./resources/demo.gif)
 ### How to Start?
 ```
 git clone https://github.com/zcemycl/practice-app.git
@@ -32,4 +35,3 @@ npm start
 |Online Shop|[Link](https://github.com/zcemycl/practice-app/blob/master/src/components/Products/Products.jsx)||
 
 
-![img](./resources/view.png)
