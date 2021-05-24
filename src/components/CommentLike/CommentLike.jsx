@@ -1,11 +1,11 @@
 import React,{Component} from 'react';
-import { Grid,Card,CardContent,Typography,Divider } from '@material-ui/core';
+import { Grid,Card,CardContent,Typography } from '@material-ui/core';
 import { Provider,LikeButton,ClapButton,UpdownButton } from '@lyket/react';
 import { withStyles } from '@material-ui/core/styles';
-import CommentBox from './CommentBox';
-import Comments from './Comments';
-require('./ably');
-
+import { Button, Comment, Form, Header } from 'semantic-ui-react'
+import axios from 'axios';
+import publicIp from 'public-ip'
+import './styles.css';
 
 const useStyles = theme => ({
   toolbar: theme.mixins.toolbar,
@@ -18,55 +18,62 @@ const useStyles = theme => ({
     flexGrow: 1,
   },
   grid: {
-    height: '70vh',
   },
   card: {
     maxWidth:'100%',
-    height: '100%', 
     textAlign: 'center',
-    overflow: 'scroll',
+    overflow: 'hidden',
   },
   cardcontent: {
-    paddingBottom: theme.spacing(0),
-    marginBottom: theme.spacing(-3),
+    paddingBottom: theme.spacing(3),
+    // marginBottom: theme.spacing(-3),
+  },
+  margin: {
+    padding: theme.spacing(2),
   },
 });
 
 class CommentLike extends Component {
     constructor(props) {
         super(props);
-        this.handleAddComment = this.handleAddComment.bind(this);
-        this.state = {comments: []}
+        this.state = {data:[],send:{Username:"",Comment:"",Timestamp:"",IP:null}}
+        this.sheeturi = 'https://sheet.best/api/sheets/82c23d79-9535-4ef8-9970-f59acfed6f0a'
         props.setSelected("Like Comment")
     }
 
-    componentDidMount() {
-        /* global Ably */
-        const channel = Ably.channels.get('comments');
-       
-        channel.attach();
-          channel.once('attached', () => {
-            channel.history((err, page) => {
-              /* create a new array with comments */
-              const comments = Array.from(page.items, item => item.data);
-    
-              this.setState({ comments });
-    
-              /* subscribe to new comments */
-              channel.subscribe((msg, err) => {
-                const commentObject = msg['data'];
-                this.handleAddComment(commentObject);
-              });
-            });
-          });
+    submitHandler = e => {
+      e.preventDefault();
+      if (this.state.send.Username && this.state.send.Comment){
+        const newData = this.state.data.concat(this.state.send)
+        this.setState({data:newData})
+        axios.post(this.sheeturi,this.state.send)
+        .then(response => {
+          console.log(response);
+        })
+      }
+      const tmpSend = this.state.send;
+      this.setState({send:{...tmpSend,Comment:""}})
     }
 
-    handleAddComment(comment) {
-    this.setState(prevState => {
-        return {
-        comments: [comment].concat(prevState.comments)
-        };
-    });
+    getIP = async () => {
+      const ip = await publicIp.v4({fallbackUrls:["https://ifconfig.co/ip"]});
+      this.setState({send:{IP:ip}})
+    }
+
+    componentDidMount() {
+      let currentTimestamp = Date.now()
+      let date = new Intl.DateTimeFormat('en-US',
+          {year:'numeric',month:'2-digit',day:'2-digit',
+          hour:'2-digit',minute:'2-digit',second:'2-digit'})
+          .format(currentTimestamp)
+      this.getIP();
+      this.setState({send:{Timestamp:date}});
+
+      axios.get(this.sheeturi)
+        .then(res=>{
+          this.setState({data:res.data})
+        })
+
     }
     
     render() {
@@ -83,41 +90,81 @@ class CommentLike extends Component {
                 <Card className={classes.card}>
                 <Provider apiKey={process.env.REACT_APP_LYKET_API_TOKEN}>
                     <CardContent className={classes.cardcontent}>
+                    <Grid container 
+                      justify="center" 
+                      direction="row"
+                      spacing={0}>
+                      <Grid xs={4} sm={2} md={2} lg={2} item={true}>
                         <Typography variant="h6">
-                            Like Button
+                            Like
                         </Typography>
                         <LikeButton id="how-to-like" namespace="post"
                             component={LikeButton.templates.Twitter}/>
-                    </CardContent>
-                    <CardContent className={classes.cardcontent}>
+                      </Grid>
+                      <Grid xs={4} sm={2} md={2} lg={2} item={true}>
                         <Typography variant="h6">
-                            Clap Button
+                            Clap
                         </Typography>
                         <ClapButton id="how-to-clap" namespace="post"
                             component={ClapButton.templates.Heart}/>
-                    </CardContent>
-                    <CardContent>
+                      </Grid>
+                      <Grid xs={12} sm={4} md={4} lg={4} item={true}>
                         <Typography variant="h6">
-                            UpDownVote Buttons
+                            UpDownVote
                         </Typography>
                         <UpdownButton namespace="my-documentation"
                             id="like-dislike-buttons-api"
                             component={UpdownButton.templates.Chevron}/>
+                      </Grid>
+                      </Grid>
                     </CardContent>
-                    <Divider light /> 
                 </Provider>
-                <section className="section">
-                    <div className="container">
-                    <div className="columns">
-                        <div className="column is-half is-offset-one-quarter">
-                        <CommentBox handleAddComment={this.handleAddComment} />
-                        <Comments comments={this.state.comments} />
-                        </div>
-                    </div>
-                    </div>
-                </section>
 
                 </Card>
+                <div className={classes.content} 
+                  style={{textAlign:'left'}}>
+                <Comment.Group>
+                  <Header as='h3' dividing>
+                    Comments
+                  </Header>
+          
+                  {this.state.data
+                    .filter(data => data.Username && data.Comment)
+                    .map((data,index) => {
+                    if (data.Username && data.Comment){
+                      return <Comment key={index}>
+                          <Comment.Content>
+                            <Comment.Author as='a'>{data.Username}</Comment.Author>
+                            <Comment.Metadata>
+                              <div>{data.Timestamp}</div>
+                            </Comment.Metadata>
+                            <Comment.Text>{data.Comment}</Comment.Text>
+                          </Comment.Content>
+                        </Comment>
+                    }
+                    return <></>
+                  })}
+                  <Form reply>
+                  <Form.Field>
+                    <input placeholder='Username' 
+                      onChange={(e)=>{
+                        const tmpSend = this.state.send;
+                        this.setState({send:{...tmpSend,Username:e.target.value}})
+                      }}/>
+                  </Form.Field>
+                    <Form.TextArea 
+                      placeholder='Kindly leave your thoughts below'
+                      value={this.state.send.Comment}
+                      onChange={(e)=>{
+                        const tmpSend = this.state.send;
+                        this.setState({send:{...tmpSend,Comment:e.target.value}})
+                      }}/>
+                    <Button content='Add Reply' 
+                      labelPosition='left' icon='edit' primary 
+                      onClick={this.submitHandler}/>
+                  </Form>
+                </Comment.Group>
+                </div>
             </Grid>
         </Grid>
             
