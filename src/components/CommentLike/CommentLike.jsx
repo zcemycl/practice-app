@@ -159,7 +159,7 @@ class CommentLike extends Component {
                         const tmpSend = this.state.send;
                         this.setState({send:{...tmpSend,Comment:e.target.value}})
                       }}/>
-                    <Button content='Add Reply' 
+                    <Button content='Add Comment' 
                       labelPosition='left' icon='edit' primary 
                       onClick={this.submitHandler}/>
                   </Form>
