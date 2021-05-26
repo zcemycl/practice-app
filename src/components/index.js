@@ -11,3 +11,5 @@ export { default as Map } from './Map/Map';
 export { default as Annotate } from './Annotate/Annotate';
 export { default as Knowledge } from './Knowledge/Knowledge';
 export { default as Leaflet } from './Leaflet/Leaflet';
+export { default as Game } from './Game/Game';
+export { Visitors } from './Visitors/Visitors';

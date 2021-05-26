@@ -1,7 +1,8 @@
 import React, {useState,useEffect} from "react";
 import { ProGraph,Navbar,Random,Auth,Chatapp } from './components';
 import { Products,ThreeFiber,CommentLike,NotFound } from './components';
-import { Map,Annotate,Knowledge,Leaflet } from './components';
+import { Map,Annotate,Knowledge,Leaflet,Game } from './components';
+import { Visitors } from './components';
 import Particles from 'react-particles-js';
 import particlesConfig from './config/particlesConfig';
 import { BrowserRouter as Router,Switch,Route } from 'react-router-dom';
@@ -9,10 +10,6 @@ import useStyles from './styles';
 import Profile from './components/Auth/pages/Profile';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 import { commerce } from './components/lib/commerce';
-import axios from 'axios';
-import publicIp from 'public-ip'
-
-const sheeturi = 'https://sheet.best/api/sheets/82c23d79-9535-4ef8-9970-f59acfed6f0a'
 
 const App = () => {
     const classes = useStyles();
@@ -31,23 +28,7 @@ const App = () => {
         fetchProducts();
     }, []);
 
-    useEffect(() => {
-        const getVisitorInfo = async () => {    
-            let currentTimestamp = Date.now()
-            let date = new Intl.DateTimeFormat('en-US',
-                {year:'numeric',month:'2-digit',day:'2-digit',
-                hour:'2-digit',minute:'2-digit',second:'2-digit'})
-                .format(currentTimestamp)
-            const ip = await publicIp.v4({fallbackUrls:["https://ifconfig.co/ip"]});
-            if (selected!=="" ){
-                const objt = {IP:ip,Topic:selected,Timestamp:date};
-                axios.post(sheeturi,objt)
-                    .then((response) => {
-                        console.log(response);
-                    });
-            }}
-        getVisitorInfo();
-        }, [selected]);
+    Visitors({selected})
 
     return (
         <Router basename="/practice-app">
@@ -85,8 +66,11 @@ const App = () => {
                     <CommentLike {...props} setSelected={setSelected}/>)}/>
                 <Route exact path="/annotate" render={(props) => (
                     <Annotate {...props} setSelected={setSelected}/>)}/>
+                <Route exact path="/game" render={(props) => (
+                    <Game {...props} setSelected={setSelected}/>)}/>
                 <Route exact path="/clustermap" render={(props) => (
                     <Leaflet {...props} setSelected={setSelected}/>)}/>
+                
                 <ProtectedRoute path="/profile" component={Profile}
                     isAuth={isAuth}/>
                 <Route render={(props) => (
