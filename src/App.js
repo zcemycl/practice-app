@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from "react";
 import { ProGraph,Navbar,Random,Auth,Chatapp } from './components';
 import { Products,ThreeFiber,CommentLike,NotFound } from './components';
-import { Map,Annotate,Knowledge,Leaflet,Game } from './components';
+import { Map,Annotate,Knowledge,Game,ClusterMap } from './components';
 import { Visitors } from './components';
 import Particles from 'react-particles-js';
 import particlesConfig from './config/particlesConfig';
@@ -69,7 +69,7 @@ const App = () => {
                 <Route exact path="/game" render={(props) => (
                     <Game {...props} setSelected={setSelected}/>)}/>
                 <Route exact path="/clustermap" render={(props) => (
-                    <Leaflet {...props} setSelected={setSelected}/>)}/>
+                    <ClusterMap {...props} setSelected={setSelected}/>)}/>
                 
                 <ProtectedRoute path="/profile" component={Profile}
                     isAuth={isAuth}/>
