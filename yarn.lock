@@ -11570,6 +11570,11 @@
     "reactcss" "^1.2.0"
     "tinycolor2" "^1.4.1"
 
+"react-data-bouncer@^2.0.0":
+  "integrity" "sha512-WJ+MCQQVHybFuP1Y12vnTCYc+9CT8r7OlBF/3zQWVdo1uIgLPXLfhPWh+pJCfkVFWERAXbvlbbHdOpB96haa7g=="
+  "resolved" "https://registry.npmjs.org/react-data-bouncer/-/react-data-bouncer-2.0.0.tgz"
+  "version" "2.0.0"
+
 "react-dev-utils@^11.0.3":
   "integrity" "sha512-dx0LvIGHcOPtKbeiSUM4jqpBl3TcY7CDjZdfOIcKeznE7BWr9dg0iPG90G5yfVQ+p/rGNMXdbfStvzQZEVEi4A=="
   "resolved" "https://registry.npmjs.org/react-dev-utils/-/react-dev-utils-11.0.4.tgz"
