@@ -27,7 +27,7 @@ npm start
 |Chatapp|[Link](https://github.com/zcemycl/practice-app/tree/master/src/components/Chatapp)|Support real-time text communication.|
 |Image Annotation for object segmentation|[Link](https://github.com/zcemycl/practice-app/blob/master/src/components/Annotate/Annotate.jsx)|`cd resources` -> `pip install -r requirements.txt` -> `python readAnnotate.py [--img str] [--annotatefile str]` |
 |Google Map and Projections|[Link](https://github.com/zcemycl/practice-app/blob/master/src/components/Leaflet/Leaflet.jsx)|Mark Outcodes and Areas of United Kingdoms.|
-|3D Scene|[Link](https://github.com/zcemycl/practice-app/blob/master/src/components/ThreeFiber/ThreeFiber.jsx)||
+|3D Scene|[Link](https://github.com/zcemycl/practice-app/blob/master/src/components/ThreeFiber/ThreeFiber.jsx)|3D Models with Physics Simulation, and GUI to control Camera and Player Properties.|
 |3D City Map|[Link](https://github.com/zcemycl/practice-app/blob/master/src/components/Map/Map.jsx)|Map with 3D Building Projections.|
 |Like and Comment Section|[Link](https://github.com/zcemycl/practice-app/blob/master/src/components/CommentLike/CommentLike.jsx)|Provide supports for like, votes, clap and comments for the page.|
 |Knowledge Graph|[Link](https://github.com/zcemycl/practice-app/blob/master/src/components/Knowledge/Knowledge.jsx)|Alternative Table of Contents.|
