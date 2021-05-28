@@ -1,27 +1,26 @@
 {
   "files": {
     "main.css": "/practice-app/static/css/main.0654778c.chunk.css",
-    "main.js": "/practice-app/static/js/main.4e8e650c.chunk.js",
-    "main.js.map": "/practice-app/static/js/main.4e8e650c.chunk.js.map",
+    "main.js": "/practice-app/static/js/main.74a2dc63.chunk.js",
+    "main.js.map": "/practice-app/static/js/main.74a2dc63.chunk.js.map",
     "runtime-main.js": "/practice-app/static/js/runtime-main.23cc5f4e.js",
     "runtime-main.js.map": "/practice-app/static/js/runtime-main.23cc5f4e.js.map",
-    "static/css/2.6e788f5f.chunk.css": "/practice-app/static/css/2.6e788f5f.chunk.css",
-    "static/js/2.0f663c2f.chunk.js": "/practice-app/static/js/2.0f663c2f.chunk.js",
-    "static/js/2.0f663c2f.chunk.js.map": "/practice-app/static/js/2.0f663c2f.chunk.js.map",
+    "static/css/2.d582b3a3.chunk.css": "/practice-app/static/css/2.d582b3a3.chunk.css",
+    "static/js/2.81cb2b18.chunk.js": "/practice-app/static/js/2.81cb2b18.chunk.js",
+    "static/js/2.81cb2b18.chunk.js.map": "/practice-app/static/js/2.81cb2b18.chunk.js.map",
     "index.html": "/practice-app/index.html",
-    "static/css/2.6e788f5f.chunk.css.map": "/practice-app/static/css/2.6e788f5f.chunk.css.map",
+    "static/css/2.d582b3a3.chunk.css.map": "/practice-app/static/css/2.d582b3a3.chunk.css.map",
     "static/css/main.0654778c.chunk.css.map": "/practice-app/static/css/main.0654778c.chunk.css.map",
-    "static/js/2.0f663c2f.chunk.js.LICENSE.txt": "/practice-app/static/js/2.0f663c2f.chunk.js.LICENSE.txt",
+    "static/js/2.81cb2b18.chunk.js.LICENSE.txt": "/practice-app/static/js/2.81cb2b18.chunk.js.LICENSE.txt",
     "static/media/2b.de3029cd.png": "/practice-app/static/media/2b.de3029cd.png",
     "static/media/city.eb3e2962.glb": "/practice-app/static/media/city.eb3e2962.glb",
-    "static/media/kitchen1.053fa938.jpg": "/practice-app/static/media/kitchen1.053fa938.jpg",
-    "static/media/woman.4049d374.glb": "/practice-app/static/media/woman.4049d374.glb"
+    "static/media/kitchen1.053fa938.jpg": "/practice-app/static/media/kitchen1.053fa938.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.23cc5f4e.js",
-    "static/css/2.6e788f5f.chunk.css",
-    "static/js/2.0f663c2f.chunk.js",
+    "static/css/2.d582b3a3.chunk.css",
+    "static/js/2.81cb2b18.chunk.js",
     "static/css/main.0654778c.chunk.css",
-    "static/js/main.4e8e650c.chunk.js"
+    "static/js/main.74a2dc63.chunk.js"
   ]
 }
