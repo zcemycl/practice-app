@@ -1,42 +1,27 @@
-import React, {useEffect,useRef,Suspense} from 'react';
-import { Canvas, useFrame, useLoader } from '@react-three/fiber';
+import React, {useState,
+    useEffect,Suspense} from 'react';
+import * as THREE from 'three';
+import { Physics } from '@react-three/cannon'
+import { Canvas } from '@react-three/fiber';
+import { Plane,Box,Round,Cylinder,DataGui } from './components'
 import useStyles from './styles';
 import { Grid, Card } from '@material-ui/core';
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import woman from './woman.glb';
-import { Environment,OrbitControls } from '@react-three/drei'
-
-const Box = (props) =>{
-    const mesh = useRef();
-    useFrame((state, delta) => {
-        mesh.current.rotation.x += 0.01;
-        mesh.current.rotation.y += 0.02;
-    })
-    return (
-        <mesh
-            {...props}
-            ref={mesh}
-            scale={1}
-        >
-            <boxGeometry args={[5,5,5]}/>
-            <meshStandardMaterial color={'orange'}/>
-        </mesh>
-    )
-}
-
-const Woman = () =>{
-    const gltf = useLoader(GLTFLoader,woman);
-    return (
-        <primitive object={gltf.scene} 
-            position={[0,-10,0]}/>      
-    );
-}
+import 'react-dat-gui/dist/index.css';
 
 const ThreeFiber = ({setSelected}) => {
     const classes = useStyles();
     useEffect(()=>{
         setSelected("3D Scene");
     },[setSelected])
+    const defaultSettings = {
+        camx:-9,camy:10,camz:2,fov:90,
+        camlx:7,camly:1,camlz:2,
+        boxx:0,boxy:10,boxz:0,
+        color:"blue"}
+    const [data,setData] = useState(defaultSettings)
+    const [cam,setCam] = useState(null)
+
+
     return (
         <div className={classes.content}>
         <div className={classes.toolbar}/>
@@ -45,22 +30,55 @@ const ThreeFiber = ({setSelected}) => {
             direction="row"
             spacing={0}
             className={classes.grid}>
-            <Grid xs={12} sm={10} md={8} lg={6} item={true}>
-                <Card className={classes.card}>
-                    <Canvas camera={{position:[5,0,20]}}>
-                    <ambientLight intensity={0.5}/>
-                    <spotLight intensity={0.8} position={[300, 300, 400]} />
-                    
+            <Grid xs={12} sm={10} md={10} lg={10} item={true}>
+                <Card className={classes.card}>                    
+                    <Canvas 
+                    shadows
+                    gl={{ alpha: false }}
+                    camera={{position:[data.camx,
+                        data.camy,data.camz],fov:data.fov}}
+                    onCreated={(state) => {
+                        const {camera,gl,scene} = state;
+                        setCam(camera)
+                        camera.lookAt(data.camlx,data.camly,data.camlz)
+                        scene.background = new THREE.Color('lightblue')
+                        gl.toneMapping = THREE.ACESFilmicToneMapping
+                        gl.outputEncoding = THREE.sRGBEncoding
+                        }}
+                    >
 
+                    {/* <hemisphereLight intensity={0.35} />
+                    <ambientLight intensity={0.1} /> */}
+                    <ambientLight />
+                    <spotLight angle={0.25} penumbra={0.5} position={[10, 10, 5]} castShadow />
+                    <directionalLight position={[5, 5, 5]} 
+                        intensity={2} castShadow
+                        shadow-mapSize-height={512}
+                        shadow-mapSize-width={512}
+                        shadow-camera-zoom={2} />
+  
+                    <Physics>
                     <Suspense fallback={null}>
-                        <Box position={[0,0,0]}/>
-                        <Woman/>
-                        <OrbitControls/>
-                        <Environment preset="sunset" background />
+                        <Round position={[-1,3,1]} 
+                            color="purple"/>
+                        <Box position={[data.boxx,data.boxy,data.boxz]}
+                            color={data.color}/>
+                        <Box position={[2,11,2]}
+                            color="orange"/>
+                        <Box position={[0.5,13,-0.5]}
+                            color="orange"/>
+                        <Cylinder position={[2,4,2]}
+                            color="red"/>
+                        
+                        <Plane rotation={[-Math.PI/2,0,0]}
+                            color='#32cd32'/>
                     </Suspense>
+                    </Physics>
                     </Canvas>
-                
+
+                    <DataGui {...{cam,data,setData,defaultSettings}}/>
                 </Card>
+                
             </Grid>
         </Grid>
             
