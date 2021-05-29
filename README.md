@@ -19,7 +19,7 @@ npm start
 |Router|[Link](https://github.com/zcemycl/practice-app/blob/master/src/LoadBalancer.jsx)|Enable access to different pages.|
 |Single Page Application|[Link](https://github.com/zcemycl/practice-app/tree/master/public)|Enable resources suffix.|
 |Particle Background|[Link](https://github.com/zcemycl/practice-app/tree/master/src/config)|Website animated background.|
-|Navigation Bar|[Link](https://github.com/zcemycl/practice-app/blob/master/src/components/Navbar/Navbar.jsx)|Link the home page to different demos and profiles.|
+|Navigation Bar|[Link](https://github.com/zcemycl/practice-app/blob/master/src/components/Navbar)|Link the home page to different demos and profiles.|
 |Slider Graph|[Link](https://github.com/zcemycl/practice-app/blob/master/src/components/ProGraph/UIPlot)|Update datapoint dynamically via slider control.|
 |Fetch Data Graph|[Link](https://github.com/zcemycl/practice-app/blob/master/src/components/ProGraph/FetchPlot)|Fetch JSON data via REST API from flask2react.|
 |Real-time Data Graph|[Link](https://github.com/zcemycl/practice-app/blob/master/src/components/ProGraph/SocketPlot)|Fetch Real-time randomly generated data from flask2react|
