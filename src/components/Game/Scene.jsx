@@ -1,5 +1,5 @@
 import React,{Suspense,useEffect,useRef} from 'react'
-import { Background,Plane } from './Prefabs'
+import { Background,Plane,Player } from './Prefabs'
 import { extend,useThree } from '@react-three/fiber';
 // import { PointerLockControls } from '@react-three/drei'
 import {PointerLockControls} from 'three/examples/jsm/controls/PointerLockControls'
@@ -50,6 +50,7 @@ export const Scene = () => {
 
             <Physics>
             <Suspense fallback={null}>
+                <Player />
                 <Plane color='#dcce71'/>
             </Suspense>
             </Physics>
