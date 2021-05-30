@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import { Canvas } from '@react-three/fiber';
 import useStyles from './styles';
 import { Grid, Card } from '@material-ui/core';
-import { Scene } from './Scene/Scene'
+import { Scene } from './Scene'
 
 const Game = ({setSelected}) => {
     const classes = useStyles();
@@ -21,7 +21,7 @@ const Game = ({setSelected}) => {
                 <Grid xs={12} sm={10} md={10} lg={10} item={true}>
                     <Card className={classes.card}>
                     <Canvas shadows>
-                        <Scene/>
+                    <Scene/>
                     </Canvas>
                     </Card>
                 </Grid>
