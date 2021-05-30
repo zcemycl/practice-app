@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { Canvas,useFrame } from '@react-three/fiber';
+import { Canvas } from '@react-three/fiber';
 import useStyles from './styles';
 import { Grid, Card } from '@material-ui/core';
 import { Scene } from './Scene/Scene'
