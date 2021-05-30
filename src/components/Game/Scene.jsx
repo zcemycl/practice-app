@@ -19,6 +19,7 @@ const CameraControls = () => {
     useEffect(() => {
         camera.layers.enable(0);
         camera.layers.enable(1);
+        camera.position.y = 3
     }, [camera]);
 
     useEffect(() => {
@@ -40,22 +41,20 @@ export const Scene = () => {
     
     return (
         <>
-            <Background/>
-            <CameraControls/>
-            <directionalLight position={[3, 0, 3]} intensity={0.5} castShadow />
-            <pointLight position={[0, 0, -3]} intensity={0.6} castShadow />
-            <pointLight position={[0, 0, 4]} intensity={0.6} castShadow />
+        <Background/>
+        <CameraControls/>
+        <directionalLight position={[3, 0, 3]} intensity={0.5} castShadow />
+        <pointLight position={[0, 0, -3]} intensity={0.6} castShadow />
+        <pointLight position={[0, 0, 4]} intensity={0.6} castShadow />
 
-            <ambientLight intensity={0.6} />
+        <ambientLight intensity={0.6} />
 
-            <Physics>
-            <Suspense fallback={null}>
-                <Player />
-                <Plane color='#dcce71'/>
-            </Suspense>
-            </Physics>
-            
-            
+        <Physics>
+        <Suspense fallback={null}>
+            <Player />
+            <Plane color='#dcce71'/>
+        </Suspense>
+        </Physics>
         </>
     )
 }

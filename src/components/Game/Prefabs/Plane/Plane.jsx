@@ -6,13 +6,14 @@ function Plane(props){
     const [ref] = usePlane(()=>({
         masss:0,
         rotation:[-Math.PI/2,0,0],
+        position:[0,-.25,0],
         ...props
     }))
 
     return (
-    <mesh receiveShadow ref={ref} >
+    <mesh receiveShadow ref={ref} scale={[1000,1000,1000]}>
         <planeBufferGeometry 
-            attach="geometry" args={[100,100]}/>
+            attach="geometry" />
         <meshStandardMaterial attach="material"
             color={props.color}/>
     </mesh>
