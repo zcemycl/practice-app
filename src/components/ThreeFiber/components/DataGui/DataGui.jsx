@@ -37,7 +37,7 @@ const DataGui = ({data,setData,defaultSettings,cam}) => {
         onUpdate={handleData
         } style={{position:"absolute",top:"10px"}}
         >
-        <DatFolder title="Camera" closed={false}>
+        <DatFolder title="Camera" closed={true}>
             <DatNumber path="camx" label="Position X" min={-100} max={100} step={10}/>
             <DatNumber path="camy" label="Position Y" min={-100} max={100} step={10}/>
             <DatNumber path="camz" label="Position Z" min={-100} max={100} step={10}/>
@@ -47,7 +47,7 @@ const DataGui = ({data,setData,defaultSettings,cam}) => {
             <DatNumber path="fov" label="Field of View" min={0} max={500} step={10}/>
         </DatFolder>
         
-        <DatFolder title="Cube" closed={false}>
+        <DatFolder title="Cube" closed={true}>
             <DatNumber path="boxx" label="Position X" min={-10} max={10} step={1}/>
             <DatNumber path="boxy" label="Position Y" min={2} max={20} step={1}/>
             <DatNumber path="boxz" label="Position Z" min={-10} max={10} step={1}/>

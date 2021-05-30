@@ -19,6 +19,5 @@ export default makeStyles((theme) => ({
     maxWidth:'100%',
     height: '100%', 
     textAlign: 'center',
-    // backgroundColor: 'black',
   },
 }));

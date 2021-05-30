@@ -15,6 +15,7 @@ const options = [
     {id: 7, name: 'Image Annotation', root: "/annotate"},
     {id: 8, name: 'Progressive Graph', root: "/prograph"},
     {id: 9, name: 'Cluster Map', root: "/clustermap"},
+    {id: 10, name: 'Game', root: "/game"},
 ]
 
 const ITEM_HEIGHT = 12*Math.max(options.length,12);
