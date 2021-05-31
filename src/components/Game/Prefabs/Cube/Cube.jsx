@@ -10,10 +10,14 @@ const Cube = ({count}) => {
             Math.random()*280+200]
       }))
 
-    useFrame(() => api.at(Math.floor(Math.random() * count))
-        .position.set(Math.random()*300+150,
-        Math.random()*5+50, Math.random()*280+200))
-
+    useFrame(() => {
+        const id = Math.floor(Math.random() * count)
+        api.at(id).velocity.set(0,-1,0)
+        api.at(id).position.set(Math.random()*300+150,
+            Math.random()*5+50, Math.random()*280+200)
+        
+    })
+        
     return (
         <instancedMesh receiveShadow castShadow ref={ref}
             args={[null,null,count]}>
