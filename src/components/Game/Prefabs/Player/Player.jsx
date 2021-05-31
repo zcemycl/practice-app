@@ -4,7 +4,7 @@ import { useSphere } from '@react-three/cannon';
 import { Vector3 } from "three";
 
 const Player = () => {
-    const { camera,gl } = useThree();
+    const { camera } = useThree();
     const [sphereRef, api] = useSphere(() => ({
         mass: 100,
         fixedRotation: true,
@@ -48,11 +48,12 @@ const Player = () => {
         if (forward){
             let cameraDirection = new Vector3();
             camera.getWorldDirection(cameraDirection);
-        
-            console.log(cameraDirection)
-            api.velocity.set(cameraDirection.x*10,0,cameraDirection.z*10);
+            const {x,z} = cameraDirection;
+            // console.log(cameraDirection)
+            api.velocity.set(x/Math.abs(x)*10,0,
+                z/Math.abs(z)*10);
             camera.position.set(sphereRef.current.position.x,
-                sphereRef.current.position.y+2,
+                sphereRef.current.position.y+30,
                 sphereRef.current.position.z-10)
         }
         setForward(false)
