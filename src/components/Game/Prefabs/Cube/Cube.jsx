@@ -7,7 +7,8 @@ const Cube = ({count}) => {
         mass: 1,
         position: [Math.random()*300+150,
             Math.random()*5+50,
-            Math.random()*280+200]
+            Math.random()*280+200],
+        velocity: [0,Math.random()*2-9.81,0]
       }))
 
     useFrame(() => {

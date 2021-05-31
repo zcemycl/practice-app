@@ -19,7 +19,8 @@ const Game = ({setSelected}) => {
                 direction="row"
                 spacing={0}
                 className={classes.grid}>
-                <Grid xs={12} sm={10} md={10} lg={10} item={true}>
+                <Grid xs={12} sm={10} md={10} lg={10} item={true}
+                    style={{position:'relative'}}>
                     <Card className={classes.card}>
                     <UI>
                         <Aimer/>
@@ -29,6 +30,17 @@ const Game = ({setSelected}) => {
                         camera={{fov:100}}>
                         <Scene/>
                     </Canvas>
+                    <div style={{ position: 'absolute', top: 10, left: 20 }}>
+                        <pre>
+                        Click to Lock screen
+                        <br/>
+                        Esc to unlock 
+                        <br/>
+                        W to go forward<br/>
+                        Mouse hover to turn angle
+                        <br />Mouse Press to fire bullet
+                        </pre>
+                    </div>
                     </Card>
                 </Grid>
             </Grid>
