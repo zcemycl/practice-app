@@ -6,13 +6,13 @@ import { Vector3 } from "three";
 const Player = () => {
     const { camera } = useThree();
     const [sphereRef, api] = useSphere(() => ({
-        mass: 100,
+        mass: 1,
         fixedRotation: true,
         position: [0, 2, 0],
-        args: 0.2,
+        // args: 0.2,
         material: {
           friction: 0
-        }
+        },
       }));
     const pos = useRef([0,2,0])
     const [forward,setForward] = useState(false);
@@ -53,16 +53,16 @@ const Player = () => {
             api.velocity.set(x/Math.abs(x)*10,0,
                 z/Math.abs(z)*10);
             camera.position.set(sphereRef.current.position.x,
-                sphereRef.current.position.y+30,
-                sphereRef.current.position.z-10)
+                sphereRef.current.position.y+2,
+                sphereRef.current.position.z)
         }
         setForward(false)
     })
     
     return (
         <mesh ref={sphereRef}>
-        <sphereBufferGeometry args={[1, 1, 1]} />
-        <meshPhongMaterial color={"hotpink"} />
+        <sphereBufferGeometry attach="geometry" args={[1, 32, 32]} />
+        <meshNormalMaterial attach="material"/>
         </mesh>
     )
 }

@@ -20,7 +20,9 @@ const Game = ({setSelected}) => {
                 className={classes.grid}>
                 <Grid xs={12} sm={10} md={10} lg={10} item={true}>
                     <Card className={classes.card}>
-                    <Canvas shadow camera={{fov:100}}>
+                    <Canvas shadow sRGB 
+                        gl={{alpha:false}}
+                        camera={{fov:100}}>
                     <Scene/>
                     </Canvas>
                     </Card>
