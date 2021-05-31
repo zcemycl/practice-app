@@ -33,6 +33,7 @@ npm start
 |Knowledge Graph|[Link](https://github.com/zcemycl/practice-app/blob/master/src/components/Knowledge)|Alternative Table of Contents.|
 |Website Tour|[Link](https://github.com/zcemycl/practice-app/blob/master/src/components/Knowledge)|Support User-friendly guide for users to navigate the website.|
 |Visitor Record|[Link](https://github.com/zcemycl/practice-app/tree/master/src/components/Visitors)|Connect to Google Sheet API to store Visitor Information.|
+|Game|[Link](https://github.com/zcemycl/practice-app/tree/master/src/components/Game)|First Person Shooter Game.|
 |Online Shop|[Link](https://github.com/zcemycl/practice-app/blob/master/src/components/Products)||
 
 
