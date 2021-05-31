@@ -1,5 +1,6 @@
 import React,{Suspense,useEffect,useRef} from 'react'
-import { Background,City,Player,Plane } from './Prefabs'
+import {Background,City,Player,Plane} from './Prefabs'
+import {Cube} from './Prefabs';
 import { extend,useThree } from '@react-three/fiber';
 // import { OrbitControls } from '@react-three/drei'
 import {PointerLockControls} from 'three/examples/jsm/controls/PointerLockControls'
@@ -53,21 +54,29 @@ export const Scene = () => {
 
         <Physics>
         <Suspense fallback={null}>
-            
             <City/>
-            <Plane color='#dcce71' opacity={0}
+            <Cube count={300}/>
+            <Plane opacity={0}
+                rotation={[-Math.PI/2,0,0]}
+                position={[0,0.5,0]} />
+            {/* Right */}
+            <Plane opacity={0}
                 rotation={[Math.PI,0,0]}
                 position={[100,0,70]} />
-            <Plane color='#dcce71' opacity={0}
+            {/* Left */}
+            <Plane opacity={0}
                 rotation={[0,0,0]} 
                 position={[100,0,-70]} />
-            <Plane color='#dcce71' opacity={0}
+            {/* Front */}
+            <Plane opacity={0}
                 rotation={[0,-Math.PI/2,0]}
-                position={[230,0,-70]}/>
-            <Plane color='#dcce71' opacity={0}
+                position={[200,0,-70]}/>
+            {/* Back */}
+            <Plane opacity={0}
                 rotation={[0,Math.PI/2,0]} 
-                position={[-30,0,-70]}/>
+                position={[-10,0,-70]}/>
             <Player />
+            
         </Suspense>
         </Physics>
         </>

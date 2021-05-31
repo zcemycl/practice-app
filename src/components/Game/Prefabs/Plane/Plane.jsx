@@ -10,7 +10,7 @@ const Plane = (props) => {
     return (
     <mesh receiveShadow ref={ref} >
         <planeBufferGeometry 
-            attach="geometry" args={[320,50]} />
+            attach="geometry" args={[500,500]} />
         <meshStandardMaterial attach="material"
             color={props.color} transparent={true}
             opacity={props.opacity}/>
