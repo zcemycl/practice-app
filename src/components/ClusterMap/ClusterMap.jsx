@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useReducer} from 'react'
 import { Grid, Card } from '@material-ui/core';
 import L from 'leaflet';
 import {MapContainer,TileLayer} from 'react-leaflet';
@@ -9,6 +9,7 @@ import { SearchField,GetProperties,Choro,FetchData } from './components';
 import useStyles from './styles';
 import './styles.css'
 import 'leaflet/dist/leaflet.css'
+import {initState,reducer} from './store'
 
 let DefaultIcon = L.icon({
     iconUrl: icon,
@@ -24,32 +25,20 @@ const ClusterMap = ({setSelected}) => {
     },[setSelected])
     
     const classes = useStyles();
-    const [data,setData] = useState([]);
-    const [markers,setMarkers] = useState([]);
-    const sc = 10
-    const [geoCounties,setGeoCounties] = useState([]);
-    const viewport = {center:[51.505, -0.09],zoom:7}
-    const [filterdata,setFilterdata] = useState([]);
-    const [map2,setMap2] = useState([]);
-    const [map,setMap] = useState(null);
-    const [zoom,setZoom] = useState(viewport.zoom);
-    const [bounds,setBounds] = useState(null);
-    const [region,setRegion] = useState([]);
+    const [{sc,map,viewport,zoom,bounds,
+        data,markers,geoCounties,
+        region,filterdata,map2,FilterData},
+        dispatch] = useReducer(reducer,initState)
     const [result,setResult] = useState(null); 
-    const [FilterData,setFilterData] = useState([])
-    console.log(result)
         
-    FetchData({filterdata,setData,
-        setGeoCounties,setRegion})
+    FetchData({filterdata,dispatch})
 
     useEffect(() => {
         let reg = region.map((r,index) => 
-            {return <Choro key={index} map={map}
-                zoom={zoom} setZoom={setZoom}
-                geojson={geojson} data={r}/>})
-        setMap2(reg);
+            {return <Choro key={index} 
+            {...{zoom,map,geojson,data:r,dispatch}}/> })
+        dispatch({type:'list',key:'map2',value:reg});
     },[zoom,map,filterdata,region])
-
 
     return (
         <div className={classes.content}>
@@ -59,49 +48,33 @@ const ClusterMap = ({setSelected}) => {
             direction="row"
             spacing={0}
             className={classes.grid}>
-            <Grid xs={12} sm={10} md={8} lg={6} item={true}>
-                <Card className={classes.card}>
-                {map?<GetProperties {...{map,zoom,sc,
-                        bounds,data,FilterData,
-                        setZoom,setBounds,
-                        setFilterdata,setFilterData,
-                        setMarkers}}/>
-                    :null}
+        <Grid xs={12} sm={10} md={8} lg={6} item={true}>
+            <Card className={classes.card}>
+            {map && <GetProperties {...{map,zoom,sc,
+                bounds,data,FilterData,dispatch}}/>}
 
-                <MapContainer center={viewport.center} 
-                    zoom={viewport.zoom}
-                    whenCreated={setMap}
-                    doubleClickZoom={false}>
-                    {map && 
-                        <SearchField map={map} 
-                            setResult={setResult}/>}
-                    {zoom < sc && <Choro id={0} 
-                        zoom={zoom} 
-                        map={map}
-                        geojson={geojson}
-                        data={geoCounties}
-                        setZoom={setZoom} />}
+            <MapContainer center={viewport.center} zoom={viewport.zoom}
+                whenCreated={e=>dispatch({type:'object',
+                key:'map',value:e})} doubleClickZoom={false}>
+                {map && 
+                    <SearchField {...{map,setResult}}/>}
+                {zoom < sc && <Choro id={0} {...{zoom,map,
+                    geojson,data:geoCounties,dispatch}}/>}
 
-                    {zoom >= sc && region.length>0 && 
-                        map2}
+                {zoom >= sc && region.length>0 && map2}
 
-                    <TileLayer
-                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
+                <TileLayer
+                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
 
-
-                    <MarkerClusterGroup>     
-                    {zoom >= sc && bounds && markers.length > 0 && 
-                        markers}
-                    </MarkerClusterGroup>
-                    
-                </MapContainer>
+                <MarkerClusterGroup>     
+                {zoom >= sc && bounds && markers.length > 0 && markers}
+                </MarkerClusterGroup>
                 
-                </Card>
-            </Grid>
-            
+            </MapContainer> 
+            </Card>
+        </Grid>
         </Grid>              
-        
         </div>
     )
 }

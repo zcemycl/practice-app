@@ -50,9 +50,10 @@ const Player = () => {
     }
 
     useEffect(() => {
-        document.addEventListener("mouseup",handleMouseUp);
+        const canvas = document.querySelector('div.MuiGrid-root');
+        canvas.addEventListener("mouseup",handleMouseUp);
         return () => {
-            document.removeEventListener("mouseup",handleMouseUp)
+            canvas.removeEventListener("mouseup",handleMouseUp)
         }
     },[])
 

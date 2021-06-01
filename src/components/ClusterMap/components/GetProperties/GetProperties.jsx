@@ -1,19 +1,18 @@
 import React,{useEffect,useCallback} from 'react'
 import {Marker,Tooltip} from 'react-leaflet';
 
-const GetProperties = ({map,zoom,sc,bounds,data,FilterData,
-        setZoom,setBounds,setFilterdata,setFilterData,
-        setMarkers}) => {
+const GetProperties = ({map,zoom,sc,bounds,data,FilterData,dispatch}) => {
     
     const getProperties = useCallback(({map}) => {
         const currZoom = map.getZoom();
-        setZoom(currZoom);
+        dispatch({type:'value',key:'zoom',value:currZoom})
         const ne = map.getBounds().getNorthEast();
         const [ne_lat,ne_lng] = [ne.lat,ne.lng]
         const sw = map.getBounds().getSouthWest();
         const [sw_lat,sw_lng] = [sw.lat,sw.lng]
-        setBounds({ne_lat,ne_lng,sw_lat,sw_lng})
-    },[setZoom,setBounds])
+        dispatch({type:'object',key:'bounds',
+            value:{ne_lat,ne_lng,sw_lat,sw_lng}})
+    },[dispatch])
 
     const handleMarkers = useCallback(() => {
         if (map){
@@ -27,18 +26,18 @@ const GetProperties = ({map,zoom,sc,bounds,data,FilterData,
                         && longitude>bounds.sw_lng
                         && latitude<bounds.ne_lat
                         && latitude>bounds.sw_lat})
-            setFilterData(filterData)
+            dispatch({type:'list',key:"FilterData",value:filterData})
             let markerList = filterData.map(({id,latitude,longitude,postcode})=>
                 {return <Marker key={id}
                     position={[parseFloat(latitude),
                     parseFloat(longitude)]} >
                     <Tooltip>{postcode}</Tooltip>
                 </Marker>})
-            setMarkers(markerList)
+            dispatch({type:'list',key:'markers',value:markerList})
             }
-    },[map,bounds,data,zoom,sc,getProperties,setFilterData,setMarkers])
+    },[map,bounds,data,zoom,sc,getProperties,dispatch])
     
-    const handleChange = useCallback(()=>{
+    const handleChange = useCallback((e)=>{
         if (zoom >= sc && bounds){
             handleMarkers();
             var simpleFilterData = [];
@@ -49,14 +48,21 @@ const GetProperties = ({map,zoom,sc,bounds,data,FilterData,
                 }
             }
             if (simpleFilterData.length>0){
-                setFilterdata(simpleFilterData)
+                dispatch({type:'list',key:'filterdata',
+                    value:simpleFilterData})
+                if (zoom === sc){
+                    setTimeout(() => {
+                        dispatch({type:'list',key:'filterdata',
+                            value:simpleFilterData})
+                    }, 300)
+                }
             }
         }
-    },[sc,bounds,zoom,FilterData,handleMarkers,setFilterdata]) 
+    },[sc,bounds,zoom,FilterData,handleMarkers,dispatch]) 
 
     useEffect(()=>{
-        map.on('zoomend moveend viewreset',handleChange)
-        return () => map.off('zoomend moveend viewreset',handleChange)
+        map.on('load unload viewreset zoomend moveend',handleChange)
+        return () => map.off('load unload viewreset zoomend moveend',handleChange)
     },[map,handleChange])
 
     useEffect(()=>{

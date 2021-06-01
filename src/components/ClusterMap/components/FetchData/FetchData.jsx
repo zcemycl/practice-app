@@ -2,25 +2,24 @@ import {useEffect} from 'react'
 import { csv } from "d3-fetch";
 import { format } from 'react-string-format';
 
-export const FetchData = ({filterdata,setData,
-            setGeoCounties,setRegion}) => {
+export const FetchData = ({filterdata,dispatch}) => {
 
     useEffect(() => {
         csv("data/postcode-outcodes.csv").then(outcodes => {
-          setData(outcodes);
+            dispatch({type:'list',key:'data',value:outcodes})
         });
-    },[setData]);
+    },[dispatch]);
 
     useEffect(() => {
         fetch('data/ukcounties.json').then((res) => res.json())
             .then((json)=>{
-                setGeoCounties(json);
+                dispatch({type:'list',key:'geoCounties',value:json})
             });
-    },[setGeoCounties]);
+    },[dispatch]);
 
     useEffect(() => {
         const uriform = 'data/json/{0}.json'
-        setRegion([])
+        dispatch({type:'list',key:'region',value:[]})
         Promise.all(filterdata.map((item)=>
         fetch(format(uriform,item)))
         ).then((responses)=>{
@@ -28,11 +27,11 @@ export const FetchData = ({filterdata,setData,
                 return resp.json()}))
         }).then((d)=>{
             if (d.length>0){
-                setRegion(d);
+                dispatch({type:'list',key:'region',value:d})
             }
             
         })
-    },[filterdata,setRegion])
+    },[filterdata,dispatch])
 
 }
 

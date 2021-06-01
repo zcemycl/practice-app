@@ -25,8 +25,9 @@ const CameraControls = () => {
     }, [camera]);
 
     useEffect(() => {
-        document.addEventListener("click", handleFocus);
-        return () => document.removeEventListener("click", handleFocus);
+        const canvas = document.querySelector('div.MuiGrid-root');
+        canvas.addEventListener("click", handleFocus);
+        return () => canvas.removeEventListener("click", handleFocus);
     }, [gl]);
 
 

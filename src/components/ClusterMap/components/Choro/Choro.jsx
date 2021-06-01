@@ -1,7 +1,7 @@
 import React,{useMemo} from 'react'
 import Choropleth from "react-leaflet-choropleth";
 
-const Choro = ({zoom,map,geojson,data,setZoom}) => {
+const Choro = ({zoom,map,geojson,data,dispatch}) => {
     const highlightFeature = (e) => {
         var layer = e.target;
 
@@ -23,7 +23,7 @@ const Choro = ({zoom,map,geojson,data,setZoom}) => {
         if (map){
             const tmp = zoom+2
             map.setView(e.latlng,tmp);
-            setZoom(tmp);
+            dispatch({type:'value',key:'zoom',value:tmp})
         }
     }
 
