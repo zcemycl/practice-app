@@ -33,9 +33,8 @@ const App = () => {
                 <Particles className={classes.particles}
                     config={particlesConfig}/>               
             </div>
-            <Navbar selected={selected} setSelected={setSelected}
-                setIsTourOpen={setIsTourOpen} anchorEl={anchorEl}
-                setAnchorEl={setAnchorEl}/>
+            <Navbar {...{selected,setSelected,setIsTourOpen,
+                anchorEl,setAnchorEl}}/>
             
                 <LoadBalancer {...{products,setSelected,isTourOpen,
                     setIsTourOpen,setAnchorEl,isAuth,setIsAuth}}/>
