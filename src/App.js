@@ -5,7 +5,6 @@ import particlesConfig from './config/particlesConfig';
 import { BrowserRouter as Router } from 'react-router-dom';
 import LoadBalancer from './LoadBalancer'
 import useStyles from './styles';
-
 import { commerce } from './components/lib/commerce';
 
 const App = () => {
