@@ -24,7 +24,7 @@ npm start
 |Fetch Data Graph|[Link](https://github.com/zcemycl/practice-app/blob/master/src/components/ProGraph/FetchPlot)|Fetch JSON data via REST API from flask2react.|
 |Real-time Data Graph|[Link](https://github.com/zcemycl/practice-app/blob/master/src/components/ProGraph/SocketPlot)|Fetch Real-time randomly generated data from flask2react|
 |Authentication|[Link](https://github.com/zcemycl/practice-app/tree/master/src/components/Auth)|GitHub Secret Key as authenication method.  - Username, Password: IamLeo |
-|Gallery|[Link](https://github.com/zcemycl/practice-app/tree/master/src/components/Random)||
+|Gallery|[Link](https://github.com/zcemycl/practice-app/tree/master/src/components/Random)|Interactive Image Gallery with Spring.|
 |Chatapp|[Link](https://github.com/zcemycl/practice-app/tree/master/src/components/Chatapp)|Support real-time text communication.|
 |Image Annotation for object segmentation|[Link](https://github.com/zcemycl/practice-app/blob/master/src/components/Annotate)|`cd resources` -> `pip install -r requirements.txt` -> `python readAnnotate.py [--img str] [--annotatefile str]` |
 |Google Map and Projections|[Link](https://github.com/zcemycl/practice-app/blob/master/src/components/ClusterMap)|Mark Outcodes and Areas of United Kingdoms.|
