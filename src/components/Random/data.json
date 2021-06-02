@@ -1,0 +1,16 @@
+[
+    {"src":"https://raw.githubusercontent.com/zcemycl/practice-app/master/src/components/Random/2b.png",
+        "title":"Nier Automata","content":"Character 2b"},
+    {"src":"https://zcemycl.github.io/resources/eediagram.png",
+        "title":"YOLOv5","content":""},
+    {"src":"https://raw.githubusercontent.com/zcemycl/Robotics/master/SIR.gif",
+        "title":"Susceptible, Infectious, or Recovered model","content":""},
+    {"src":"https://raw.githubusercontent.com/zcemycl/TF2DeepFloorplan/main/resources/epoch60.png",
+        "title":"Deep FloorPlan","content":""},
+    {"src":"https://raw.githubusercontent.com/zcemycl/practice-app/master/resources/demo.gif",
+        "title":"React App","content":""},
+    {"src":"https://raw.githubusercontent.com/zcemycl/Robotics/master/Perception/Logo%20Projection/result.png",
+        "title":"2D Homography and Warping","content":""},
+    {"src":"https://raw.githubusercontent.com/zcemycl/ProbabilisticPerspectiveMachineLearning/master/LIME/result.png",
+        "title":"LIME","content":""}
+]

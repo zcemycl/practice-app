@@ -20,7 +20,7 @@ const LoadBalancer = ({products,setSelected,isTourOpen,
         <Route exact path="/auth">
             <Auth {...{isAuth,setIsAuth,setSelected}}/>
         </Route>
-        <Route exact path="/imgdisplay" render={() => (
+        <Route exact path="/gallery" render={() => (
             <Random {...{setSelected}}/>)}/>
         <Route exact path="/chatapp" render={() => (
             <Chatapp {...{setSelected}}/>)}/>

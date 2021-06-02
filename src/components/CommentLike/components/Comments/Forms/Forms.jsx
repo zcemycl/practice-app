@@ -22,14 +22,13 @@ const Forms = ({data,setData}) => {
         setSend({...tmpSend,Comment:""})
     }
     
-    const getIP = async () => {
-        const ip = await publicIp.v4({
-            fallbackUrls:["https://ifconfig.co/ip"]});
-        const tmpSend = {...send};
-        setSend({...tmpSend,IP:ip})
-    }
-
     useEffect(() => {
+        const getIP = async () => {
+            const ip = await publicIp.v4({
+                fallbackUrls:["https://ifconfig.co/ip"]});
+            const tmpSend = {...send};
+            setSend({...tmpSend,IP:ip})
+        }
         let currentTimestamp = Date.now()
         let date = new Intl.DateTimeFormat('en-US',
             {year:'numeric',month:'2-digit',day:'2-digit',

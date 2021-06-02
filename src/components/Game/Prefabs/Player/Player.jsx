@@ -57,7 +57,7 @@ const Player = () => {
         }
     },[])
 
-    useEffect(() => api.position.subscribe((p)=>(pos.current=p)),[])
+    useEffect(() => api.position.subscribe((p)=>(pos.current=p)),[api.position])
 
     useFrame(() => {
         let cameraDirection = new Vector3();

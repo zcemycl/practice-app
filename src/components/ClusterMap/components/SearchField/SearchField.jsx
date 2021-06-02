@@ -10,7 +10,7 @@ let DefaultIcon = L.icon({
     shadowUrl: iconShadow,
 });
 
-const SearchField = ({map,setResult}) => {
+const SearchField = ({map,result,setResult}) => {
     
     const provider = useMemo(() => 
         new OpenStreetMapProvider(),[])

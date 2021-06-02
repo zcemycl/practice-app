@@ -57,7 +57,7 @@ const ClusterMap = ({setSelected}) => {
                 whenCreated={e=>dispatch({type:'object',
                 key:'map',value:e})} doubleClickZoom={false}>
                 {map && 
-                    <SearchField {...{map,setResult}}/>}
+                    <SearchField {...{map,result,setResult}}/>}
                 {zoom < sc && <Choro id={0} {...{zoom,map,
                     geojson,data:geoCounties,dispatch}}/>}
 
@@ -70,8 +70,8 @@ const ClusterMap = ({setSelected}) => {
                 <MarkerClusterGroup>     
                 {zoom >= sc && bounds && markers.length > 0 && markers}
                 </MarkerClusterGroup>
-                
             </MapContainer> 
+            
             </Card>
         </Grid>
         </Grid>              

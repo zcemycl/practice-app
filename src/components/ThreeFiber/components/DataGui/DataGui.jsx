@@ -23,7 +23,7 @@ const DataGui = ({data,setData,defaultSettings,cam}) => {
                 cam.updateProjectionMatrix();
             }
         }
-    },[data.camx,data.camy,data.camz,data.fov])
+    },[data.camx,data.camy,data.camz,data.fov,cam])
 
     useEffect(()=>{
         if (cam){

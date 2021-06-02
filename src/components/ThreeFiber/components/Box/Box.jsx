@@ -7,7 +7,7 @@ const Box = ({position,color,enable}) =>{
     const pos = useRef(position)
     const [history,setHistory] = useState(position)
 
-    useEffect(() => api.position.subscribe((p)=>(pos.current=p)),[])
+    useEffect(() => api.position.subscribe((p)=>(pos.current=p)),[api.position])
 
     const handleUpdate = () => {
         let target;

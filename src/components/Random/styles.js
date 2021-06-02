@@ -15,6 +15,7 @@ export default makeStyles((theme) => ({
     // padding: '15vh 0 0 0',
   },
   card: {
+    position:'relative',
     maxWidth:'100%',
     height: '100%', 
     textAlign: 'center',

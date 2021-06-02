@@ -1,0 +1,28 @@
+.card {
+    position: relative;
+    &Side {
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      backface-visibility: hidden;
+      border-radius: 3px;
+      box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+      background-size: cover;
+      cursor: pointer;
+  
+      &Front {
+        background-color: white;
+        position: relative;
+        height:100%;
+      }
+  
+      &Back {
+        background: linear-gradient(rebeccapurple, skyblue);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
