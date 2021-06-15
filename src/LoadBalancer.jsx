@@ -3,7 +3,7 @@ import { Route,Switch } from 'react-router-dom';
 import { ProGraph,Random,Auth,Chatapp,NotFound } from './components';
 import { Products,ThreeFiber,CommentLike } from './components';
 import { Map,Annotate,Knowledge,ClusterMap } from './components';
-import { Game } from './components'
+import { Game,VisitRecords } from './components'
 import Profile from './components/Auth/pages/Profile';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 
@@ -40,6 +40,8 @@ const LoadBalancer = ({products,setSelected,isTourOpen,
         
         <Route exact path="/clustermap" render={() => (
             <ClusterMap {...{setSelected}}/>)}/>
+        <Route exact path="/visitrecords" render={() => (
+            <VisitRecords {...{setSelected}}/>)}/>
         <ProtectedRoute exact path="/profile" component={Profile}
             isAuth={isAuth}/>
         <Route render={() => (<NotFound {...{setSelected}}/>)}/>

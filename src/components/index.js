@@ -14,3 +14,4 @@ export { default as Leaflet } from './Leaflet/Leaflet';
 export { default as ClusterMap } from './ClusterMap/ClusterMap';
 export { default as Game } from './Game/Game';
 export { Visitors } from './Visitors/Visitors';
+export { default as VisitRecords } from './Visitors/VisitRecords';

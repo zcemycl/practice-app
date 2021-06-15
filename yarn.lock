@@ -10563,6 +10563,11 @@
   dependencies:
     "semver-compare" "^1.0.0"
 
+"plotly.js-dist@^2.0.0":
+  "integrity" "sha512-Hx1qCbMf/JxPSrFLXYrcSQV5/pBm06TMbvUc2pRCy3fCoBeeEpVDa+Gf6/yhrSLZpMHSdNW6M2S87j8OLEt65g=="
+  "resolved" "https://registry.npmjs.org/plotly.js-dist/-/plotly.js-dist-2.0.0.tgz"
+  "version" "2.0.0"
+
 "pnp-webpack-plugin@1.6.4":
   "integrity" "sha512-7Wjy+9E3WwLOEL30D+m8TSTF7qJJUJLONBnwQp0518siuMxUQUbgZwssaFX+QKlZkjHZcw/IpZCt/H0srrntSg=="
   "resolved" "https://registry.npmjs.org/pnp-webpack-plugin/-/pnp-webpack-plugin-1.6.4.tgz"

@@ -16,6 +16,7 @@ const options = [
     {id: 8, name: 'Progressive Graph', root: "/prograph"},
     {id: 9, name: 'Cluster Map', root: "/clustermap"},
     {id: 10, name: 'Game', root: "/game"},
+    {id: 11, name: 'Visitor Record', root: "/visitrecords"},
 ]
 
 const ITEM_HEIGHT = 12*Math.max(options.length,12);
