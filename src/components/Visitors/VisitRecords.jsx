@@ -7,6 +7,7 @@ import useStyles from './styles';
 const VisitRecords = ({setSelected}) => {
     const classes = useStyles();
     const [data,setData] = useState([])
+    const [numViews,setNumViews] = useState(0);
     const sheeturi = 'https://sheet.best/api/sheets/82c23d79-9535-4ef8-9970-f59acfed6f0a'
     useEffect(()=>{
         setSelected("Visitor Record");
@@ -14,8 +15,16 @@ const VisitRecords = ({setSelected}) => {
 
     useEffect(() => {
         csv("data/Visitors-Test.csv").then(d => {
-            console.log(d)
+            console.log(d,d.length)
             setData(d)
+            setNumViews(d.length)
+            for (let i = 0; i < d.length; i++){
+                axios.get('http://www.geoplugin.net/json.gp?ip='+d[i].IP)
+                    .then(res=>{
+                        console.log(d[i].IP,res.data.geoplugin_countryName)
+                    })
+            }
+
         });
     },[]);
 
