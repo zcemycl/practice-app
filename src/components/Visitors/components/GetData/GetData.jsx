@@ -22,11 +22,11 @@ export const GetData = ({src,sheeturi,data,visits,setVisits,dispatch}) => {
 
     useEffect(() => {
         for (let i = 0; i < data.length; i++){
-            axios.get('https://www.geoplugin.net/json.gp?ip='+data[i].IP)
+            axios.get('https://ipapi.co/'+data[i].IP+'/json/')
                 .then(res=>{
-                    const {geoplugin_countryName,geoplugin_latitude,geoplugin_longitude} = res.data
-                    setVisits(prev=>{return {...prev,[data[i].IP]:{place:geoplugin_countryName,
-                        lat:geoplugin_latitude,lng:geoplugin_longitude}}})
+                    const {country_name,latitude,longitude} = res.data
+                    setVisits(prev=>{return {...prev,[data[i].IP]:{place:country_name,
+                        lat:latitude,lng:longitude}}})
                 })}
     },[data,setVisits])
 
