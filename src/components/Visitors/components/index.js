@@ -1,0 +1,6 @@
+export { default as Numbar } from './Numbar/Numbar'
+export { default as Map } from './Map/Map'
+export { default as Bar } from './Bar/Bar'
+export { default as Doughnut } from './Doughnut/Doughnut'
+export { GetSize } from './GetSize/GetSize'
+export { GetData } from './GetData/GetData'

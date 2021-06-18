@@ -26,8 +26,7 @@ const Forms = ({data,setData}) => {
         const getIP = async () => {
             const ip = await publicIp.v4({
                 fallbackUrls:["https://ifconfig.co/ip"]});
-            const tmpSend = {...send};
-            setSend({...tmpSend,IP:ip})
+            setSend(prev=>{return {...prev,IP:ip}})
         }
         let currentTimestamp = Date.now()
         let date = new Intl.DateTimeFormat('en-US',
@@ -35,8 +34,7 @@ const Forms = ({data,setData}) => {
             hour:'2-digit',minute:'2-digit',second:'2-digit'})
             .format(currentTimestamp)
         getIP();
-        const tmpSend = {...send};
-        setSend({...tmpSend,Timestamp:date});
+        setSend(prev=>{return {...prev,Timestamp:date}})
     },[])
 
     return (
