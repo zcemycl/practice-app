@@ -32,7 +32,7 @@ const Doughnut = ({xs,sm,md,lg,w,h,wW,minW,data,topics,dispatch}) => {
     useEffect(() => {
         var c = []
         for (var i = 0; i < keys.length; i++) {
-            c = [...c,`rgb(0,${255/L*(i)},255)`]
+            c = [...c,`rgba(150,${255/(L-1)*(i)},255,0.75)`]
         }
         setColors(c)
     },[keys,L])
