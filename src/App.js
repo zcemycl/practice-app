@@ -1,5 +1,6 @@
 import React, {useState,useEffect} from "react";
-import { Navbar,Visitors } from './components';
+import {Navbar} from './components';
+// import {Visitors} from './components'
 import Particles from 'react-particles-js';
 import particlesConfig from './config/particlesConfig';
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -24,7 +25,7 @@ const App = () => {
         fetchProducts();
     }, []);
 
-    Visitors({selected})
+    // Visitors({selected})
 
     return (
         <Router basename="/practice-app">

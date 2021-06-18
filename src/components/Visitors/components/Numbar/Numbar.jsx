@@ -1,7 +1,7 @@
 import React from 'react'
 import {Grid,Typography} from '@material-ui/core';
 
-const Numbar = ({xs,sm,md,lg,numViews,visits,noPlaces}) => {
+const Numbar = ({xs,sm,md,lg,numViews,numUni,visits,noPlaces}) => {
     return (
         <>
         <Grid xs={xs} sm={sm} md={md} lg={lg} item>
@@ -18,7 +18,7 @@ const Numbar = ({xs,sm,md,lg,numViews,visits,noPlaces}) => {
             <Grid xs={3} item>
             <Typography variant="h6" style={{fontWeight:600,textAlign:'center',
                 backgroundColor:'#20B2AA',color:'white',height:'100%',border:'2px solid white'}}
-                gutterBottom>Viewers<div>{Object.keys(visits).length}</div></Typography>             
+                gutterBottom>Viewers<div>{numUni}</div></Typography>             
             </Grid>
             <Grid xs={3} item>
             <Typography variant="h6" style={{fontWeight:600,textAlign:'center',

@@ -8,7 +8,7 @@ const VisitRecords = ({setSelected}) => {
     const classes = useStyles();
     const [visits,setVisits] = useState({});
     const cardRef = useRef(null);
-    const [{numViews,w,h,minW,wW,sheeturi,
+    const [{numViews,w,h,minW,wW,sheeturi,numUni,
         data,noPlaces,topics,geo},
         dispatch] = useReducer(reducer,initState)
     
@@ -17,7 +17,7 @@ const VisitRecords = ({setSelected}) => {
     },[setSelected])
 
     GetSize({cardRef,dispatch})
-    GetData({src:'uri',sheeturi,data,visits,setVisits,dispatch}) //csv or uri
+    GetData({src:'csv',sheeturi,data,visits,setVisits,dispatch}) //csv or uri
 
     return (
         <div className={classes.content}>
@@ -42,7 +42,7 @@ const VisitRecords = ({setSelected}) => {
                 
                 <Map xs={12} md={12} {...{h,geo,dispatch}}/>
                 
-                <Numbar xs={12} md={12} {...{numViews,visits,noPlaces}}/>
+                <Numbar xs={12} md={12} {...{numViews,visits,numUni,noPlaces}}/>
                 
 
                 </Card>

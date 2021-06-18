@@ -21,7 +21,7 @@ export const FetchData = ({filterdata,dispatch}) => {
         const uriform = 'data/json/{0}.json'
         dispatch({type:'list',key:'region',value:[]})
         Promise.all(filterdata.map((item)=>
-        fetch(format(uriform,item)))
+            fetch(format(uriform,item)))
         ).then((responses)=>{
             return Promise.all(responses.map((resp)=>{
                 return resp.json()}))
