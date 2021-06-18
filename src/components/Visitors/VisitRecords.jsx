@@ -17,7 +17,7 @@ const VisitRecords = ({setSelected}) => {
     },[setSelected])
 
     GetSize({cardRef,dispatch})
-    GetData({src:'csv',sheeturi,data,visits,setVisits,dispatch}) //csv or uri
+    GetData({src:'uri',sheeturi,data,visits,setVisits,dispatch}) //csv or uri
 
     return (
         <div className={classes.content}>

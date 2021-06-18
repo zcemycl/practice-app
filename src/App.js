@@ -24,7 +24,7 @@ const App = () => {
         fetchProducts();
     }, []);
 
-    // Visitors({selected})
+    Visitors({selected})
 
     return (
         <Router basename="/practice-app">
