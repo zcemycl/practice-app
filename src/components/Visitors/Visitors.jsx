@@ -18,9 +18,9 @@ export const Visitors = ({selected}) => {
             fetch("https://ipapi.co/"+ip+"/json/")
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data)
-                    if (selected!=="" ){
-                        const {ip,country_name,latitude,longitude} = data;
+                    const {ip,country_name,latitude,longitude} = data;
+                    const ignoreIP = process.env.REACT_APP_IGNORE_IP.split(",")
+                    if (selected!=="" && ip && ignoreIP.indexOf(ip)<0 ){
                         const objt = {IP:ip,Topic:selected,
                             Timestamp:date,Country:country_name,
                             Lat:latitude,Lng:longitude};
