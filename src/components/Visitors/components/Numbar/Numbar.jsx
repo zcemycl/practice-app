@@ -1,7 +1,7 @@
 import React from 'react'
 import {Grid,Typography} from '@material-ui/core';
 
-const Numbar = ({xs,sm,md,lg,numViews,numUni,visits,noPlaces}) => {
+const Numbar = ({xs,sm,md,lg,numViews,numUni,noPlaces}) => {
     return (
         <>
         <Grid xs={xs} sm={sm} md={md} lg={lg} item>

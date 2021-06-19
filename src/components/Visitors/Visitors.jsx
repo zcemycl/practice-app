@@ -14,13 +14,25 @@ export const Visitors = ({selected}) => {
                 hour:'2-digit',minute:'2-digit',second:'2-digit'})
                 .format(currentTimestamp)
             const ip = await publicIp.v4({fallbackUrls:["https://ifconfig.co/ip"]});
-            if (selected!=="" ){
-                const objt = {IP:ip,Topic:selected,Timestamp:date};
-                axios.post(sheeturi,objt)
-                    .then((response) => {
-                        console.log(response);
-                    });
-            }}
+            console.log(ip,date)
+            fetch("https://ipapi.co/"+ip+"/json/")
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data)
+                    if (selected!=="" ){
+                        const {ip,country_name,latitude,longitude} = data;
+                        const objt = {IP:ip,Topic:selected,
+                            Timestamp:date,Country:country_name,
+                            Lat:latitude,Lng:longitude};
+                        axios.post(sheeturi,objt)
+                            .then((response) => {
+                                console.log(response);
+                            });
+                    }
+                })
+                .catch(e=>{})
+
+        }
         getVisitorInfo();
         }, [selected]);
 

@@ -36,13 +36,15 @@ const Map = ({xs,sm,md,lg,h,geo,dispatch}) => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
 
             <MarkerClusterGroup> 
-            {geo.map(({lat,lng},index)=>(<Marker key={index}
-                position={[parseFloat(lat),
-                parseFloat(lng)]} 
+            {Object.values(geo)
+                .filter((item)=>item.Lat && item.Lng)
+                .map(({Lat,Lng},index)=>(<Marker key={index}
+                position={[parseFloat(Lat),
+                parseFloat(Lng)]} 
                 eventHandlers={{
-                    click: (e) => console.log(lat,lng),
+                    click: (e) => console.log(Lat,Lng),
                 }}>
-                <Tooltip>{lat},{lng}</Tooltip>
+                <Tooltip>{Lat},{Lng}</Tooltip>
                 </Marker>))}
             </MarkerClusterGroup>
             

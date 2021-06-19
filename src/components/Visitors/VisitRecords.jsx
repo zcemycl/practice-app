@@ -1,4 +1,4 @@
-import React,{useState,useEffect,useRef,useReducer} from 'react'
+import React,{useEffect,useRef,useReducer} from 'react'
 import {Grid,Card,Typography} from '@material-ui/core';
 import useStyles from './styles';
 import {initState,reducer} from './store'
@@ -6,7 +6,6 @@ import {Numbar,Map,Bar,Doughnut,GetSize,GetData} from './components'
 
 const VisitRecords = ({setSelected}) => {
     const classes = useStyles();
-    const [visits,setVisits] = useState({});
     const cardRef = useRef(null);
     const [{numViews,w,h,minW,wW,sheeturi,numUni,
         data,noPlaces,topics,geo},
@@ -17,7 +16,7 @@ const VisitRecords = ({setSelected}) => {
     },[setSelected])
 
     GetSize({cardRef,dispatch})
-    GetData({src:'csv',sheeturi,data,visits,setVisits,dispatch}) //csv or uri
+    GetData({src:'uri',sheeturi,data,dispatch}) //csv or uri
 
     return (
         <div className={classes.content}>
@@ -40,9 +39,9 @@ const VisitRecords = ({setSelected}) => {
                     </Grid>
                 </Grid>
                 
-                <Map xs={12} md={12} {...{h,geo,dispatch}}/>
+                <Map xs={12} md={12} {...{h,geo,dispatch}}/> 
                 
-                <Numbar xs={12} md={12} {...{numViews,visits,numUni,noPlaces}}/>
+                <Numbar xs={12} md={12} {...{numViews,numUni,noPlaces}}/>
                 
 
                 </Card>
