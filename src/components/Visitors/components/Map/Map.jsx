@@ -27,7 +27,7 @@ const Map = ({xs,sm,md,lg,h,geo,dispatch}) => {
         <>
         <Grid xs={xs} sm={sm} md={md} lg={lg} item >
             <Typography variant="h6" style={{textAlign:'center'}}
-                gutterBottom>Visitors' Internet Service Providers</Typography>  
+                gutterBottom>Visitor Internet Service Providers</Typography>  
             <MapContainer center={[51.5074, 0.1278]} zoom={1} 
                 whenCreated={e=>dispatch({type:'object',key:'map',value:e})}
                 style={{height:h*0.4}}>

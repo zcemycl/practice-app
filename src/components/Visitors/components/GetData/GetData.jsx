@@ -6,7 +6,7 @@ export const GetData = ({src,sheeturi,data,dispatch}) => {
     const [uniqueIP,setUniqueIP] = useState({})
     useEffect(() => {
         if (src === 'uri'){
-            axios.get(sheeturi)
+            axios.get(sheeturi, { crossdomain: true })
             .then(res=>{
                 dispatch({type:'list',key:'data',value:res.data})
                 dispatch({type:'value',key:'numViews',value:res.data.length})

@@ -41,7 +41,7 @@ const Doughnut = ({xs,sm,md,lg,w,h,wW,minW,data,topics,dispatch}) => {
         <>
         <Grid xs={xs} sm={sm} md={md} lg={lg} item>           
             <Typography variant="h6" style={{textAlign:'center'}}
-                gutterBottom>Topics Views</Typography> 
+                gutterBottom>Topic View Distribution</Typography> 
             <Plot data={[{type:'pie',values:vals, 
                 labels:keys,direction:'clockwise',
                 marker: {

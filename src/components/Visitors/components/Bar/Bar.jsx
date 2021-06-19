@@ -12,7 +12,7 @@ const Bar = ({xs,sm,md,lg,w,h,wW,minW,noPlaces}) => {
         <>
         <Grid xs={xs} sm={sm} md={md} lg={lg} item={true} >
             <Typography variant="h6" style={{textAlign:'center'}}
-                gutterBottom>Unique Visitors Regions </Typography> 
+                gutterBottom>Unique Visitor Regions </Typography> 
             <Plot data={[{type:'bar',marker:{color:'#7B68EE'},x:Object.keys(noPlaces), 
                     y:Object.values(noPlaces)}]} layout={lout} config={conf}/>
         </Grid>   
