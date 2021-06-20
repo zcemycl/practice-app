@@ -1,8 +1,9 @@
 import React,{useEffect,useRef,useReducer} from 'react'
-import {Grid,Card,Typography} from '@material-ui/core';
+import {Grid,Card} from '@material-ui/core';
 import useStyles from './styles';
 import {initState,reducer} from './store'
-import {Numbar,Map,Bar,Doughnut,GetSize,GetData} from './components'
+import {Numbar,Map,Bar,Doughnut,GetSize,
+    GetData,Header} from './components'
 
 const VisitRecords = ({setSelected}) => {
     const classes = useStyles();
@@ -21,16 +22,11 @@ const VisitRecords = ({setSelected}) => {
     return (
         <div className={classes.content}>
         <div className={classes.toolbar}/>
-        <Grid container 
-            justify="center" 
-            direction="row"
-            spacing={0}
-            className={classes.grid} ref={cardRef}>
+        <Grid container justify="center" direction="row"
+            spacing={0} className={classes.grid} ref={cardRef}>
             <Grid xs={12} sm={10} md={10} lg={10} item>
                 <Card className={classes.card} style={{borderRadius:'15px',position:'relative'}}>       
-                <Typography variant="h6" style={{fontWeight:600,textAlign:'left',padding:'10px',
-                    backgroundColor:'#7B68EE',color:'white',fontFamily:'sans-serif'}}
-                    gutterBottom>Visitors Statistics</Typography> 
+                <Header/>
                 <Grid xs={12} item>
                     <Grid container justify="center" 
                         direction="row" spacing={0}>
@@ -38,12 +34,8 @@ const VisitRecords = ({setSelected}) => {
                     <Doughnut xs={12} sm={6} md={6} {...{w,h,wW,minW,data,topics,dispatch}}/>
                     </Grid>
                 </Grid>
-                
                 <Map xs={12} md={12} {...{h,geo,dispatch}}/> 
-                
                 <Numbar xs={12} md={12} {...{numViews,numUni,noPlaces}}/>
-                
-
                 </Card>
             </Grid>
             
