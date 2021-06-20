@@ -9,9 +9,8 @@ const VisitRecords = ({setSelected}) => {
     const classes = useStyles();
     const cardRef = useRef(null);
     const [{numViews,w,h,minW,wW,sheeturi,numUni,
-        data,noPlaces,topics,geo},
+        data,noPlaces,topics,geo,tabs},
         dispatch] = useReducer(reducer,initState)
-    
     useEffect(()=>{
         setSelected("Visitor Record");
     },[setSelected])
@@ -26,7 +25,7 @@ const VisitRecords = ({setSelected}) => {
             spacing={0} className={classes.grid} ref={cardRef}>
             <Grid xs={12} sm={10} md={10} lg={10} item>
                 <Card className={classes.card} style={{borderRadius:'15px',position:'relative'}}>       
-                <Header/>
+                <Header {...{geo,tabs,dispatch}}/>
                 <Grid xs={12} item>
                     <Grid container justify="center" 
                         direction="row" spacing={0}>
