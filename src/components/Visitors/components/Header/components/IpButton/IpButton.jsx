@@ -15,11 +15,14 @@ const IpButton = ({tabs,geo,opts,active,dispatch}) => {
         <>
         <Button variant="outlined" value={ip}
             style={{color:'white',backgroundColor:colorRadio,
-                border:active?'2px solid white':''}} // or border:''
+                border:active===opts.ip?'2px solid white':''}} // or border:''
             className={classes.button}
             startIcon={
                 <CancelIcon className={classes.icon}
                     onClick={e=>{
+                        if (active===opts.ip){
+                            dispatch({type:'value',key:'active',value:""})
+                        }
                         var tmpTabs = {...tabs}
                         delete tmpTabs[opts.ip]
                         dispatch({type:'object',key:'tabs',value:tmpTabs})
@@ -32,7 +35,12 @@ const IpButton = ({tabs,geo,opts,active,dispatch}) => {
                 </>
                 }
         ><span style={{color:'white'}} onClick={e=>{
-            dispatch({type:'value',key:'active',value:ip})
+            console.log(e.target.innerHTML)
+            if (e.target.innerHTML===active){
+                dispatch({type:'value',key:'active',value:""})
+            } else {
+                dispatch({type:'value',key:'active',value:ip})
+            }
             }}>{ip}</span></Button>
         </>
     )

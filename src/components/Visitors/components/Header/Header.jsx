@@ -11,7 +11,7 @@ const Header = ({opts,geo,tabs,active,dispatch}) => {
     <AddButton {...{opts,geo,tabs,dispatch}}/>
     
     {Object.values(tabs).map((item)=>
-        (<IpButton key={item.ip} {...{tabs,geo,opts:item,dispatch}} active={item.ip===active}/>)
+        (<IpButton key={item.ip} {...{tabs,geo,opts:item,dispatch,active}} />)
     )}
     </Typography>     
     </>
