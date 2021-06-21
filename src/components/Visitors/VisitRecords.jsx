@@ -4,12 +4,13 @@ import useStyles from './styles';
 import {initState,reducer} from './store'
 import {Numbar,Map,Bar,Doughnut,GetSize,
     GetData,Header} from './components'
+// import {defaults} from './opts.json' 
 
 const VisitRecords = ({setSelected}) => {
     const classes = useStyles();
     const cardRef = useRef(null);
-    const [{numViews,w,h,minW,wW,sheeturi,numUni,
-        data,noPlaces,topics,geo,tabs},
+    const [{numViews,w,h,minW,wW,sheeturi,numUni,active,
+        data,noPlaces,topics,geo,tabs,opts},
         dispatch] = useReducer(reducer,initState)
     useEffect(()=>{
         setSelected("Visitor Record");
@@ -25,7 +26,8 @@ const VisitRecords = ({setSelected}) => {
             spacing={0} className={classes.grid} ref={cardRef}>
             <Grid xs={12} sm={10} md={10} lg={10} item>
                 <Card className={classes.card} style={{borderRadius:'15px',position:'relative'}}>       
-                <Header {...{geo,tabs,dispatch}}/>
+                <Header {...{opts,geo,tabs,active,dispatch}}/>
+                <Map xs={12} md={12} {...{h,geo,dispatch}}/> 
                 <Grid xs={12} item>
                     <Grid container justify="center" 
                         direction="row" spacing={0}>
@@ -33,7 +35,6 @@ const VisitRecords = ({setSelected}) => {
                     <Doughnut xs={12} sm={6} md={6} {...{w,h,wW,minW,data,topics,dispatch}}/>
                     </Grid>
                 </Grid>
-                <Map xs={12} md={12} {...{h,geo,dispatch}}/> 
                 <Numbar xs={12} md={12} {...{numViews,numUni,noPlaces}}/>
                 </Card>
             </Grid>

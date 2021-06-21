@@ -1,19 +1,17 @@
 import React from 'react'
 import {Typography} from '@material-ui/core';
-// import useStyles from './styles';
 import {AddButton,IpButton} from './components'
 
-const Header = ({geo,tabs,dispatch}) => {
-    // const classes = useStyles();
+const Header = ({opts,geo,tabs,active,dispatch}) => {
     return (
     <>
     <Typography variant="h6" style={{fontWeight:600,textAlign:'left',padding:'10px',
         backgroundColor:'#7B68EE',color:'white',fontFamily:'sans-serif'}}
         gutterBottom>Visitors Statistics
-    <AddButton {...{geo,tabs,dispatch}}/>
+    <AddButton {...{opts,geo,tabs,dispatch}}/>
     
-    {Object.values(tabs).map((opts)=>
-        (<IpButton key={opts.ip} {...{opts}}/>)
+    {Object.values(tabs).map((item)=>
+        (<IpButton key={item.ip} {...{tabs,geo,opts:item,dispatch}} active={item.ip===active}/>)
     )}
     </Typography>     
     </>
