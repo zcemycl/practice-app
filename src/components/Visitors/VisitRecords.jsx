@@ -18,7 +18,7 @@ const VisitRecords = ({setSelected}) => {
     },[setSelected])
 
     GetSize({cardRef,dispatch})
-    GetData({src:'csv',sheeturi,data,dispatch}) //csv or uri
+    GetData({src:'uri',sheeturi,data,dispatch}) //csv or uri
 
     return (
         <div className={classes.content}>
@@ -55,6 +55,10 @@ const VisitRecords = ({setSelected}) => {
                                     <tr>
                                         <td>Latest Visit Date</td>
                                         <td>{displayData[active].lastdate}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Number of Visits</td>
+                                        <td>{displayData[active].num}</td>
                                     </tr>
                                 </tbody>
                                 </Table>
