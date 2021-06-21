@@ -5,7 +5,7 @@ import CancelIcon from '@material-ui/icons/Cancel';
 import EditIcon from '@material-ui/icons/Edit';
 import {Form} from '../'
 
-const IpButton = ({tabs,geo,opts,active,dispatch}) => {
+const IpButton = ({data,tabs,geo,opts,displayData,active,dispatch}) => {
     const {colorRadio,ip} = opts;
     const [open, setOpen] = useState(false);
     const classes = useStyles();
@@ -26,12 +26,15 @@ const IpButton = ({tabs,geo,opts,active,dispatch}) => {
                         var tmpTabs = {...tabs}
                         delete tmpTabs[opts.ip]
                         dispatch({type:'object',key:'tabs',value:tmpTabs})
+                        tmpTabs = {...displayData}
+                        delete tmpTabs[opts.ip]
+                        console.log(tmpTabs)
+                        dispatch({type:'object',key:'displayData',value:tmpTabs})
                     }}/>}
             endIcon={
                 <>
-                <EditIcon className={classes.icon2}
-                    onClick={handleClickOpen}/>
-                <Form {...{tabs,open,geo,opts,setOpen,dispatch,mode:"tab"}}/>
+                <EditIcon className={classes.icon2} onClick={handleClickOpen}/>
+                <Form {...{data,tabs,open,geo,opts,displayData,setOpen,dispatch,mode:"tab"}}/>
                 </>
                 }
         ><span style={{color:'white'}} onClick={e=>{

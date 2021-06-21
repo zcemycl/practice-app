@@ -4,7 +4,7 @@ import AddLocationIcon from '@material-ui/icons/AddLocation';
 import useStyles from './styles';
 import {Form} from '../'
 
-const AddButton = ({opts,geo,tabs,dispatch}) => {
+const AddButton = ({data,opts,geo,tabs,displayData,dispatch}) => {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     const handleClickOpen = () => {
@@ -17,7 +17,7 @@ const AddButton = ({opts,geo,tabs,dispatch}) => {
             className={classes.button}
             onClick={handleClickOpen}
             startIcon={<AddLocationIcon />}>Add</Button>
-        <Form {...{tabs,open,geo,opts,setOpen,dispatch,mode:"add"}}/>
+        <Form {...{data,tabs,open,geo,opts,setOpen,displayData,dispatch,mode:"add"}}/>
         </>
     )
 }

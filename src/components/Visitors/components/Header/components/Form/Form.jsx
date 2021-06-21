@@ -7,7 +7,7 @@ import {Dialog,DialogActions,DialogContent,DialogTitle} from '@material-ui/core'
 import {colorOpts,defaults} from './opts.json' 
 import useStyles from './styles';
 
-const Form = ({tabs,open,geo,opts,setOpen,dispatch,mode}) => { // mode: tab or add
+const Form = ({data,tabs,open,geo,opts,setOpen,displayData,dispatch,mode}) => { // mode: tab or add
     const classes = useStyles();
     const [Opts,setOpts] = useState(opts);
     const keyIPs = Object.keys(geo);
@@ -23,17 +23,44 @@ const Form = ({tabs,open,geo,opts,setOpen,dispatch,mode}) => { // mode: tab or a
             handleClose();
             setShowWarn(false)
             if (mode==="add"){
-                console.log(opts)
                 dispatch({type:'object',key:'tabs',
                     value:{...tabs,[opts.ip]:opts}})
                 dispatch({type:'object',key:'opts',value:defaults})
+                var tmp = {}; var num = 0; var lastdate = ""
+                for (let i=0;i<data.length;i++){
+                    if (data[i].IP===opts.ip){
+                        tmp[data[i].Topic] = 1+(tmp[data[i].Topic]|0)
+                        num++
+                        lastdate = data[i].Timestamp
+                    }
+                }
+                const store = {...displayData,[opts.ip]:{IP:opts.ip,topics:tmp,
+                    Lat:geo[opts.ip].Lat,Lng:geo[opts.ip].Lng,lastdate:lastdate,
+                    country:geo[opts.ip].Country,num:num}};
+                dispatch({type:'object',key:'displayData',value:store})
+                // console.log(store)
             } else if (mode==="tab"){
-                console.log(Opts)
                 var tmpTabs = {...tabs};
                 delete tmpTabs[opts.ip]
                 tmpTabs[Opts.ip] = Opts
-                dispatch({type:'object',key:'tabs',
-                    value:tmpTabs})
+                dispatch({type:'object',key:'tabs',value:tmpTabs})
+
+                tmp = {}; num = 0; lastdate = ""
+                tmpTabs = {...displayData}
+                delete tmpTabs[opts.ip]
+                for (let i=0;i<data.length;i++){
+                    if (data[i].IP===Opts.ip){
+                        tmp[data[i].Topic] = 1+(tmp[data[i].Topic]|0)
+                        num++
+                        lastdate = data[i].Timestamp
+                    }
+                }
+                tmpTabs[Opts.ip] = {IP:Opts.ip,topics:tmp,
+                    Lat:geo[Opts.ip].Lat,Lng:geo[Opts.ip].Lng,lastdate:lastdate,
+                    country:geo[Opts.ip].Country,num:num}
+                // console.log(tmpTabs)
+                dispatch({type:'object',key:'displayData',value:tmpTabs})
+
             }
         } else {setShowWarn(true)}
         setValid(false);
