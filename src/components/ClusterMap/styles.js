@@ -12,12 +12,16 @@ export default makeStyles((theme) => ({
   },
   grid: {
     height: '75vh',
+    position: 'relative'
   },
   card: {
     width:'100%',
     height: '100%', 
     textAlign: 'center',
     // background: "transparent",
+  },
+  map: {
+    height:'100%'
   },
   icon: {
     color: 'red',
