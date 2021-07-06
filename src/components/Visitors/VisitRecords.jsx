@@ -79,7 +79,7 @@ const VisitRecords = ({setSelected}) => {
                     <Doughnut xs={12} sm={6} md={6} {...{w,h,wW,minW,data,topics,dispatch}}/>
                     </Grid>
                 </Grid>
-                <Numbar xs={12} md={12} {...{numViews,numUni,noPlaces}}/>
+                <Numbar xs={12} md={12} {...{numViews,numUni,noPlaces,data}}/>
                 </Card>
             </Grid>
             

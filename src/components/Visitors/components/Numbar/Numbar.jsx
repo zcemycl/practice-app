@@ -1,7 +1,19 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import {Grid,Typography} from '@material-ui/core';
 
-const Numbar = ({xs,sm,md,lg,numViews,numUni,noPlaces}) => {
+const Numbar = ({xs,sm,md,lg,numViews,numUni,noPlaces,data}) => {
+    const [topics,setTopics] = useState([])
+    useEffect(()=>{
+        let tmpTopics = []
+        for (let i=0; i<data.length; i++){
+            if (tmpTopics.indexOf(data[i].Topic) === -1) {
+                if (data[i].Topic !== "")
+                    tmpTopics = [...tmpTopics,data[i].Topic]
+            }
+        }
+        setTopics(tmpTopics);
+    },[data])
+
     return (
         <>
         <Grid xs={xs} sm={sm} md={md} lg={lg} item>
@@ -28,7 +40,7 @@ const Numbar = ({xs,sm,md,lg,numViews,numUni,noPlaces}) => {
             <Grid xs={3} item>
             <Typography variant="h6" style={{fontWeight:600,textAlign:'center',
                 backgroundColor:'#20B2AA',color:'white',height:'100%',border:'2px solid white'}}
-                gutterBottom>Pages<div>12</div></Typography>             
+                gutterBottom>Pages<div>{topics.length}</div></Typography>             
             </Grid>
         </Grid>
         </Grid>   
