@@ -1,10 +1,12 @@
 import {useEffect} from 'react'
 import axios from 'axios';
 import publicIp from 'public-ip'
+import {useSelector} from 'react-redux';
 
 const sheeturi = 'https://sheet.best/api/sheets/82c23d79-9535-4ef8-9970-f59acfed6f0a'
 
-export const Visitors = ({selected}) => {
+export const Visitors = () => {
+    const selected = useSelector(state=>state.selected)
 
     useEffect(() => {
         const getVisitorInfo = async () => {    

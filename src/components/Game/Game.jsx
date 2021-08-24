@@ -4,12 +4,15 @@ import useStyles from './styles';
 import { Grid, Card } from '@material-ui/core';
 import { Scene } from './Scene'
 import { UI,Aimer } from './components'
+import {assign} from '../../actions';
+import {useDispatch} from 'react-redux';
 
-const Game = ({setSelected}) => {
+const Game = () => {
     const classes = useStyles();
+    const dispatch = useDispatch();
     useEffect(()=>{
-        setSelected("Game");
-    },[setSelected])
+        dispatch(assign("Game"));
+    },[dispatch])
 
     return (
         <div className={classes.content}>

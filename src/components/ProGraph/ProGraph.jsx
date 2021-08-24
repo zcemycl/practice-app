@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useState,useEffect} from 'react';
 import FetchPlot from './FetchPlot/FetchPlot';
 import UIPlot from './UIPlot/UIPlot';
 import SocketPlot from './SocketPlot/SocketPlot';
@@ -6,9 +6,12 @@ import { useTheme } from '@material-ui/core/styles';
 import { Grid, MobileStepper, Button } from '@material-ui/core';
 import { KeyboardArrowRight, KeyboardArrowLeft } from '@material-ui/icons';
 import useStyles from './styles';
+import {assign} from '../../actions';
+import {useDispatch} from 'react-redux';
 
-const ProGraph = ({setSelected}) => {
-    const [activeStep, setActiveStep] = React.useState(0);
+const ProGraph = () => {
+    const [activeStep, setActiveStep] = useState(0);
+    const dispatch = useDispatch();
     const classes = useStyles();
     const theme = useTheme();
     const maxSteps = 3;
@@ -21,8 +24,8 @@ const ProGraph = ({setSelected}) => {
     };
 
     useEffect(()=>{
-        setSelected("Progressive Graph");
-    },[setSelected])
+        dispatch(assign("Progressive Graph"))
+    },[dispatch])
 
     const switchPlot = (step) => {
         switch (step) {

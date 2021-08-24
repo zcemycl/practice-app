@@ -3,6 +3,8 @@ import { AppBar, Toolbar, IconButton, MenuItem, Menu, Typography } from '@materi
 import { ShoppingCart, GitHub, LinkedIn, Bookmark } from '@material-ui/icons';
 import useStyles from './styles';
 import { Link } from 'react-router-dom';
+import {useSelector,useDispatch} from 'react-redux';
+import {assign} from '../../actions';
 
 const options = [
     {id: 0, name: 'Knowledge Graph', root: "/"},
@@ -21,14 +23,16 @@ const options = [
 
 const ITEM_HEIGHT = 12*Math.max(options.length,12);
 
-const Navbar = ({selected,setSelected,setIsTourOpen,anchorEl,setAnchorEl}) => {
+const Navbar = ({setIsTourOpen,anchorEl,setAnchorEl}) => {
     const classes = useStyles();
+    const selected = useSelector(state=>state.selected)
+    const dispatch = useDispatch();
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
     
     const handleClose = (event) => {
-        setSelected(event.target.text);
+        dispatch(assign(event.target.text))
         setAnchorEl(null);
     };
 
@@ -42,7 +46,7 @@ const Navbar = ({selected,setSelected,setIsTourOpen,anchorEl,setAnchorEl}) => {
                         component={Link} 
                         to="/"
                         onClick={()=>(
-                            setSelected('Knowledge Graph')
+                            dispatch(assign('Knowledge Graph'))
                             )}
                         >
                         Yui's 

@@ -10,6 +10,8 @@ import useStyles from './styles';
 import './styles.css'
 import 'leaflet/dist/leaflet.css'
 import {initState,reducer} from './store'
+import {assign} from '../../actions';
+import {useDispatch} from 'react-redux';
 
 let DefaultIcon = L.icon({
     iconUrl: icon,
@@ -19,10 +21,11 @@ L.Marker.prototype.options.icon = DefaultIcon;
 var geojson;
 geojson = L.geoJson();
 
-const ClusterMap = ({setSelected}) => {
+const ClusterMap = () => {
+    const dispatchGlobal = useDispatch();
     useEffect(()=>{
-        setSelected("Cluster Map");
-    },[setSelected])
+        dispatchGlobal(assign("Cluster Map"));
+    },[dispatchGlobal])
     
     const classes = useStyles();
     const [{sc,map,viewport,zoom,bounds,

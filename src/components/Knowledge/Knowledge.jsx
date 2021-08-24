@@ -7,14 +7,17 @@ import {Glitch,Text,Tooltip,Arrow} from "./components";
 import Tour from 'reactour'
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import './styles.css';
+import {assign} from '../../actions';
+import {useDispatch} from 'react-redux';
 
-const Knowledge = ({setSelected,isTourOpen,setIsTourOpen,setAnchorEl}) => {
+const Knowledge = ({isTourOpen,setIsTourOpen,setAnchorEl}) => {
     const classes = useStyles();
     const [showIframe, setShowIframe] = useState(false);
     const [logoId,setLogoId] = useState(null);
+    const dispatch = useDispatch();
     useEffect(()=>{
-        setSelected("Knowledge Graph");
-    },[setSelected])
+        dispatch(assign('Knowledge Graph'))
+    },[dispatch])
 
     const disableBody = target => disableBodyScroll(target);
     const enableBody = target => enableBodyScroll(target);

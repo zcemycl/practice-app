@@ -1,14 +1,16 @@
 import React, {useEffect} from 'react';
 import { Grid } from '@material-ui/core';
 import Product from './Product/Product';
-
+import {assign} from '../../actions';
+import {useDispatch} from 'react-redux';
 import useStyles from './styles';
 
-const Products = ({ products,setSelected }) => {
+const Products = ({products}) => {
     const classes = useStyles();
+    const dispatch = useDispatch();
     useEffect(()=>{
-        setSelected("Shop");
-    },[setSelected])
+        dispatch(assign("Shop"));
+    },[dispatch])
     return (
         <main className={classes.content}>
             <div className={classes.toolbar}/>

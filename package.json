@@ -72,7 +72,7 @@
     "react-tooltip": "^4.2.19",
     "reactour": "^1.18.3",
     "recharts": "^2.0.9",
-    "redux": "^4.1.0",
+    "redux": "^4.1.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "roughjs": "^4.3.1",

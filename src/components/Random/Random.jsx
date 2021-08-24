@@ -3,15 +3,18 @@ import useStyles from './styles';
 import {Grid} from '@material-ui/core';
 import {SpringCard} from './components'
 import data from "./data.json";
+import {assign} from '../../actions';
+import {useDispatch} from 'react-redux';
 
-const Random = ({setSelected}) => {
+const Random = () => {
     const classes = useStyles();
     // const num = data.length;
     const num = 3;
+    const dispatch = useDispatch();
     
     useEffect(()=>{
-        setSelected("Gallery");
-    },[setSelected])
+        dispatch(assign("Gallery"));
+    },[dispatch])
     
     return (
         <div className={classes.content}>

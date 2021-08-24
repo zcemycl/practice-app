@@ -3,14 +3,17 @@ import useStyles from './styles';
 import { Redirect } from 'react-router-dom';
 import { Grid, Card, CardContent, Typography } from '@material-ui/core';
 import LoginForm from './LoginForm';
+import {assign} from '../../actions';
+import {useDispatch} from 'react-redux';
 
-const Auth = ({isAuth,setIsAuth,setSelected}) => {
+const Auth = ({isAuth,setIsAuth}) => {
     const classes = useStyles();
+    const dispatch = useDispatch();
     const valueUser = useRef('');
     const valuePwd = useRef('');
     useEffect(()=>{
-        setSelected("Authentication");
-    },[setSelected])
+        dispatch(assign("Authentication"));
+    },[dispatch])
     const handleSignIn = () => {
         const key = process.env.REACT_APP_SECRET_CODE;
         const isUser=valueUser.current.value===key;

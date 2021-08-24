@@ -5,10 +5,13 @@ import { TextField, IconButton } from '@material-ui/core';
 import socketIOClient from 'socket.io-client';
 import Message from './Message';
 import SendIcon from '@material-ui/icons/Send';
+import {assign} from '../../actions';
+import {useDispatch} from 'react-redux';
 
-const Chatapp = ({setSelected}) => {
+const Chatapp = () => {
     const classes = useStyles();
     const [arr,setArr] = useState([]);
+    const dispatch = useDispatch();
     const valueUser = useRef("");
     const valueText = useRef("");
     const site = 'https://hidden-dusk-28735.herokuapp.com';
@@ -16,8 +19,8 @@ const Chatapp = ({setSelected}) => {
     const socketRef = useRef();
     socketRef.current = socketIOClient(site,{reconnection: true});
     useEffect(()=>{
-        setSelected("Chatapp");
-    },[setSelected])
+        dispatch(assign("Chatapp"));
+    },[dispatch])
     useEffect(() => {
         if (socketRef.current.id === undefined){
             socketRef.current = socketIOClient(site,{reconnection: true});

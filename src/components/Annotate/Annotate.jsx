@@ -4,12 +4,15 @@ import { Grid,Card } from '@material-ui/core';
 import { TextInfo,Board,FileManage,FileDownload } from './components';
 import { LabelSelect,DelRename,ModeSelect } from './components';
 import placeholder from './kitchen1.jpg';
+import {assign} from '../../actions';
+import {useDispatch} from 'react-redux';
 
-const Annotate = ({setSelected}) => {
+const Annotate = () => {
     const classes = useStyles();
     const targetRef = useRef();
     const [elements,setElements] = useState([]);
     const theImg = new Image();
+    const dispatch = useDispatch();
     theImg.src = placeholder;
     const imgW = theImg.width;
     const imgH = theImg.height;
@@ -23,8 +26,8 @@ const Annotate = ({setSelected}) => {
     const [mode, setMode] = useState("Box");
 
     useEffect(()=>{
-        setSelected("Image Annotation");
-    },[setSelected])
+        dispatch(assign("Image Annotation"))
+    },[dispatch])
     
     return (
         <div className={classes.content}>

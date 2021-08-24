@@ -5,15 +5,18 @@ import { Like,Comments } from './components';
 import axios from 'axios';
 import './styles.css';
 import useStyles from './styles';
+import {assign} from '../../actions';
+import {useDispatch} from 'react-redux';
 
-const CommentLike = ({setSelected}) => {
+const CommentLike = () => {
     const classes = useStyles();
+    const dispatch = useDispatch();
     const [data,setData] = useState([])
     const sheeturi = 'https://sheet.best/api/sheets/82c23d79-9535-4ef8-9970-f59acfed6f0a'
 
     useEffect(()=>{
-      setSelected("Like Comment");
-    },[setSelected])
+      dispatch(assign("Like Comment"));
+    },[dispatch])
 
     useEffect(() => {
       axios.get(sheeturi)

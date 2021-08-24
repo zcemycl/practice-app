@@ -1,12 +1,15 @@
 import React, {useEffect} from 'react';
 import useStyles from './styles';
 import { Grid, Card, CardContent, Typography } from '@material-ui/core';
+import {assign} from '../../actions';
+import {useDispatch} from 'react-redux';
 
-const NotFound = ({setSelected}) => {
+const NotFound = () => {
     const classes = useStyles();
+    const dispatch = useDispatch();
     useEffect(()=>{
-        setSelected("Not Found");
-    },[setSelected])
+        dispatch(assign("Not Found"));
+    },[dispatch])
     return (
         <div className={classes.content}>
             <div className={classes.toolbar}/>

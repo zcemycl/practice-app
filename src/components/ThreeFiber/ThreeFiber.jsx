@@ -8,12 +8,15 @@ import { Plane,Box,Round,
 import useStyles from './styles';
 import { Grid, Card } from '@material-ui/core';
 import 'react-dat-gui/dist/index.css';
+import {assign} from '../../actions';
+import {useDispatch} from 'react-redux';
 
-const ThreeFiber = ({setSelected}) => {
+const ThreeFiber = () => {
     const classes = useStyles();
+    const dispatch = useDispatch();
     useEffect(()=>{
-        setSelected("3D Scene");
-    },[setSelected])
+        dispatch(assign("3D Scene"));
+    },[dispatch])
     const defaultSettings = {
         camx:-9,camy:10,camz:2,fov:90,
         camlx:7,camly:1,camlz:2,

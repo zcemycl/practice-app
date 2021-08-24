@@ -5,6 +5,8 @@ import { Grid, Card } from '@material-ui/core';
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import city from './city.glb';
 import { Environment,OrbitControls } from '@react-three/drei'
+import {assign} from '../../actions';
+import {useDispatch} from 'react-redux';
 
 const Victoria = () =>{
     const gltf = useLoader(GLTFLoader,city);
@@ -14,11 +16,12 @@ const Victoria = () =>{
     );
 }
 
-const Map = ({setSelected}) => {
+const Map = () => {
     const classes = useStyles();
+    const dispatch = useDispatch();
     useEffect(()=>{
-        setSelected("3D Map");
-    },[setSelected])
+        dispatch(assign("3D Map"));
+    },[dispatch])
     return (
         <div className={classes.content}>
         <div className={classes.toolbar}/>

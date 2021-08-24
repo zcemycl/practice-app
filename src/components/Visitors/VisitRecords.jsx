@@ -6,16 +6,19 @@ import {Table} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Numbar,Map,Bar,Doughnut,GetSize,
     GetData,Header,Doughnut2} from './components'
+import {assign} from '../../actions';
+import {useDispatch} from 'react-redux';
 
-const VisitRecords = ({setSelected}) => {
+const VisitRecords = () => {
     const classes = useStyles();
+    const dispatchGlobal = useDispatch();
     const cardRef = useRef(null);
     const [{numViews,w,h,minW,wW,sheeturi,numUni,active,map,
         data,noPlaces,topics,geo,tabs,opts,displayData},
         dispatch] = useReducer(reducer,initState)
     useEffect(()=>{
-        setSelected("Visitor Record");
-    },[setSelected])
+        dispatchGlobal(assign("Visitor Record"));
+    },[dispatchGlobal])
 
     GetSize({cardRef,dispatch})
     GetData({src:'uri',sheeturi,data,dispatch}) //csv or uri
