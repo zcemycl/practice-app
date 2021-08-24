@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/practice-app/static/css/main.43daca69.chunk.css",
-    "main.js": "/practice-app/static/js/main.7d7af3cf.chunk.js",
-    "main.js.map": "/practice-app/static/js/main.7d7af3cf.chunk.js.map",
+    "main.js": "/practice-app/static/js/main.41b663ab.chunk.js",
+    "main.js.map": "/practice-app/static/js/main.41b663ab.chunk.js.map",
     "runtime-main.js": "/practice-app/static/js/runtime-main.23cc5f4e.js",
     "runtime-main.js.map": "/practice-app/static/js/runtime-main.23cc5f4e.js.map",
     "static/css/2.c8bcde87.chunk.css": "/practice-app/static/css/2.c8bcde87.chunk.css",
-    "static/js/2.7d052ae3.chunk.js": "/practice-app/static/js/2.7d052ae3.chunk.js",
-    "static/js/2.7d052ae3.chunk.js.map": "/practice-app/static/js/2.7d052ae3.chunk.js.map",
+    "static/js/2.0a7696af.chunk.js": "/practice-app/static/js/2.0a7696af.chunk.js",
+    "static/js/2.0a7696af.chunk.js.map": "/practice-app/static/js/2.0a7696af.chunk.js.map",
     "index.html": "/practice-app/index.html",
     "static/css/2.c8bcde87.chunk.css.map": "/practice-app/static/css/2.c8bcde87.chunk.css.map",
     "static/css/main.43daca69.chunk.css.map": "/practice-app/static/css/main.43daca69.chunk.css.map",
-    "static/js/2.7d052ae3.chunk.js.LICENSE.txt": "/practice-app/static/js/2.7d052ae3.chunk.js.LICENSE.txt",
+    "static/js/2.0a7696af.chunk.js.LICENSE.txt": "/practice-app/static/js/2.0a7696af.chunk.js.LICENSE.txt",
     "static/media/city.eb3e2962.glb": "/practice-app/static/media/city.eb3e2962.glb",
     "static/media/kitchen1.053fa938.jpg": "/practice-app/static/media/kitchen1.053fa938.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.23cc5f4e.js",
     "static/css/2.c8bcde87.chunk.css",
-    "static/js/2.7d052ae3.chunk.js",
+    "static/js/2.0a7696af.chunk.js",
     "static/css/main.43daca69.chunk.css",
-    "static/js/main.7d7af3cf.chunk.js"
+    "static/js/main.41b663ab.chunk.js"
   ]
 }
