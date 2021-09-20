@@ -37,36 +37,36 @@ const VisitRecords = () => {
                         direction="row" spacing={0}>
                         
                         <Grid item xs={12} style={{textAlign:'left'}}>
-                            <Grid container justify="center" 
-                                direction="row" spacing={0}>
-                                <Grid item xs={6}>
-                            <div style={{display:'block',overflow:'auto',width:'100%'}}>
-                                <Table striped bordered hover size="sm" variant="dark">
-                                <tbody>
-                                    <tr>
-                                        <td>IP Address</td>
-                                        <td>{displayData[active].IP}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>LatLng</td>
-                                        <td>{displayData[active].Lat},{displayData[active].Lng}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Region</td>
-                                        <td>{displayData[active].country}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Latest Visit Date</td>
-                                        <td>{displayData[active].lastdate}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Number of Visits</td>
-                                        <td>{displayData[active].num}</td>
-                                    </tr>
-                                </tbody>
-                                </Table>
-                            </div>
-                                </Grid>
+                        <Grid container justify="center" 
+                            direction="row" spacing={0}>
+                            <Grid item xs={6}>
+                        <div style={{display:'block',overflow:'auto',width:'100%'}}>
+                        <Table striped bordered hover size="sm" variant="dark">
+                        <tbody>
+                            <tr>
+                                <td>IP Address</td>
+                                <td>{displayData[active].IP}</td>
+                            </tr>
+                            <tr>
+                                <td>LatLng</td>
+                                <td>{displayData[active].Lat},{displayData[active].Lng}</td>
+                            </tr>
+                            <tr>
+                                <td>Region</td>
+                                <td>{displayData[active].country}</td>
+                            </tr>
+                            <tr>
+                                <td>Latest Visit Date</td>
+                                <td>{displayData[active].lastdate}</td>
+                            </tr>
+                            <tr>
+                                <td>Number of Visits</td>
+                                <td>{displayData[active].num}</td>
+                            </tr>
+                        </tbody>
+                        </Table>
+                        </div>
+                        </Grid>
                             
                             <Doughnut2 xs={6} {...{w,h,wW,minW,
                                 data:displayData[active],dispatch}}/>

@@ -9,6 +9,7 @@ export const GetData = ({src,sheeturi,data,dispatch}) => {
             try{
                 axios.get(sheeturi, { crossdomain: true })
                     .then(res=>{
+                        // console.log('res data',res.data)
                         dispatch({type:'list',key:'data',value:res.data})
                         dispatch({type:'value',key:'numViews',value:res.data.length})
                     })

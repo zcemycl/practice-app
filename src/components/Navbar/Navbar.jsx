@@ -32,7 +32,12 @@ const Navbar = ({setIsTourOpen,anchorEl,setAnchorEl}) => {
     };
     
     const handleClose = (event) => {
-        dispatch(assign(event.target.text))
+        try {
+            dispatch(assign(event.target.text))
+        } catch (error) {
+            
+        }
+        
         setAnchorEl(null);
     };
 

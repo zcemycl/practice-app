@@ -37,7 +37,8 @@ const Map = ({xs,sm,md,lg,h,geo,dispatch}) => {
 
             <MarkerClusterGroup> 
             {Object.values(geo)
-                .filter((item)=>item.Lat && item.Lng)
+                .filter((item)=>item.Lat && item.Lng && 
+                    !isNaN(item.Lat) && !isNaN(item.Lng))
                 .map(({Lat,Lng},index)=>(<Marker key={index}
                 position={[parseFloat(Lat),
                 parseFloat(Lng)]} 
