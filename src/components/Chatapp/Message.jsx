@@ -20,7 +20,8 @@ const Message = ({target,msg,name}) => {
 
     return (
         <>
-        <Box className={bx1} p={2}>
+        <Box className={bx1} p={2}
+            data-testid="message">
             <Box className={bx3} p={1}>
                 <Typography variant="body1"
                 style={{fontSize:'70%',

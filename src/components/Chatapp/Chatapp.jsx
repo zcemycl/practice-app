@@ -97,6 +97,7 @@ const Chatapp = () => {
                             inputRef={valueText}
                             className={classes.txtfm}/>
                         <IconButton className={classes.button}
+                            data-testid="chatapp_button"
                             onClick={sendMsg}>
                             <SendIcon/></IconButton>
                     </form>
