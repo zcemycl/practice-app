@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { InputAdornment, TextField, Button, IconButton } from '@material-ui/core';
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 
-const LoginForm = ({handleSignIn,valueUser,valuePwd,isAuth,setIsAuth}) => {
+const LoginForm = ({handleSignIn,valueUser,valuePwd}) => {
     const classes = useStyles();
     const [values, setValues] = useState({
         amount: "",
@@ -30,6 +30,7 @@ const LoginForm = ({handleSignIn,valueUser,valuePwd,isAuth,setIsAuth}) => {
         <form className={classes.form} 
             noValidate autoComplete="off">
             <TextField id="username" 
+                data-testid="loginForm_User"
                 inputRef={valueUser}
                 label="Username" 
                 required variant="outlined"/>

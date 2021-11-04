@@ -41,10 +41,8 @@ const App = () => {
             </div>
             <Navbar {...{selected,setIsTourOpen,
                 anchorEl,setAnchorEl}}/>
-            
-                <LoadBalancer {...{products,isTourOpen,
-                    setIsTourOpen,setAnchorEl,isAuth,setIsAuth}}/>
-                
+            <LoadBalancer {...{products,isTourOpen,
+                setIsTourOpen,setAnchorEl,isAuth,setIsAuth}}/>
         </div>
         </Router>
     )
