@@ -31,9 +31,10 @@ const FileDownload = ({elements}) => {
     return (
         <>
         <IconButton color="primary" 
-                    aria-label="upload picture" 
-                    component="span"
-                    onClick={handleDownload}>
+            data-testid="fileDown_button"
+            aria-label="upload picture" 
+            component="span"
+            onClick={handleDownload}>
             <GetApp />
         </IconButton>
         </>

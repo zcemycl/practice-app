@@ -6,6 +6,7 @@ const DelRename = ({theImg,placeholder,setImg,setElements}) => {
     return (
         <>
         <IconButton color="primary" aria-label="delete elements" 
+            data-testid="delRename_Del"
             onClick={()=>{setElements([]);}} component="span">
             <Delete />
         </IconButton>

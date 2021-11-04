@@ -17,7 +17,8 @@ const Like = () => {
             <Typography variant="h6">
                 Like
             </Typography>
-            <LikeButton id="how-to-like" namespace="post"
+            <LikeButton data-testid="like_Like" 
+                id="how-to-like" namespace="post"
                 component={LikeButton.templates.Twitter}/>
             </Grid>
             <Grid xs={4} sm={2} md={2} lg={2} item={true}>

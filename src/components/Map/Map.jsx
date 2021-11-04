@@ -32,7 +32,7 @@ const Map = () => {
             className={classes.grid}>
             <Grid xs={12} sm={10} md={8} lg={6} item={true}>
                 <Card className={classes.card}>
-                    <Canvas 
+                    <Canvas data-testid="3dmap"
                         camera={{position:[5,100,20],
                                 far:100000}}>
                     <ambientLight intensity={0.5}/>

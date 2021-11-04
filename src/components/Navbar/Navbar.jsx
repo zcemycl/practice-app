@@ -59,6 +59,7 @@ const Navbar = ({setIsTourOpen,anchorEl,setAnchorEl}) => {
                     <div className={classes.menuButton}
                         data-tut="reactour__navbar_right">
                         <IconButton aria-label="bookmark"
+                            data-testid="navbar_Menu"
                             aria-controls="long-menu"
                             aria-haspopup="true"
                             onClick={handleClick}
@@ -91,18 +92,21 @@ const Navbar = ({setIsTourOpen,anchorEl,setAnchorEl}) => {
                             ))}
                         </Menu>
                         <IconButton href="https://github.com/zcemycl" 
+                            data-testid="navbar_Git"
                             target="_blank"
                             data-tut="reactour__navbar_git"
                             aria-label="GitHub Repository">
                             <GitHub/>
                         </IconButton>
                         <IconButton href="https://www.linkedin.com/in/yui-chun-leung-48524b134"
+                            data-testid="navbar_LinkedIn"
                             target="_blank"
                             data-tut="reactour__navbar_linkedin"
                             aria-label="LinkedIn Profile">
                             <LinkedIn/>
                         </IconButton>             
                         <IconButton component={Link} 
+                            data-testid="navbar_Shop"
                             data-tut="reactour__navbar_shop"
                             to='/shop' >
                             <ShoppingCart/>

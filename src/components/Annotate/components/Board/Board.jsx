@@ -318,6 +318,7 @@ const Board = ({img,setDims,targetRef,elements,setElements,label,mode}) => {
     return (
         <>
             <canvas id="canvas" 
+                data-testid="board_Canvas"
                 onMouseDown={handleMouseDown}
                 onMouseMove={handleMouseMove}
                 onMouseUp={handleMouseUp}

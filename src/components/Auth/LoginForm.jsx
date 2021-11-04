@@ -36,6 +36,7 @@ const LoginForm = ({handleSignIn,valueUser,valuePwd}) => {
                 required variant="outlined"/>
 
             <TextField id="password" 
+                data-testid="loginForm_Pwd"
                 inputRef={valuePwd}
                 label="Password" 
                 required variant="outlined"

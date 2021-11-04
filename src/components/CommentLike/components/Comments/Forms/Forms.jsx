@@ -42,6 +42,7 @@ const Forms = ({data,setData}) => {
         <Form reply>
             <Form.Field>
             <input placeholder='Username' 
+                data-testid="Forms_User"
                 onChange={(e)=>{
                 const tmpSend = send;
                 setSend({...tmpSend,Username:e.target.value})
