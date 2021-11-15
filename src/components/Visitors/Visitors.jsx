@@ -15,24 +15,29 @@ export const Visitors = () => {
                 {year:'numeric',month:'2-digit',day:'2-digit',
                 hour:'2-digit',minute:'2-digit',second:'2-digit'})
                 .format(currentTimestamp)
-            const ip = await publicIp.v4({fallbackUrls:["https://ifconfig.co/ip"]});
-            console.log(ip,date)
-            fetch("https://ipapi.co/"+ip+"/json/")
-                .then((response) => response.json())
-                .then((data) => {
-                    const {ip,country_name,latitude,longitude} = data;
-                    const ignoreIP = process.env.REACT_APP_IGNORE_IP.split(",")
-                    if (selected!=="" && ip && ignoreIP.indexOf(ip)<0 ){
-                        const objt = {IP:ip,Topic:selected,
-                            Timestamp:date,Country:country_name,
-                            Lat:latitude,Lng:longitude};
-                        axios.post(sheeturi,objt)
-                            .then((response) => {
-                                console.log(response);
-                            });
-                    }
-                })
-                .catch(e=>{})
+            try {
+                const ip = await publicIp.v4({fallbackUrls:["https://ifconfig.co/ip"]});
+                console.log(ip,date)
+                fetch("https://ipapi.co/"+ip+"/json/")
+                    .then((response) => response.json())
+                    .then((data) => {
+                        const {ip,country_name,latitude,longitude} = data;
+                        const ignoreIP = process.env.REACT_APP_IGNORE_IP.split(",")
+                        if (selected!=="" && ip && ignoreIP.indexOf(ip)<0 ){
+                            const objt = {IP:ip,Topic:selected,
+                                Timestamp:date,Country:country_name,
+                                Lat:latitude,Lng:longitude};
+                            axios.post(sheeturi,objt)
+                                .then((response) => {
+                                    console.log(response);
+                                });
+                        }
+                    })
+                    .catch(e=>{})
+            } catch (error) {
+
+            }
+            
 
         }
         getVisitorInfo();
