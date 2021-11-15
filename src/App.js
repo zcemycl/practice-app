@@ -6,25 +6,25 @@ import particlesConfig from './config/particlesConfig';
 import { BrowserRouter as Router } from 'react-router-dom';
 import LoadBalancer from './LoadBalancer'
 import useStyles from './styles';
-import { commerce } from './components/lib/commerce';
+// import { commerce } from './components/lib/commerce';
 import {useSelector} from 'react-redux';
 
 const App = () => {
     const classes = useStyles();    
-    const [products, setProducts] = useState([]);
+    // const [products, setProducts] = useState([]);
     const [isAuth, setIsAuth] = useState(false);
     const [isTourOpen, setIsTourOpen] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
     const selected = useSelector(state=>state.selected)
 
-    const fetchProducts = async () => {
-        const { data } = await commerce.products.list();
-        setProducts(data);
-    }
+    // const fetchProducts = async () => {
+    //     const { data } = await commerce.products.list();
+    //     setProducts(data);
+    // }
 
-    useEffect(() => {
-        fetchProducts();
-    }, []);
+    // useEffect(() => {
+    //     fetchProducts();
+    // }, []);
 
     useEffect(() => {
         console.log('s2',selected)
@@ -41,7 +41,9 @@ const App = () => {
             </div>
             <Navbar {...{selected,setIsTourOpen,
                 anchorEl,setAnchorEl}}/>
-            <LoadBalancer {...{products,isTourOpen,
+            <LoadBalancer {...{
+                // products,
+                isTourOpen,
                 setIsTourOpen,setAnchorEl,isAuth,setIsAuth}}/>
         </div>
         </Router>
