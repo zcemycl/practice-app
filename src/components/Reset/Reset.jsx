@@ -13,7 +13,6 @@ function UserQuery() {
 const Reset = () => {
     const dispatchGlobal = useDispatch();
     const query = UserQuery();// query.get('oobCode')
-    // conso
     useEffect(()=>{
         dispatchGlobal(assign("Sign Up"));
     },[dispatchGlobal])
