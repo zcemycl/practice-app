@@ -14,3 +14,7 @@ export { default as ClusterMap } from './ClusterMap/ClusterMap';
 export { default as Game } from './Game/Game';
 export { Visitors } from './Visitors/Visitors';
 export { default as VisitRecords } from './Visitors/VisitRecords';
+export { default as Login } from './Login/Login';
+export { default as Signup } from './Signup/Signup';
+export { default as Forgot } from './Forgot/Forgot';
+export { default as Reset } from './Reset/Reset';

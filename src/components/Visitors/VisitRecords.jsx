@@ -21,7 +21,8 @@ const VisitRecords = () => {
     },[dispatchGlobal])
 
     GetSize({cardRef,dispatch})
-    GetData({src:'uri',sheeturi,data,dispatch}) //csv or uri
+    const srcVisit = (window.location.hostname === "localhost")?"csv":"uri";
+    GetData({src:srcVisit,sheeturi,data,dispatch}) //csv or uri
 
     return (
         <div className={classes.content}>

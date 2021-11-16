@@ -33,20 +33,20 @@ const App = () => {
     Visitors()
 
     return (
-        <Router basename="/practice-app">
-        <div>     
-            <div className={classes.particleBg}>
-                <Particles className={classes.particles}
-                    config={particlesConfig}/>               
-            </div>
-            <Navbar {...{selected,setIsTourOpen,
-                anchorEl,setAnchorEl}}/>
-            <LoadBalancer {...{
-                // products,
-                isTourOpen,
-                setIsTourOpen,setAnchorEl,isAuth,setIsAuth}}/>
+    <Router basename="/practice-app">
+    <div>     
+        <div className={classes.particleBg}>
+            <Particles className={classes.particles}
+                config={particlesConfig}/>               
         </div>
-        </Router>
+        <Navbar {...{selected,setIsTourOpen,
+            anchorEl,setAnchorEl}}/>
+        <LoadBalancer {...{
+            // products,
+            isTourOpen,
+            setIsTourOpen,setAnchorEl,isAuth,setIsAuth}}/>
+    </div>
+    </Router>
     )
 }
 

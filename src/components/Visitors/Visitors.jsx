@@ -27,10 +27,12 @@ export const Visitors = () => {
                             const objt = {IP:ip,Topic:selected,
                                 Timestamp:date,Country:country_name,
                                 Lat:latitude,Lng:longitude};
-                            axios.post(sheeturi,objt)
+                            if (window.location.hostname !== "localhost"){
+                                axios.post(sheeturi,objt)
                                 .then((response) => {
                                     console.log(response);
                                 });
+                            }
                         }
                     })
                     .catch(e=>{})
