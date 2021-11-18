@@ -1,22 +1,27 @@
 import React, {useState,useEffect} from 'react'
 import { Button, Form } from 'semantic-ui-react'
-import axios from 'axios';
+// import axios from 'axios';
 import publicIp from 'public-ip'
+import {db} from '../../../../lib/init-firebase';
+import {ref,set,push} from "firebase/database";
 
 const Forms = ({data,setData}) => {
     const [send,setSend] = useState({Username:"",
             Comment:"",Timestamp:"",IP:null})
-    const sheeturi = 'https://sheet.best/api/sheets/82c23d79-9535-4ef8-9970-f59acfed6f0a'
+    // const sheeturi = 'https://sheet.best/api/sheets/82c23d79-9535-4ef8-9970-f59acfed6f0a'
     
     const submitHandler = e => {
         e.preventDefault();
         if (send.Username && send.Comment){
             const newData = data.concat(send)
             setData(newData)
-            axios.post(sheeturi,send)
-                .then(response => {
-                // console.log(response);
-                })
+            // axios.post(sheeturi,send)
+            //     .then(response => {
+            //     // console.log(response);
+            //     }).catch((error)=>{
+            //     }).finally()
+            const postListRef = push(ref(db,'comments'));
+            set(postListRef,send);
         }
         const tmpSend = {...send};
         setSend({...tmpSend,Comment:""})

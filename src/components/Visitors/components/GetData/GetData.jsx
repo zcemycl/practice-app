@@ -13,12 +13,12 @@ export const GetData = ({src,sheeturi,data,dispatch}) => {
                     dispatch({type:'value',key:'numViews',value:res.data.length})
                 })
                 .catch((error)=>{
-                })
-                .finally(()=>{
                     csv("data/Visitors-Test1.csv").then(d => {
                         dispatch({type:'list',key:'data',value:d})
                         dispatch({type:'value',key:'numViews',value:d.length})
                     }); 
+                })
+                .finally(()=>{
                 })
 
             

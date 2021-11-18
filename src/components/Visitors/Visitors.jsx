@@ -2,6 +2,8 @@ import {useEffect} from 'react'
 import axios from 'axios';
 import publicIp from 'public-ip'
 import {useSelector} from 'react-redux';
+import {db} from '../lib/init-firebase'
+import {ref,set,push} from "firebase/database";
 
 const sheeturi = 'https://sheet.best/api/sheets/82c23d79-9535-4ef8-9970-f59acfed6f0a'
 
@@ -27,16 +29,23 @@ export const Visitors = () => {
                             const objt = {IP:ip,Topic:selected,
                                 Timestamp:date,Country:country_name,
                                 Lat:latitude,Lng:longitude};
+                            
                             if (window.location.hostname !== "localhost"){
                                 axios.post(sheeturi,objt)
                                 .then((response) => {
                                     // console.log(response);
                                 })
                                 .catch((error)=>{
+                                    if (error.response.status===402 && error.response.statusText==="Payment Required"){
+                                        // console.log(error.response.statusText);    
+                                    }
                                 })
                                 .finally();
+                                const postListRef = push(ref(db,'visitors'));
+                                set(postListRef,objt);                                
                             }
                         }
+
                     })
                     .catch(e=>{})
             } catch (error) {

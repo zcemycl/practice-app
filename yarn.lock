@@ -2160,7 +2160,7 @@
     "@firebase/app-types" "0.7.0"
     "@firebase/util" "1.4.2"
 
-"@firebase/database@0.12.4":
+"@firebase/database@^0.12.4", "@firebase/database@0.12.4":
   "integrity" "sha512-XkrL1kXELRNkqKcltuT4hfG1gWmFiGvjFY+z7Lhb//12MqdkLjwa9YMK8c6Lo+Ro+IkWcJArQaOQYe3GkU5Wgg=="
   "resolved" "https://registry.npmjs.org/@firebase/database/-/database-0.12.4.tgz"
   "version" "0.12.4"
