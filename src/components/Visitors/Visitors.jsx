@@ -18,9 +18,10 @@ export const Visitors = () => {
                 hour:'2-digit',minute:'2-digit',second:'2-digit'})
                 .format(currentTimestamp)
             try {
-                const ip = await publicIp.v4({fallbackUrls:["https://ifconfig.co/ip"]});
-                // console.log(ip,date)
-                fetch("https://ipapi.co/"+ip+"/json/")
+                if (window.location.hostname !== "localhost"){
+                    const ip = await publicIp.v4({fallbackUrls:["https://ifconfig.co/ip"]});
+                    // console.log(ip,date)
+                    fetch("https://ipapi.co/"+ip+"/json/")
                     .then((response) => response.json())
                     .then((data) => {
                         const {ip,country_name,latitude,longitude} = data;
@@ -30,24 +31,24 @@ export const Visitors = () => {
                                 Timestamp:date,Country:country_name,
                                 Lat:latitude,Lng:longitude};
                             
-                            if (window.location.hostname !== "localhost"){
-                                axios.post(sheeturi,objt)
-                                .then((response) => {
-                                    // console.log(response);
-                                })
-                                .catch((error)=>{
-                                    if (error.response.status===402 && error.response.statusText==="Payment Required"){
-                                        // console.log(error.response.statusText);    
-                                    }
-                                })
-                                .finally();
-                                const postListRef = push(ref(db,'visitors'));
-                                set(postListRef,objt);                                
-                            }
+                            axios.post(sheeturi,objt)
+                            .then((response) => {
+                                // console.log(response);
+                            })
+                            .catch((error)=>{
+                                if (error.response.status===402 && error.response.statusText==="Payment Required"){
+                                    // console.log(error.response.statusText);    
+                                }
+                            })
+                            .finally();
+                            const postListRef = push(ref(db,'visitors'));
+                            set(postListRef,objt);                                
+                            
                         }
 
                     })
                     .catch(e=>{})
+                }
             } catch (error) {
 
             }
