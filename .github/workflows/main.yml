@@ -33,7 +33,12 @@ jobs:
         uses: actions/setup-node@v2
         with: 
           node-version: ${{ matrix.node-version }}
-      - run: |
+      - name: Run Testing
+        env:
+          REACT_APP_FIREBASE_APIKEY: ${{ secrets.REACT_APP_FIREBASE_APIKEY }}
+        run: |
           echo ${{ secrets.REACT_APP_FIREBASE_APIKEY }}
+          echo process.env.REACT_APP_FIREBASE_APIKEY
+          echo env.REACT_APP_FIREBASE_APIKEY
           npm install          
           yarn test
