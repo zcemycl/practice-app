@@ -1,99 +1,65 @@
-import React, {useEffect,useRef,useState} from 'react';
-import { CardHeader } from '@material-ui/core';
-import useStyles from './styles';
-import {GridList,GridListTile,GridListTileBar,IconButton} from '@material-ui/core';
-import InfoIcon from '@material-ui/icons/Info';
+import React from 'react';
 
-const LeoLayout = () => {
+const LeoLayout = ({url}) => {
     return (<div style={{ height:"100%", width:"100%" }}
     dangerouslySetInnerHTML={{__html:
-    "<iframe style='height:100%; width:100%' src='https://zcemycl.github.io'/>"}}
+    `<iframe style='height:100%; width:100%' src='${url}'/>`}}
      /> )
 }
 
 const tileData = [
-    {key:0,img:"https://raw.githubusercontent.com/zcemycl/ProbabilisticPerspectiveMachineLearning/master/LIME/result.png",
-     title:"LIME",author:"Leo"},
-    {key:1,img:"https://raw.githubusercontent.com/zcemycl/Matlab-GAN/master/CycleGAN/CycleGANepoch1.jpg",title:"CycleGAN",author:"Leo"},
-    {key:2,img:"https://raw.githubusercontent.com/zcemycl/Robotics/master/Perception/3D%20object%20projection/ar_result.png",title:"AR Homography",author:"Leo"},
-    {key:3,img:"https://raw.githubusercontent.com/zcemycl/ProbabilisticPerspectiveMachineLearning/master/LIME/result.png",
-     title:"LIME",author:"Leo"},
-    {key:4,img:"https://raw.githubusercontent.com/zcemycl/Matlab-GAN/master/CycleGAN/CycleGANepoch1.jpg",title:"CycleGAN",author:"Leo"},
-    {key:5,img:"https://raw.githubusercontent.com/zcemycl/Robotics/master/Perception/3D%20object%20projection/ar_result.png",title:"AR Homography",author:"Leo"},
-    {key:6,img:"https://raw.githubusercontent.com/zcemycl/ProbabilisticPerspectiveMachineLearning/master/LIME/result.png",
-     title:"LIME",author:"Leo"},
-    {key:7,img:"https://raw.githubusercontent.com/zcemycl/Matlab-GAN/master/CycleGAN/CycleGANepoch1.jpg",title:"CycleGAN",author:"Leo"},
-    {key:8,img:"https://raw.githubusercontent.com/zcemycl/Robotics/master/Perception/3D%20object%20projection/ar_result.png",title:"AR Homography",author:"Leo"}
+    {url:"https://zcemycl.github.io"}, //Leo
+    {url:"https://zcemycl.github.io/templates/ai/bayesinf.html"}, //AI
+    {url:"https://zcemycl.github.io/templates/techX/reactgit.html"}, //Frontend
+    {url:"https://zcemycl.github.io/templates/ai/cvcalib.html"}, //CV
+    {url:"https://zcemycl.github.io/templates/ai/spacy.html"}, //NLP
+    {url:"https://zcemycl.github.io/templates/techX/unityinstall.html"}, //Game Dev
+    {url:"https://zcemycl.github.io/templates/techX/blenderinstall.html"}, //Blender
+    {url:"https://zcemycl.github.io/templates/techX/unitybasics.html"}, //Unity
+    {url:"https://zcemycl.github.io/templates/techX/esp32cam.html"}, //IOT
+    {url:"https://zcemycl.github.io/templates/techX/heroku.html"}, //Backend
+    {url:"https://zcemycl.github.io/templates/techX/tbsim.html"},//Robotics
+    {url:"https://zcemycl.github.io/templates/ai/gausspro.html"},//PML
+    {url:"https://zcemycl.github.io/templates/ai/read.html"},//RL
+    {url:"https://zcemycl.github.io/templates/techX/dbOverview.html"},//database
+    {url:"https://zcemycl.github.io/templates/techX/wordpress.html"},//aws
+    {url:"https://zcemycl.github.io/templates/techX/ubuntuinstall.html"},//Ubuntu
+    {url:"https://zcemycl.github.io/templates/techX/trial.html"},//drone
+    {url:"https://zcemycl.github.io/templates/ai/armcam.html"},//arm
+    {url:"https://zcemycl.github.io/templates/techX/tbcamslam.html"},//turtlebot
+    {url:"https://zcemycl.github.io/templates/techX/rosinstall.html"},//ROS
+    {url:"https://zcemycl.github.io"},//github.io
+    {url:"https://zcemycl.github.io/practice-app"},//github.io/practice-app
+    {url:"https://zcemycl.github.io/templates/techX/rig_weightpaint.html"},//3d model
+    {url:"https://zcemycl.github.io/templates/ai/ar.html"},//AR
+    {url:"https://zcemycl.github.io/templates/ai/mcm.html"},//MC Sampling
+    {url:"https://zcemycl.github.io/templates/ai/policyiter.html"},//DP
+    {url:"https://zcemycl.github.io/templates/ai/lime.html"},//AI Explain
+    {url:"https://zcemycl.github.io/templates/ai/optflow.html"},//Optical Flow
+    {url:"https://zcemycl.github.io/templates/ai/GANs.html"},//GAN
+    {url:"https://zcemycl.github.io/templates/techX/s3setup.html"},//s3
+    {url:"https://zcemycl.github.io/templates/techX/ec2setup.html"},//ec2
+    {url:"https://zcemycl.github.io/templates/techX/s3cloudfront.html"},//cloudfront
+    {url:"https://zcemycl.github.io/templates/techX/route53.html"},//route53
+    {url:"https://zcemycl.github.io/templates/techX/acm.html"},//acm
+    {url:"https://zcemycl.github.io/templates/techX/elasticip.html"},//elastic ip
+    {url:"https://zcemycl.github.io/templates/techX/ebs.html"},//ebs
+    {url:"https://zcemycl.github.io/templates/techX/sqlsyntax.html"},//SQL
+    {url:"https://zcemycl.github.io/templates/techX/dbeaver.html"},//dbeaver
+    {url:"https://zcemycl.github.io/templates/techX/sqlalc.html"},//sqlalchemy
+    {url:"https://zcemycl.github.io/templates/techX/ec2godaddy.html"},//godaddy
+    {url:"https://zcemycl.github.io/templates/techX/apache2.html"},//apache2
+    {url:"https://zcemycl.github.io/templates/techX/others.html"},//nginx
+    {url:"https://zcemycl.github.io/templates/techX/dockerflask.html"},//flask
+    {url:"https://zcemycl.github.io/templates/techX/githubaction.html"},//git
+    {url:"https://zcemycl.github.io/templates/techX/ubuntutroubleshoot.html"},//bash
 ];
 
-const AILayout = ({targetRef,cols}) => {
-    const classes =useStyles();
-    
-    return (
-        <div className={classes.content} ref={targetRef}>
-        <div className={classes.toolbar}/>
-        <GridList cellHeight={320} spacing={20} className={classes.gridList}>
-        <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-          <CardHeader avatar={
-                    <img alt="ailogo" src="https://raw.githubusercontent.com/zcemycl/practice-app/master/resources/ai.png"/>}
-                title="Artificial Intelligence" titleTypographyProps={{variant:'h5',align:'left' }}/>
-        </GridListTile>
-        {tileData.map((tile) => (
-          <GridListTile key={tile.key} cols={cols}>
-            <img src={tile.img} alt={tile.title} style={{backgroundColor:"white"}}/>
-            <GridListTileBar
-              title={tile.title}
-              subtitle={<span>by: {tile.author}</span>}
-              actionIcon={
-                <IconButton aria-label={`info about ${tile.title}`} className={classes.icon}>
-                  <InfoIcon />
-                </IconButton>
-              }
-            />
-
-          </GridListTile>
-        ))}
-      </GridList>
-        </div>
-    )
-}
-
-const contentSwitch = ({nodeId,targetRef,cols}) => {
-    switch (nodeId) {
-        default:
-        case 1:
-            return LeoLayout();
-        case 2:
-            return AILayout({targetRef,cols});
-    }
-}
 
 const ContentFarm = ({nodeId}) => {
-    const targetRef = useRef();
-    const [cols,setCols] = useState(1);
-    const handleResize = (e) => {
-        if (targetRef.current){
-            const w = targetRef.current.offsetWidth;
-            if (w<=420){
-                setCols(2);
-            } else if (w>420 && w<=800) {
-                setCols(1);
-            } else if (w>800){
-                setCols(1);
-            }
-        }
-    };
-    useEffect(() => {
-        handleResize()
-    },[])
-
-    useEffect(() => {
-        window.addEventListener("resize",handleResize);
-        return () => window.removeEventListener("resize",handleResize);
-    },[])
     return (
         <>
-            {contentSwitch({nodeId,targetRef,cols})}
+            <LeoLayout {...tileData[nodeId-1]}/>
         </>
     )
 }
