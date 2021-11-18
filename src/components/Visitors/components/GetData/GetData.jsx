@@ -6,19 +6,21 @@ export const GetData = ({src,sheeturi,data,dispatch}) => {
     const [uniqueIP,setUniqueIP] = useState({})
     useEffect(() => {
         if (src === 'uri'){
-            try{
-                axios.get(sheeturi, { crossdomain: true })
-                    .then(res=>{
-                        // console.log('res data',res.data)
-                        dispatch({type:'list',key:'data',value:res.data})
-                        dispatch({type:'value',key:'numViews',value:res.data.length})
-                    })
-            }catch(e){
-                csv("data/Visitors-Test1.csv").then(d => {
-                    dispatch({type:'list',key:'data',value:d})
-                    dispatch({type:'value',key:'numViews',value:d.length})
-                }); 
-            }
+            axios.get(sheeturi, { crossdomain: true })
+                .then(res=>{
+                    // console.log('res data',res.data)
+                    dispatch({type:'list',key:'data',value:res.data})
+                    dispatch({type:'value',key:'numViews',value:res.data.length})
+                })
+                .catch((error)=>{
+                })
+                .finally(()=>{
+                    csv("data/Visitors-Test1.csv").then(d => {
+                        dispatch({type:'list',key:'data',value:d})
+                        dispatch({type:'value',key:'numViews',value:d.length})
+                    }); 
+                })
+
             
         } else if (src === 'csv'){
             csv("data/Visitors-Test1.csv").then(d => {

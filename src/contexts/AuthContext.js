@@ -35,7 +35,7 @@ export default function AuthContextProvider({children}){
         return signOut(auth);
     }
     function forgotPassword(email){
-        return sendPasswordResetEmail(auth,email,{url:'http://localhost:3000/login'});
+        return sendPasswordResetEmail(auth,email,{url:'https://zcemycl.github.io/practice-app/login'});
     }
     function resetPassword(oobCode,newPassword){
         return confirmPasswordReset(auth,oobCode,newPassword)

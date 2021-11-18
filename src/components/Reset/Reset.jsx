@@ -75,16 +75,16 @@ const Reset = () => {
                                 }
                                 if (password.length>0 && confirmPassword.length>0 
                                         && password===confirmPassword){
-                                    console.log(password)
+                                    // console.log(password)
                                     setIsSubmitting(true);
                                     resetPassword(query.get('oobCode'),password).then((resp)=>{
-                                        console.log(resp);
+                                        // console.log(resp);
                                         setWarning('');
                                         setMsg('Success !!!');
                                         history.push('/login');
                                     })
                                     .catch((error)=>{
-                                        console.log(error.message);
+                                        // console.log(error.message);
                                         setMsg('');
                                         setWarning(error.message);
                                     })

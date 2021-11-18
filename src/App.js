@@ -1,4 +1,6 @@
-import React, {useState,useEffect} from "react";
+import React, {useState
+    // ,useEffect
+} from "react";
 import {Navbar} from './components';
 import {Visitors} from './components'
 import Particles from 'react-particles-js';
@@ -25,10 +27,6 @@ const App = () => {
     // useEffect(() => {
     //     fetchProducts();
     // }, []);
-
-    useEffect(() => {
-        console.log('s2',selected)
-    }, [selected]);
 
     Visitors()
 

@@ -19,11 +19,13 @@ const CommentLike = () => {
     },[dispatch])
 
     useEffect(() => {
-      axios.get(sheeturi)
+        axios.get(sheeturi)
           .then(res=>{
-            console.log(res.data)
+            // console.log(res.data)
             setData(res.data)
+          }).catch((error)=>{
           })
+          .finally()
     },[])
 
     return (

@@ -86,16 +86,13 @@ const Signup = () => {
                                 }
                                 if (password.length>0 && confirmPassword.length>0 
                                         && password===confirmPassword && email.length>0){
-                                    console.log(email,password)
                                     setIsSubmitting(true);
                                     register(email,password).then((resp)=>{
-                                        console.log(resp);
                                         setWarning('');
                                         setMsg('Success !!!');
                                         history.push('/login');
                                     })
                                     .catch((error)=>{
-                                        console.log(error.message);
                                         setMsg('');
                                         setWarning(error.message);
                                     })

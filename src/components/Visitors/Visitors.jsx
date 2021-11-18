@@ -17,7 +17,7 @@ export const Visitors = () => {
                 .format(currentTimestamp)
             try {
                 const ip = await publicIp.v4({fallbackUrls:["https://ifconfig.co/ip"]});
-                console.log(ip,date)
+                // console.log(ip,date)
                 fetch("https://ipapi.co/"+ip+"/json/")
                     .then((response) => response.json())
                     .then((data) => {
@@ -30,8 +30,11 @@ export const Visitors = () => {
                             if (window.location.hostname !== "localhost"){
                                 axios.post(sheeturi,objt)
                                 .then((response) => {
-                                    console.log(response);
-                                });
+                                    // console.log(response);
+                                })
+                                .catch((error)=>{
+                                })
+                                .finally();
                             }
                         }
                     })

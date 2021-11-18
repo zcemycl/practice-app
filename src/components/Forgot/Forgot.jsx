@@ -57,15 +57,15 @@ const Forgot = () => {
                                     setMsg('');setWarning('Email is Empty.');
                                 }
                                 if (email.length>0){
-                                    console.log(email)
+                                    // console.log(email)
                                     setIsSubmitting(true);
                                     forgotPassword(email).then((resp)=>{
-                                        console.log(resp);
+                                        // console.log(resp);
                                         setWarning('');
                                         setMsg('Success !!!');
                                     })
                                     .catch((error)=>{
-                                        console.log(error.message);
+                                        // console.log(error.message);
                                         setMsg('');
                                         setWarning(error.message);
                                     })

@@ -34,8 +34,6 @@ const Navbar = ({setIsTourOpen,anchorEl,setAnchorEl}) => {
         setAnchorEl(event.currentTarget);
     };
     const {currentUser,logout} = useAuth();
-
-    console.log(currentUser);
     
     const handleClose = (event) => {
         try {

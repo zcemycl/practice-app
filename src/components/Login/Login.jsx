@@ -77,16 +77,16 @@ const Login = () => {
                                     setMsg('');setWarning('Password is Empty.');
                                 }
                                 if (password.length>0 && email.length>0){
-                                    console.log(email,password)
+                                    // console.log(email,password)
                                     setIsSubmitting(true);
                                     login(email,password).then((resp)=>{
-                                        console.log(resp);
+                                        // console.log(resp);
                                         setWarning('');
                                         setMsg('Success !!!');
                                         history.push(location.state?.from??'/visitrecords');
                                     })
                                     .catch((error)=>{
-                                        console.log(error.message);
+                                        // console.log(error.message);
                                         setMsg('');
                                         setWarning(error.message);
                                     })
