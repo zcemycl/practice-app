@@ -1,8 +1,6 @@
 import React from 'react';
 import {AppBar,Toolbar,IconButton,MenuItem,Menu} from '@material-ui/core';
-import { 
-    // ShoppingCart, 
-    GitHub, LinkedIn, Bookmark, AccountCircle } from '@material-ui/icons';
+import {GitHub, LinkedIn, Bookmark, AccountCircle } from '@material-ui/icons';
 import useStyles from './styles';
 import { Link } from 'react-router-dom';
 import {useSelector,useDispatch} from 'react-redux';
@@ -38,9 +36,7 @@ const Navbar = ({setIsTourOpen,anchorEl,setAnchorEl}) => {
     const handleClose = (event) => {
         try {
             dispatch(assign(event.target.text))
-        } catch (error) {
-            
-        }
+        } catch (error) {}
         setAnchorEl(null);
     };
 
@@ -48,7 +44,8 @@ const Navbar = ({setIsTourOpen,anchorEl,setAnchorEl}) => {
         <div>
         <AppBar className={classes.appBar}>
             <Toolbar>
-            <Link to="/" className={classes.title} style={{textDecoration:'none'}}>
+            <Link data-tut="reactour__navbar_home" to="/" 
+                className={classes.title} style={{textDecoration:'none'}}>
                 <MenuItem style={{textDecoration:'none',
                     fontSize:'20px',fontWeight:'bold'}}>Yui's</MenuItem>
             </Link>
@@ -101,19 +98,13 @@ const Navbar = ({setIsTourOpen,anchorEl,setAnchorEl}) => {
                     aria-label="LinkedIn Profile">
                     <LinkedIn/>
                 </IconButton>      
-                {currentUser &&<IconButton aria-label="account"
+                {currentUser &&<IconButton
+                    data-tut="reactour__navbar_logout"
+                    aria-label="account"
                     onClick={logout}>
                     <AccountCircle/>
                 </IconButton>}
-                
-                
-                {/* <IconButton component={Link} 
-                    data-testid="navbar_Shop"
-                    data-tut="reactour__navbar_shop"
-                    to='/shop' >
-                    <ShoppingCart/>
-                </IconButton> */}
-                
+                                
             </div>
             </Toolbar>              
         </AppBar>
