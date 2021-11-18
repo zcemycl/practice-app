@@ -33,6 +33,7 @@ jobs:
         uses: actions/setup-node@v2
         with: 
           node-version: ${{ matrix.node-version }}
+      - with:
           REACT_APP_FIREBASE_APIKEY: ${{secrets.REACT_APP_FIREBASE_APIKEY}}
           REACT_APP_FIREBASE_APPID: ${{secrets.REACT_APP_FIREBASE_APPID}}
           REACT_APP_FIREBASE_AUTHDOMAIN: ${{secrets.REACT_APP_FIREBASE_AUTHDOMAIN}}
