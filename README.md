@@ -16,7 +16,7 @@ npm start
 |Features|Locations|Description|
 |--|--|--|
 |Backend Support|[flask2react](https://github.com/zcemycl/flask2react)|Support chatapp socket, fetch non-dynamic and dynamic data. |
-|Unit Tests|||
+|Unit Tests|[Link](.github/workflows/main.yml)|Continuous Integration Practices with Github Actions.|
 |Router|[Link](src/LoadBalancer.jsx)|Enable access to different pages.|
 |Single Page Application|[Link](public)|Enable resources suffix.|
 |Particle Background|[Link](src/config)|Website animated background.|
