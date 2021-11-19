@@ -3,7 +3,7 @@ import { Route,Switch,Redirect,useLocation } from 'react-router-dom';
 import { ProGraph,Random,Auth,Chatapp,NotFound } from './components';
 import { Signup,Login,Forgot,Reset,
     // Products,
-    ThreeFiber,CommentLike } from './components';
+    ThreeFiber,CommentLike,Donate } from './components';
 import { Map,Annotate,Knowledge,ClusterMap } from './components';
 import { Game,VisitRecords } from './components'
 import Profile from './components/Auth/pages/Profile';
@@ -26,6 +26,7 @@ const LoadBalancer = ({products,isTourOpen,
         <Route exact path="/gallery" component={Random}/>
         <Route exact path="/chatapp" component={Chatapp}/>
         <Route exact path="/3d" component={ThreeFiber}/>
+        <Route exact path="/donate" component={Donate}/>
         {/* <Route exact path="/shop"><Products {...{products}}/></Route> */}
         <Route exact path="/commentlike" component={CommentLike}/>
         <ProtectedContent exact path="/map" component={Map}/>

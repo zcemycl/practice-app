@@ -66,6 +66,7 @@
     "react-particles-js": "^3.4.1",
     "react-plotly.js": "^2.5.1",
     "react-redux": "^7.2.4",
+    "react-resize-detector": "^6.7.6",
     "react-rough": "^2.3.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",

@@ -19,7 +19,9 @@ const options = [
     {id: 8, name: 'Image Annotation', root: "/annotate"},
     {id: 9, name: 'Cluster Map', root: "/clustermap"},
     {id: 10, name: 'Game', root: "/game"},
-    {id: 11, name: 'Visitor Record', root: "/visitrecords"}
+    {id: 11, name: 'Visitor Record', root: "/visitrecords"},
+    {id: 12, name: 'Login', root: "/login"},
+    {id: 13, name: 'Donate', root: "/donate"}
 ]
 
 const ITEM_HEIGHT = 12*Math.max(options.length,12);

@@ -18,3 +18,4 @@ export { default as Login } from './Login/Login';
 export { default as Signup } from './Signup/Signup';
 export { default as Forgot } from './Forgot/Forgot';
 export { default as Reset } from './Reset/Reset';
+export { default as Donate } from './Donate/Donate';

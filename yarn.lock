@@ -3769,10 +3769,10 @@
     "@types/scheduler" "*"
     "csstype" "^3.0.2"
 
-"@types/resize-observer-browser@^0.1.5":
-  "integrity" "sha512-8k/67Z95Goa6Lznuykxkfhq9YU3l1Qe6LNZmwde1u7802a3x8v44oq0j91DICclxatTr0rNnhXx7+VTIetSrSQ=="
-  "resolved" "https://registry.npmjs.org/@types/resize-observer-browser/-/resize-observer-browser-0.1.5.tgz"
-  "version" "0.1.5"
+"@types/resize-observer-browser@^0.1.6":
+  "integrity" "sha512-61IfTac0s9jvNtBCpyo86QeaN8qqpMGHdK0uGKCCIy2dt5/Yk84VduHIdWAcmkC5QvdkPL0p5eWYgUZtHKKUVg=="
+  "resolved" "https://registry.npmjs.org/@types/resize-observer-browser/-/resize-observer-browser-0.1.6.tgz"
+  "version" "0.1.6"
 
 "@types/resolve@0.0.8":
   "integrity" "sha512-auApPaJf3NPfe18hSoJkp8EbZzer2ISk7o8mCC3M9he/a04+gbMF97NkpD2S8riMGvm4BMRI59/SZQSaLTKpsQ=="
@@ -15036,12 +15036,12 @@
     "use-callback-ref" "^1.2.3"
     "use-sidecar" "^1.0.1"
 
-"react-resize-detector@^6.6.3":
-  "integrity" "sha512-sAAh8TmOp59MFs2HR7D1VGbAq+zL+2klQhFbkXOH5Gy/EBEyHGiWXWMStoB+axSYr/Xw54owg6QRGSFj3z0dew=="
-  "resolved" "https://registry.npmjs.org/react-resize-detector/-/react-resize-detector-6.6.4.tgz"
-  "version" "6.6.4"
+"react-resize-detector@^6.6.3", "react-resize-detector@^6.7.6":
+  "integrity" "sha512-/6RZlul1yePSoYJxWxmmgjO320moeLC/khrwpEVIL+D2EjLKhqOwzFv+H8laMbImVj7Zu4FlMa0oA7au3/ChjQ=="
+  "resolved" "https://registry.npmjs.org/react-resize-detector/-/react-resize-detector-6.7.6.tgz"
+  "version" "6.7.6"
   dependencies:
-    "@types/resize-observer-browser" "^0.1.5"
+    "@types/resize-observer-browser" "^0.1.6"
     "lodash.debounce" "^4.0.8"
     "lodash.throttle" "^4.1.1"
     "resize-observer-polyfill" "^1.5.1"
