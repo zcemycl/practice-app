@@ -34,6 +34,7 @@
     "cannon": "^0.6.2",
     "chart.js": "^2.9.4",
     "chroma-js": "^2.1.2",
+    "coverage": "^0.4.1",
     "d3": "^6.7.0",
     "d3-fetch": "^2.0.0",
     "depcheck": "^1.4.1",
@@ -93,7 +94,8 @@
     "three-ammo": "^1.0.12",
     "throttle-debounce": "^3.0.1",
     "use-cannon": "^0.5.3",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "yarn": "^1.22.19"
   },
   "scripts": {
     "start": "react-scripts start",

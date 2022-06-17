@@ -36,4 +36,11 @@ jobs:
       - name: Run Testing
         run: |
           npm install          
-          yarn test
+          yarn test --coverage
+        
+      # Coveralls
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: coverage/lcov.info

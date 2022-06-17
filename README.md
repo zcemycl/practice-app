@@ -1,4 +1,4 @@
-# Yui's Responsive [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# Yui's Responsive [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![example workflow](https://github.com/zcemycl/practice-app/actions/workflows/main.yml/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/zcemycl/practice-app/badge.svg?branch=master)](https://coveralls.io/github/zcemycl/practice-app?branch=master)
 
 Website: [https://zcemycl.github.io/practice-app/](https://zcemycl.github.io/practice-app/)
 
