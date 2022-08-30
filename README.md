@@ -1,4 +1,4 @@
-# Yui's Responsive [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![example workflow](https://github.com/zcemycl/practice-app/actions/workflows/main.yml/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/zcemycl/practice-app/badge.svg?branch=master)](https://coveralls.io/github/zcemycl/practice-app?branch=master)
+# Yui's Responsive [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![example workflow](https://github.com/zcemycl/practice-app/actions/workflows/main.yml/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/zcemycl/practice-app/badge.svg?branch=master)](https://coveralls.io/github/zcemycl/practice-app?branch=master) [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fzcemycl%2Fpractice-app&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 
 Website: [https://zcemycl.github.io/practice-app/](https://zcemycl.github.io/practice-app/)
 
