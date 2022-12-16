@@ -1,8 +1,6 @@
 describe('Knowledge graph page', () => {
   beforeEach(() => {
-    const url = 'http://localhost:3000/practice-app';
-    // const url = 'https://zcemycl.github.io/practice-app'
-    cy.visit(url);
+    cy.visit('/');
   })
 
   it('Clickables', () => {
@@ -11,7 +9,6 @@ describe('Knowledge graph page', () => {
       const cH = $canvas[1].height;
       const cX = cW/2;
       const cY = cH/2;
-      // canvas.click(cX, cY)
       cy.wait(5000).wrap($canvas[1]).scrollIntoView()
         .dblclick(cX, cY)
       cy.wait(5000)

@@ -1,0 +1,34 @@
+{
+  "hrefs": [
+    "/practice-app/auth",
+    "/practice-app/",
+    "/practice-app/gallery",
+    "/practice-app/chatapp",
+    "/practice-app/3d",
+    "/practice-app/commentlike",
+    "/practice-app/prograph",
+    "/practice-app/map",
+    "/practice-app/annotate",
+    "/practice-app/clustermap",
+    "/practice-app/game",
+    "/practice-app/visitrecords",
+    "/practice-app/login",
+    "/practice-app/donate"
+  ],
+  "names": [
+    "Authentication",
+    "Knowledge Graph",
+    "Gallery",
+    "Chatapp",
+    "3D Scene",
+    "Like Comment",
+    "Progressive Graph",
+    "3D Map",
+    "Image Annotation",
+    "Cluster Map",
+    "Game",
+    "Visitor Record",
+    "Login",
+    "Donate"
+  ]
+}
