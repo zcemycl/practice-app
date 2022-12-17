@@ -16,5 +16,5 @@ jobs:
           rm package.json
           rm package-lock.json
           rm yarn.lock
-          npm i cypress --save-dev --force
+          npm i cypress typescript --save-dev --force
           isLocal=false npx cypress run
