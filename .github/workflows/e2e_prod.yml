@@ -6,7 +6,7 @@ name: End-to-end testings on Production App
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
-    container: node16.17.0-chrome106
+    container: cypress/browsers:node16.17.0-chrome106
     steps: 
       - name: Checkout
         uses: actions/checkout@v2
