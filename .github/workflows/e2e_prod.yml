@@ -6,15 +6,10 @@ name: End-to-end testings on Production App
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
-    container: cypress/browsers:node12.18.3-chrome87-ff82
+    container: node16.17.0-chrome106
     steps: 
       - name: Checkout
         uses: actions/checkout@v2
-        
-      - name: Use Node.js 15.x
-        uses: actions/setup-node@v2
-        with: 
-          node-version: 15.x
 
       - name: Cypress run
         run: |
