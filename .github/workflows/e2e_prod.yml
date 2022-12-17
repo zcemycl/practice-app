@@ -13,5 +13,4 @@ jobs:
 
       - name: Cypress run
         run: |
-          npm install --force
           isLocal=false npx cypress run
