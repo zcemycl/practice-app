@@ -17,4 +17,4 @@ jobs:
           rm package-lock.json
           rm yarn.lock
           npm i cypress typescript --save-dev --force
-          isLocal=false npx cypress run
+          isLocal=false npx cypress run --config videoRecording=false
