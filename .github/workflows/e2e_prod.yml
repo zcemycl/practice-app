@@ -10,8 +10,13 @@ jobs:
     steps: 
       - name: Checkout
         uses: actions/checkout@v2
+        
+      - name: Use Node.js 15.x
+        uses: actions/setup-node@v2
+        with: 
+          node-version: 15.x
 
       - name: Cypress run
-        uses: cypress-io/github-action@v5.0.0
-        env:
-          isLocal: "false"
+        run: |
+          npm install --force
+          isLocal=false npx cypress run
