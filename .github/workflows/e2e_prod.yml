@@ -13,4 +13,5 @@ jobs:
 
       - name: Cypress run
         run: |
+          npm i cypress --save-dev --force
           isLocal=false npx cypress run
