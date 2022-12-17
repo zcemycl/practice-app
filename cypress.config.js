@@ -8,6 +8,7 @@ const localurl = 'http://localhost:3000/practice-app'
 const url = 'https://zcemycl.github.io/practice-app/?'
 
 module.exports = defineConfig({
+  video: false,
   e2e: {
     baseUrl: isLocal?localurl:url,
     setupNodeEvents(on, config) {
