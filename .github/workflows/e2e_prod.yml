@@ -1,0 +1,17 @@
+on:
+  workflow_dispatch:
+
+name: End-to-end testings on Production App
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    container: cypress/browsers:node12.18.3-chrome87-ff82
+    steps: 
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cypress run
+        uses: cypress-io/github-action@5.0.0
+        env:
+          isLocal: "false"
