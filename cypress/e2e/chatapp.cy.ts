@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('empty spec', () => {
+describe('chatapp spec page', () => {
   beforeEach(() => {
     cy.visit('/chatapp')
   })

@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('empty spec', () => {
+describe('Navbar spec', () => {
   beforeEach(() => {
     cy.visit('/')
   })

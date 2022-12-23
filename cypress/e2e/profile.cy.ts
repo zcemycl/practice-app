@@ -1,4 +1,6 @@
-describe('empty spec', () => {
+/// <reference types="cypress" />
+
+describe('Profile page spec', () => {
   beforeEach(() => {
     cy.visit('/profile')
   })
